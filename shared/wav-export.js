@@ -73,6 +73,7 @@ export function triggerDownload(bytes, filename, mime) {
 export function downloadWav(samples, sampleRate, filename) {
   triggerDownload(encodeWav(samples, sampleRate), filename, "audio/wav");
 }
+
 /**
  * Encode equal-length Float32 channels as interleaved 16-bit PCM.
  * Does not change encodeWav, which stays mono.
