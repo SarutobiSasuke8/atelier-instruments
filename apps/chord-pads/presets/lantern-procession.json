@@ -1,0 +1,20 @@
+{
+  "name": "Lantern Procession",
+  "genre": "film",
+  "key": "Eb",
+  "scale": "naturalMinor",
+  "chordType": "add9",
+  "inversion": 0,
+  "spread": 3,
+  "voiceLeading": true,
+  "strum": { "enabled": false, "speedMs": 30, "direction": "up" },
+  "sound": "pad",
+  "bpm": 64,
+  "loop": true,
+  "progression": [
+    { "pad": 8, "startBeat": 0, "durationBeats": 8, "velocity": 0.74 },
+    { "pad": 13, "startBeat": 8, "durationBeats": 8, "velocity": 0.7 },
+    { "pad": 10, "startBeat": 16, "durationBeats": 8, "velocity": 0.72 },
+    { "pad": 15, "startBeat": 24, "durationBeats": 8, "velocity": 0.78 }
+  ]
+}

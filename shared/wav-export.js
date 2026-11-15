@@ -73,3 +73,60 @@ export function triggerDownload(bytes, filename, mime) {
 export function downloadWav(samples, sampleRate, filename) {
   triggerDownload(encodeWav(samples, sampleRate), filename, "audio/wav");
 }
+
+/**
+ * Encode equal-length Float32 channels as interleaved 16-bit PCM.
+ * Does not change encodeWav, which stays mono.
+ * @param {ArrayLike<ArrayLike<number>>} channels
+ * @param {number} sampleRate
+ * @returns {Uint8Array}
+ */
+export function encodeWavChannels(channels, sampleRate) {
+  if (!Array.isArray(channels) || channels.length < 1 || channels.length > 8) {
+    throw new Error("encodeWavChannels expects 1 to 8 channels");
+  }
+  const frames = channels[0].length >>> 0;
+  for (let c = 0; c < channels.length; c++) {
+    if (!channels[c] || channels[c].length !== frames) {
+      throw new Error("Channel lengths differ");
+    }
+  }
+  const rate = sampleRate >>> 0;
+  if (!rate) throw new Error("sampleRate must be a positive number");
+  const numCh = channels.length;
+  const blockAlign = numCh * 2;
+  const dataBytes = frames * blockAlign;
+  const buffer = new ArrayBuffer(44 + dataBytes);
+  const view = new DataView(buffer);
+  writeString(view, 0, "RIFF");
+  view.setUint32(4, 36 + dataBytes, true);
+  writeString(view, 8, "WAVE");
+  writeString(view, 12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, numCh, true);
+  view.setUint32(24, rate, true);
+  view.setUint32(28, rate * blockAlign, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, 16, true);
+  writeString(view, 36, "data");
+  view.setUint32(40, dataBytes, true);
+  let offset = 44;
+  for (let i = 0; i < frames; i++) {
+    for (let c = 0; c < numCh; c++) {
+      let sample = Number(channels[c][i]);
+      if (!Number.isFinite(sample)) sample = 0;
+      if (sample > 1) sample = 1;
+      else if (sample < -1) sample = -1;
+      const int = sample < 0 ? Math.round(sample * 0x8000) : Math.round(sample * 0x7fff);
+      view.setInt16(offset, int, true);
+      offset += 2;
+    }
+  }
+  return new Uint8Array(buffer);
+}
+
+/** Download a multichannel WAV. Mono callers should keep using downloadWav. */
+export function downloadWavChannels(channels, sampleRate, filename) {
+  triggerDownload(encodeWavChannels(channels, sampleRate), filename, "audio/wav");
+}
