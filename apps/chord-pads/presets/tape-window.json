@@ -1,0 +1,20 @@
+{
+  "name": "Tape Window",
+  "genre": "lo-fi",
+  "key": "D",
+  "scale": "major",
+  "chordType": "7th",
+  "inversion": 0,
+  "spread": 2,
+  "voiceLeading": true,
+  "strum": { "enabled": true, "speedMs": 22, "direction": "up" },
+  "sound": "piano",
+  "bpm": 76,
+  "loop": true,
+  "progression": [
+    { "pad": 8, "startBeat": 0, "durationBeats": 4, "velocity": 0.7 },
+    { "pad": 13, "startBeat": 4, "durationBeats": 4, "velocity": 0.66 },
+    { "pad": 9, "startBeat": 8, "durationBeats": 4, "velocity": 0.68 },
+    { "pad": 12, "startBeat": 12, "durationBeats": 4, "velocity": 0.72 }
+  ]
+}

@@ -30,6 +30,51 @@ export function bindKeys(bindings, target = globalThis) {
 }
 
 /**
+ * Hold-style keys: keydown starts a pad, keyup releases it.
+ * @param {Record<string, number>} codeToId
+ * @param {{ onDown: Function, onUp: Function }} handlers
+ * @param {EventTarget} [target]
+ */
+export function bindHeldKeys(codeToId, handlers, target = globalThis) {
+  const held = new Set();
+  const typing = (event) => {
+    const el = event.target;
+    if (!el || !TEXT_FIELDS.has(el.tagName)) return false;
+    return el.getAttribute?.("type") !== "range";
+  };
+  const onDown = (event) => {
+    if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || typing(event)) return;
+    const id = codeToId[event.code];
+    if (id == null || held.has(event.code)) return;
+    held.add(event.code);
+    event.preventDefault();
+    handlers.onDown(id, event);
+  };
+  const onUp = (event) => {
+    const id = codeToId[event.code];
+    if (id == null || !held.has(event.code)) return;
+    held.delete(event.code);
+    event.preventDefault();
+    handlers.onUp(id, event);
+  };
+  const onBlur = () => {
+    for (const code of held) {
+      const id = codeToId[code];
+      if (id != null) handlers.onUp(id);
+    }
+    held.clear();
+  };
+  target.addEventListener("keydown", onDown);
+  target.addEventListener("keyup", onUp);
+  target.addEventListener("blur", onBlur);
+  return () => {
+    target.removeEventListener("keydown", onDown);
+    target.removeEventListener("keyup", onUp);
+    target.removeEventListener("blur", onBlur);
+  };
+}
+
+/**
  * Open Web MIDI from a user gesture and forward notes and CCs.
  * Resolves even when MIDI is missing, so the UI can show a status.
  * @returns {Promise<() => void>}
@@ -45,6 +90,7 @@ export async function bindMidiPerformance(handlers = {}) {
   }
   try {
     const access = await openMidi();
+    handlers.onAccess?.(access);
     return listenMidi(access, handlers);
   } catch (error) {
     handlers.onStatus?.({
