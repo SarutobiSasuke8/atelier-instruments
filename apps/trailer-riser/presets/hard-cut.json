@@ -1,0 +1,13 @@
+{
+  "name": "Hard Cut",
+  "kind": "impact",
+  "lengthMode": "seconds",
+  "seconds": 1.6,
+  "bars": 1,
+  "tempo": 128,
+  "intensity": 0.9,
+  "pitch": 36,
+  "darkness": 0.22,
+  "size": 0.48,
+  "seed": 3
+}

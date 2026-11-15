@@ -130,4 +130,3 @@ export function encodeWavChannels(channels, sampleRate) {
 export function downloadWavChannels(channels, sampleRate, filename) {
   triggerDownload(encodeWavChannels(channels, sampleRate), filename, "audio/wav");
 }
-
