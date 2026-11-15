@@ -1,0 +1,13 @@
+{
+  "name": "Abyss Drop",
+  "kind": "subdrop",
+  "lengthMode": "seconds",
+  "seconds": 2.4,
+  "bars": 2,
+  "tempo": 100,
+  "intensity": 0.86,
+  "pitch": 34,
+  "darkness": 0.7,
+  "size": 0.5,
+  "seed": 8
+}
