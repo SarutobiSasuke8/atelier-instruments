@@ -1,0 +1,15 @@
+{
+  "name": "atelier-instruments",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser instruments built with the Web Audio API. No libraries and no build step.",
+  "scripts": {
+    "test": "node scripts/test-all.mjs",
+    "serve": "node server.mjs"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
