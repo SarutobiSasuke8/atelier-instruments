@@ -15,6 +15,8 @@ npm run serve
 
 Open the launcher, then an instrument.
 
+- [Vowel Choir Pad](apps/vowel-choir-pad/) — drag a dot across ooh, oh, ah, eh, and ee. Chords from the computer keyboard or Web MIDI. Choir size, breath, vibrato, reverb, and a sweep that glides between vowels.
+
 ## Layout
 
 ```

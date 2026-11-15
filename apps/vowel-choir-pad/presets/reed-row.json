@@ -1,0 +1,12 @@
+{
+  "name": "Reed Row",
+  "vowelX": 0.6,
+  "vowelY": 0.62,
+  "choirSize": 3,
+  "breathiness": 0.1,
+  "vibrato": 0.14,
+  "vibratoRate": 4.8,
+  "reverb": 0.26,
+  "sweep": false,
+  "sweepRate": 0.12
+}

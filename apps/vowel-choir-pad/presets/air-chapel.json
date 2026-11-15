@@ -1,0 +1,12 @@
+{
+  "name": "Air Chapel",
+  "vowelX": 0.7,
+  "vowelY": 0.46,
+  "choirSize": 5,
+  "breathiness": 0.58,
+  "vibrato": 0.22,
+  "vibratoRate": 5.2,
+  "reverb": 0.58,
+  "sweep": false,
+  "sweepRate": 0.09
+}
