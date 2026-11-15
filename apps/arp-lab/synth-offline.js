@@ -2,6 +2,9 @@
    Dependency-free mono render used for WAV export. Matches the panel's
    waveform, filter and envelope closely enough to audition a loop offline. */
 
+/** Output ceiling: about -1.06 dBFS. The final tanh stage can never exceed it. */
+export const OUTPUT_CEILING = 0.885;
+
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
@@ -80,6 +83,7 @@ export function renderVoices(events, options = {}) {
     }
   }
 
-  for (let i = 0; i < mix.length; i++) mix[i] = Math.tanh(mix[i]);
+  // Soft limiter: unity gain at low level, never above OUTPUT_CEILING.
+  for (let i = 0; i < mix.length; i++) mix[i] = OUTPUT_CEILING * Math.tanh(mix[i] / OUTPUT_CEILING);
   return mix;
 }
