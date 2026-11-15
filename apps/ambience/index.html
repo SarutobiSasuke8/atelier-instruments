@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ambience — Atelier Instruments</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Cpath d='M4 20c4-8 8 8 12 0s8 8 12 0' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="./ui/app.css" />
+</head>
+<body>
+  <main class="chassis bed">
+    <span class="screw nw" aria-hidden="true"></span>
+    <span class="screw ne" aria-hidden="true"></span>
+    <span class="screw sw" aria-hidden="true"></span>
+    <span class="screw se" aria-hidden="true"></span>
+
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER · BED</div>
+        <h1>AMBIENCE</h1>
+        <p class="tagline"><a href="../../index.html">All instruments</a> · textures for picture and play</p>
+      </div>
+      <div class="plate-readouts">
+        <p id="seed-readout" class="readout">SEED 2048</p>
+        <p id="status" class="status" role="status">Idle</p>
+      </div>
+    </header>
+
+    <section class="mood" aria-label="Mood">
+      <div class="scope-head">
+        <span class="slider-name">Mood</span>
+        <span id="mood-read" class="peak">Calm</span>
+      </div>
+      <label class="slider">
+        <input id="mood" type="range" min="0" max="1" step="0.01" value="0.18" aria-label="Mood from calm to tense" />
+      </label>
+      <div class="mood-scale" aria-hidden="true"><span>Calm</span><span>Uneasy</span><span>Tense</span></div>
+    </section>
+
+    <section class="layers" id="layers" aria-label="Texture layers"></section>
+
+    <section class="scope-panel">
+      <div class="scope-head">
+        <span class="slider-name">Field</span>
+        <span id="midi-status" class="peak">MIDI off</span>
+      </div>
+      <canvas id="field" width="1000" height="280" aria-label="Field monitor"></canvas>
+    </section>
+
+    <section class="transport" aria-label="Transport">
+      <button type="button" class="key play" id="play">Play</button>
+      <button type="button" class="key" id="stop">Stop</button>
+      <button type="button" class="key" id="export">Export WAV</button>
+      <button type="button" class="key" id="shuffle">Shuffle</button>
+      <label class="field length-field">
+        <span>Length</span>
+        <select id="length" aria-label="Loop length in seconds">
+          <option value="8">8 s</option>
+          <option value="12">12 s</option>
+          <option value="16" selected>16 s</option>
+          <option value="24">24 s</option>
+          <option value="36">36 s</option>
+          <option value="60">60 s</option>
+        </select>
+      </label>
+      <label class="field seed-field">
+        <span>Seed</span>
+        <input id="seed" type="number" min="0" max="9999999" step="1" value="2048" />
+      </label>
+    </section>
+
+    <section class="preset-bar">
+      <label class="field grow">
+        <span>Preset</span>
+        <select id="preset"></select>
+      </label>
+      <button type="button" class="key" id="save">Save JSON</button>
+      <button type="button" class="key" id="load">Load JSON</button>
+      <button type="button" class="key" id="midi">Enable MIDI</button>
+      <input id="preset-file" type="file" accept="application/json,.json" hidden />
+    </section>
+
+    <p class="lede hint">Space plays and stops. Keys 1–6 pick a layer. [ and ] nudge mood. Mod wheel is mood; volume, brightness, and controllers 71 and 12 ride the selected layer. The loop joins without a click.</p>
+  </main>
+  <noscript><p>Ambience needs JavaScript to render sound.</p></noscript>
+  <script type="module" src="./ui/main.js"></script>
+</body>
+</html>

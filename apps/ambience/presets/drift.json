@@ -1,0 +1,13 @@
+{
+  "name": "Drift",
+  "mood": 0.16,
+  "seed": 9001,
+  "layers": [
+    { "kind": "space", "level": 0.8, "tone": 0.42, "movement": 0.22, "density": 0.38 },
+    { "kind": "drone", "level": 0.56, "tone": 0.24, "movement": 0.14, "density": 0.5 },
+    { "kind": "wind", "level": 0.14, "tone": 0.55, "movement": 0.18, "density": 0.2 },
+    { "kind": "ocean", "level": 0, "tone": 0.3, "movement": 0.2, "density": 0.3 },
+    { "kind": "cave", "level": 0, "tone": 0.3, "movement": 0.2, "density": 0.4 },
+    { "kind": "forest", "level": 0, "tone": 0.5, "movement": 0.3, "density": 0.3 }
+  ]
+}

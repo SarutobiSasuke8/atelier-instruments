@@ -30,6 +30,22 @@ apps/<name>/
 
 An app may add helpers under `ui/`. Shared code is reused; don't fork it per instrument.
 
+## Ambience
+
+`apps/ambience/` layers up to six procedural textures: drone, rain, wind, cave, forest, ocean, city hum, space, and dread. Each layer has level, tone, movement, and density. Mood runs from calm to tense. Factory patches are JSON. Play and export render the same seamless loop.
+
+```js
+import { renderAmbience } from "./apps/ambience/engine.js";
+
+const audio = renderAmbience(
+  { mood: 0.2, layers: [{ kind: "ocean", level: 0.8, tone: 0.3, movement: 0.2, density: 0.5 }] },
+  12,
+  2048,
+);
+```
+
+`audio.left` and `audio.right` are `Float32Array`s at 44100 Hz. The same seed is the same bed.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
