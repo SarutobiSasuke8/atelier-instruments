@@ -1,0 +1,12 @@
+{
+  "name": "Nave",
+  "vowelX": 0.5,
+  "vowelY": 0.78,
+  "choirSize": 8,
+  "breathiness": 0.26,
+  "vibrato": 0.38,
+  "vibratoRate": 5,
+  "reverb": 0.7,
+  "sweep": false,
+  "sweepRate": 0.08
+}

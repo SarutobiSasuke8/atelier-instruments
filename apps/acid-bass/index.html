@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acid Bass Box</title>
+  <link rel="stylesheet" href="../../shared/ui-kit.css">
+  <link rel="stylesheet" href="ui/panel.css">
+</head>
+<body>
+  <main class="chassis acid">
+    <span class="screw nw"></span>
+    <span class="screw ne"></span>
+    <span class="screw sw"></span>
+    <span class="screw se"></span>
+    <header class="nameplate">
+      <div>
+        <a class="brand" href="../../index.html">ATELIER</a>
+        <h1>ACID BASS BOX</h1>
+        <p class="tagline">Mono bassline. Saw or square, resonant 24 dB low-pass, slides, accents, and a 16-step chain.</p>
+      </div>
+      <div>
+        <div class="readout" aria-live="polite">
+          <div id="playhead">Ready</div>
+          <div id="clock-readout">Internal clock</div>
+        </div>
+        <div class="transport-buttons">
+          <button class="key key-play" id="play" type="button">Play</button>
+          <button class="key" id="stop" type="button">Stop</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="panel-block" aria-label="Tone">
+      <div class="tone-head">
+        <div class="seg" id="wave" role="group" aria-label="Waveform">
+          <button class="key" type="button" data-wave="saw" aria-pressed="true">Saw</button>
+          <button class="key" type="button" data-wave="square" aria-pressed="false">Square</button>
+        </div>
+        <div class="meter" id="meter" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="knob-row" id="knobs"></div>
+    </section>
+
+    <section class="panel-block" aria-label="Sequencer">
+      <div class="seq-bar">
+        <div class="seg" id="patterns" role="group" aria-label="Pattern"></div>
+        <div class="chain" id="chain" aria-label="Pattern chain"></div>
+        <div class="seq-actions">
+          <button class="key" id="add-chain" type="button">Add to chain</button>
+          <button class="key" id="clear-chain" type="button">Clear chain</button>
+          <button class="key" id="clear-pattern" type="button">Clear</button>
+        </div>
+      </div>
+      <div class="step-scroller">
+        <div class="steps" id="steps"></div>
+      </div>
+    </section>
+
+    <section class="panel-block tools" aria-label="Key and shuffle">
+      <label class="field">Key
+        <select id="key"></select>
+      </label>
+      <label class="field">Scale
+        <select id="scale"></select>
+      </label>
+      <button class="key" id="random" type="button">Randomise in key</button>
+      <label class="field transpose">Transpose
+        <input id="transpose" type="range" min="-12" max="12" step="1" value="0">
+        <span id="transpose-value">0</span>
+      </label>
+    </section>
+
+    <section class="panel-block" aria-label="Keyboard">
+      <div class="keys-meta">
+        <p class="lede">Keys A W S E D F T G Y H U J K. Z and X shift octave. Arrows edit the selected step. Space plays.</p>
+        <span id="octave-label">C2</span>
+      </div>
+      <div class="piano" id="piano"></div>
+    </section>
+
+    <section class="panel-block" aria-label="Presets and export">
+      <div class="io-row">
+        <label class="field">Preset
+          <select id="preset"></select>
+        </label>
+        <label class="field">Name
+          <input id="preset-name" type="text" maxlength="48" placeholder="Name this preset" autocomplete="off">
+        </label>
+        <button class="key" id="save-preset" type="button">Save</button>
+        <button class="key" id="export-json" type="button">JSON</button>
+        <label class="key file-btn">Import
+          <input id="import-json" type="file" accept="application/json,.json">
+        </label>
+        <button class="key" id="export-wav" type="button">Export WAV</button>
+        <button class="key" id="export-mid" type="button">Export MIDI</button>
+      </div>
+      <div class="midi">
+        <div class="seg" id="clock-mode" role="group" aria-label="Clock source">
+          <button class="key" type="button" data-clock="internal" aria-pressed="true">Internal clock</button>
+          <button class="key" type="button" data-clock="midi" aria-pressed="false">MIDI clock</button>
+        </div>
+        <label class="field">MIDI out
+          <select id="midi-out">
+            <option value="">No device</option>
+          </select>
+        </label>
+        <span id="midi-status" class="instrument-kicker">MIDI connects when you press play</span>
+      </div>
+    </section>
+    <p class="status" id="status" role="status"></p>
+  </main>
+  <script type="module" src="ui/main.js"></script>
+</body>
+</html>

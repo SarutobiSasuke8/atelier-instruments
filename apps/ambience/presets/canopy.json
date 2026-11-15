@@ -1,0 +1,13 @@
+{
+  "name": "Canopy",
+  "mood": 0.18,
+  "seed": 5602,
+  "layers": [
+    { "kind": "forest", "level": 0.82, "tone": 0.58, "movement": 0.36, "density": 0.64 },
+    { "kind": "wind", "level": 0.4, "tone": 0.48, "movement": 0.42, "density": 0.36 },
+    { "kind": "drone", "level": 0.22, "tone": 0.28, "movement": 0.14, "density": 0.3 },
+    { "kind": "rain", "level": 0.08, "tone": 0.5, "movement": 0.2, "density": 0.2 },
+    { "kind": "ocean", "level": 0, "tone": 0.4, "movement": 0.3, "density": 0.4 },
+    { "kind": "city", "level": 0, "tone": 0.4, "movement": 0.3, "density": 0.4 }
+  ]
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vowel Choir Pad</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="./ui/app.css" />
+</head>
+<body>
+  <main class="chassis choir">
+    <span class="screw nw" aria-hidden="true"></span>
+    <span class="screw ne" aria-hidden="true"></span>
+    <span class="screw sw" aria-hidden="true"></span>
+    <span class="screw se" aria-hidden="true"></span>
+
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER · VC-1</div>
+        <h1>VOWEL CHOIR</h1>
+        <p class="tagline"><a href="../../index.html">All instruments</a></p>
+      </div>
+      <div class="plate-readouts">
+        <p id="vowelReadout" class="readout">ah</p>
+        <p id="status" class="status" role="status">Tap a key or the map to wake the sound</p>
+      </div>
+    </header>
+
+    <div class="face">
+      <section class="plate" aria-labelledby="mapTitle">
+        <div class="scope-head">
+          <h2 id="mapTitle">Vowel map</h2>
+          <span id="formants" class="peak">F1 — · F2 —</span>
+        </div>
+        <div id="chart" class="chart" tabindex="0" role="application" aria-label="Vowel map. Drag to shape the choir. Arrow keys nudge the dot."></div>
+        <p class="lede hint">Drag the dot through ooh, oh, ah, eh, and ee. The choir follows.</p>
+      </section>
+
+      <section class="controls" aria-label="Choir controls">
+        <label class="slider">
+          <span class="slider-name">Choir</span>
+          <input id="choirSize" type="range" min="1" max="8" step="1" value="8" aria-label="Choir size">
+          <output>8</output>
+        </label>
+        <label class="slider">
+          <span class="slider-name">Breath</span>
+          <input id="breathiness" type="range" min="0" max="1" step="0.01" value="0.26" aria-label="Breathiness">
+          <output>0.26</output>
+        </label>
+        <label class="slider">
+          <span class="slider-name">Vibrato</span>
+          <input id="vibrato" type="range" min="0" max="1" step="0.01" value="0.38" aria-label="Vibrato depth">
+          <output>0.38</output>
+        </label>
+        <label class="slider">
+          <span class="slider-name">Rate</span>
+          <input id="vibratoRate" type="range" min="3" max="8" step="0.1" value="5" aria-label="Vibrato rate">
+          <output>5.0</output>
+        </label>
+        <label class="slider">
+          <span class="slider-name">Reverb</span>
+          <input id="reverb" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Reverb">
+          <output>0.70</output>
+        </label>
+        <label class="switch">
+          <input id="sweep" type="checkbox">
+          <span class="slider-name">Sweep</span>
+        </label>
+        <label class="slider">
+          <span class="slider-name">Glide</span>
+          <input id="sweepRate" type="range" min="0.03" max="0.45" step="0.01" value="0.08" aria-label="Sweep rate">
+          <output>0.08</output>
+        </label>
+      </section>
+    </div>
+
+    <section class="preset-bar" aria-label="Presets">
+      <label class="field">
+        <span>Preset</span>
+        <select id="preset" aria-label="Preset"></select>
+      </label>
+      <button type="button" class="key" id="save">Save JSON</button>
+      <button type="button" class="key" id="load-btn">Load JSON</button>
+      <input id="load" type="file" accept="application/json,.json" hidden>
+      <button type="button" class="key" id="bounce">Bounce WAV</button>
+      <button type="button" class="key" id="panic">Silence</button>
+    </section>
+
+    <section class="manual">
+      <div class="octave-row">
+        <button type="button" class="key" id="octDown">Oct −</button>
+        <span id="octLabel" class="oct-label">C4</span>
+        <button type="button" class="key" id="octUp">Oct +</button>
+        <span id="chord" class="chord">—</span>
+      </div>
+      <div id="piano" class="piano" role="group" aria-label="On-screen keyboard"></div>
+    </section>
+
+    <footer class="legend">
+      <span>A S D F G H J K L ; row</span>
+      <span>W E T Y U O P raised</span>
+      <span>Z X octave</span>
+      <span>MIDI notes hold the chord</span>
+    </footer>
+  </main>
+  <script type="module" src="./ui/app.js"></script>
+</body>
+</html>
