@@ -215,3 +215,17 @@ export function pickTextFile(accept = ".json,application/json") {
     input.click();
   });
 }
+
+export function writeJsonObject(value) {
+  return JSON.stringify(value, null, 2);
+}
+
+export function saveJson(key, value) {
+  const bin = storage();
+  if (!bin) return;
+  try {
+    bin.setItem(key, JSON.stringify(value));
+  } catch {
+    /* private mode or quota */
+  }
+}

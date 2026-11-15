@@ -100,6 +100,10 @@ Pads answer to the pointer, the computer keys `1–4` `Q–R` `A–F` `Z–V`, a
 
 `engine.js` has no DOM. `renderProgression(chords, params)` returns stereo PCM plus the voiced notes and MIDI events.
 
+## Arpeggiator Lab
+
+`apps/arp-lab/` turns a held chord into a pattern. Modes are up, down, up-down, random, chord, and as-played, with rate, gate, octave range, swing, and per-step probability, ratchets, and accents. `engine.js` exports `renderArp(chords, params)` and does not touch the DOM. Hear it on the built-in synth, or send Web MIDI — and a same-origin atelier note bus — toward other instruments such as the vocoder and vowel choir. Presets are JSON. Export writes a Standard MIDI file or a WAV from the offline voice renderer.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
