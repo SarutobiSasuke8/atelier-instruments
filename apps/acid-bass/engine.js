@@ -23,6 +23,9 @@ export const SCALES = {
 
 const ROOT_MIDI = 36;
 
+/** Output ceiling: about -1.06 dBFS. The final tanh stage can never exceed it. */
+export const OUTPUT_CEILING = 0.885;
+
 export function resolveParams(input = {}) {
   const waveform = input.waveform === "square" ? "square" : "saw";
   return {
@@ -477,7 +480,8 @@ export class AcidVoice {
     const amp = this.vca * (this.accenting ? 0.42 + 0.7 * this.params.accent : 0.3);
     y *= amp;
     y = this.dcBlock(y);
-    y = Math.tanh(y * (1.05 + this.params.drive * 1.4));
+    // Soft-limit into a fixed ceiling so hot presets cannot reach full scale.
+    y = OUTPUT_CEILING * Math.tanh(y * (1.05 + this.params.drive * 1.4));
     const abs = Math.abs(y);
     const release = Math.exp(-1 / (0.16 * this.sampleRate));
     this.peak = Math.max(abs, this.peak * release);
