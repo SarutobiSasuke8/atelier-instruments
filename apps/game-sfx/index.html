@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Sound Effects Maker</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Cpath d='M4 22 V10 M10 22 V6 M16 22 V12 M22 22 V8 M28 22 V14' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="../../shared/ui-kit.css" />
+    <link rel="stylesheet" href="ui/app.css" />
+  </head>
+  <body>
+    <main class="chassis">
+      <span class="screw nw"></span>
+      <span class="screw ne"></span>
+      <span class="screw sw"></span>
+      <span class="screw se"></span>
+      <header class="nameplate">
+        <div>
+          <div class="brand">ATELIER · SFX-11</div>
+          <h1>GAME SFX</h1>
+          <p class="tagline">Game Sound Effects Maker</p>
+        </div>
+        <div class="readout" id="readout" aria-live="polite">READY · SEED --------</div>
+      </header>
+
+      <div class="bench">
+        <section class="voices" aria-label="Sound categories">
+          <div class="section-label">Voices</div>
+          <div class="cat-list" id="categories"></div>
+        </section>
+
+        <section class="editor" aria-label="Editor">
+          <div class="scope-wrap">
+            <canvas id="scope" width="900" height="200" aria-label="Waveform of the current sound"></canvas>
+            <div class="scope-meta">
+              <span id="meta">Ready</span>
+              <label class="audition"><input type="checkbox" id="audition" checked /> Audition</label>
+            </div>
+          </div>
+          <div class="transport" aria-label="Playback">
+            <button class="key accent" type="button" id="btn-play">Play</button>
+            <button class="key" type="button" id="btn-generate">Generate</button>
+            <button class="key" type="button" id="btn-lock" aria-pressed="false">Lock</button>
+            <button class="key" type="button" id="btn-mutate" disabled>Mutate</button>
+            <button class="key" type="button" id="btn-revert" disabled>Revert</button>
+          </div>
+          <div class="sliders" id="faders"></div>
+          <p class="status" id="status" role="status"></p>
+        </section>
+      </div>
+
+      <section class="transport bank" aria-label="Presets and export">
+        <label class="field">
+          <span>Preset</span>
+          <select id="preset-select"></select>
+        </label>
+        <button class="key" type="button" id="btn-apply">Apply</button>
+        <label class="field">
+          <span>Save as</span>
+          <input id="preset-name" type="text" maxlength="48" placeholder="Name this sound" />
+        </label>
+        <button class="key" type="button" id="btn-save">Save</button>
+        <button class="key" type="button" id="btn-remove">Remove</button>
+        <button class="key" type="button" id="btn-download-json">Download JSON</button>
+        <button class="key" type="button" id="btn-import">Import</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden />
+        <button class="key accent" type="button" id="btn-wav">This WAV</button>
+        <button class="key" type="button" id="btn-ui-pack">UI pack</button>
+        <button class="key" type="button" id="btn-plat-pack">Platformer pack</button>
+      </section>
+      <p class="hint-row">
+        <span>SPACE play · G new · L lock · M mutate · 1–9, 0, minus pick a voice · MIDI from C4</span>
+        <a href="../../index.html">All instruments</a>
+      </p>
+    </main>
+    <script type="module" src="ui/main.js"></script>
+  </body>
+</html>

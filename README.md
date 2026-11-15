@@ -52,6 +52,14 @@ Drag the scratch pad, or hold V and use the arrow keys. Space rolls or halts. Z 
 
 Export WAV bounces the performance. If you have not played yet, it prints a scripted pass. Presets are JSON.
 
+## Game Sound Effects Maker
+
+`apps/game-sfx/` renders jump, coin, power-up, laser, explosion, hit, pickup, menu click, error, level-up, and footstep.
+
+`engine.js` has no DOM. `renderSfx(category, params, seed)` returns mono PCM at 44.1 kHz. The same triple always renders the same buffer. Params are `pitch`, `length`, `punch`, `noise`, `sweep`, and `style` (`0` retro, `1` modern), each from 0 to 1.
+
+Lock keeps a take. Mutate nudges it. Revert returns to the lock. Presets are JSON. The UI pack and the platformer pack download a zip of WAVs named `ui-menu-click.wav`, `platformer-jump.wav`, and so on.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "name": "Factory bench",
+  "items": [
+    {
+      "name": "Spring jump",
+      "category": "jump",
+      "seed": 14021,
+      "params": { "pitch": 0.62, "length": 0.4, "punch": 0.74, "noise": 0.14, "sweep": 0.8, "style": 0.18 }
+    },
+    {
+      "name": "Heavy jump",
+      "category": "jump",
+      "seed": 88211,
+      "params": { "pitch": 0.34, "length": 0.55, "punch": 0.9, "noise": 0.22, "sweep": 0.7, "style": 0.28 }
+    },
+    {
+      "name": "Arcade coin",
+      "category": "coin",
+      "seed": 44012,
+      "params": { "pitch": 0.56, "length": 0.34, "punch": 0.42, "noise": 0.04, "sweep": 0.5, "style": 0.1 }
+    },
+    {
+      "name": "Soft token",
+      "category": "coin",
+      "seed": 22008,
+      "params": { "pitch": 0.48, "length": 0.48, "punch": 0.3, "noise": 0.02, "sweep": 0.56, "style": 0.72 }
+    },
+    {
+      "name": "Charge",
+      "category": "power-up",
+      "seed": 67110,
+      "params": { "pitch": 0.5, "length": 0.58, "punch": 0.52, "noise": 0.1, "sweep": 0.68, "style": 0.22 }
+    },
+    {
+      "name": "Bolt",
+      "category": "laser",
+      "seed": 90931,
+      "params": { "pitch": 0.64, "length": 0.42, "punch": 0.38, "noise": 0.48, "sweep": 0.28, "style": 0.26 }
+    },
+    {
+      "name": "Wide beam",
+      "category": "laser",
+      "seed": 12004,
+      "params": { "pitch": 0.42, "length": 0.7, "punch": 0.3, "noise": 0.62, "sweep": 0.18, "style": 0.55 }
+    },
+    {
+      "name": "Crate blast",
+      "category": "explosion",
+      "seed": 30017,
+      "params": { "pitch": 0.42, "length": 0.72, "punch": 0.88, "noise": 0.86, "sweep": 0.32, "style": 0.4 }
+    },
+    {
+      "name": "Distant blast",
+      "category": "explosion",
+      "seed": 55190,
+      "params": { "pitch": 0.28, "length": 0.9, "punch": 0.45, "noise": 0.7, "sweep": 0.22, "style": 0.66 }
+    },
+    {
+      "name": "Smack",
+      "category": "hit",
+      "seed": 77102,
+      "params": { "pitch": 0.52, "length": 0.36, "punch": 0.92, "noise": 0.58, "sweep": 0.4, "style": 0.24 }
+    },
+    {
+      "name": "Charm",
+      "category": "pickup",
+      "seed": 24680,
+      "params": { "pitch": 0.58, "length": 0.42, "punch": 0.34, "noise": 0.06, "sweep": 0.62, "style": 0.58 }
+    },
+    {
+      "name": "Tick",
+      "category": "menu-click",
+      "seed": 11111,
+      "params": { "pitch": 0.54, "length": 0.32, "punch": 0.66, "noise": 0.18, "sweep": 0.5, "style": 0.46 }
+    },
+    {
+      "name": "Soft click",
+      "category": "menu-click",
+      "seed": 11149,
+      "params": { "pitch": 0.4, "length": 0.5, "punch": 0.28, "noise": 0.08, "sweep": 0.5, "style": 0.8 }
+    },
+    {
+      "name": "Denied",
+      "category": "error",
+      "seed": 40404,
+      "params": { "pitch": 0.4, "length": 0.52, "punch": 0.48, "noise": 0.16, "sweep": 0.26, "style": 0.12 }
+    },
+    {
+      "name": "Crest",
+      "category": "level-up",
+      "seed": 88001,
+      "params": { "pitch": 0.52, "length": 0.64, "punch": 0.4, "noise": 0.06, "sweep": 0.66, "style": 0.44 }
+    },
+    {
+      "name": "Boot",
+      "category": "footstep",
+      "seed": 50505,
+      "params": { "pitch": 0.44, "length": 0.5, "punch": 0.74, "noise": 0.68, "sweep": 0.34, "style": 0.48 }
+    },
+    {
+      "name": "Sneaker",
+      "category": "footstep",
+      "seed": 50551,
+      "params": { "pitch": 0.62, "length": 0.28, "punch": 0.4, "noise": 0.42, "sweep": 0.48, "style": 0.7 }
+    }
+  ]
+}
