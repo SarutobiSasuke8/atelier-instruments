@@ -27,6 +27,9 @@ const effectLabels = {
   metal: 'Metal Distortion',
   gate: 'Noise Gate',
   doom: 'Octave Down',
+  spring: 'Spring Reverb',
+  tremolo: 'Tremolo',
+  compressor: 'Compressor',
 };
 export async function mountPedalboard({ host, context, input, destination=context.destination, initial, onChange=()=>{} }) {
   installStyle();
@@ -103,8 +106,11 @@ export async function mountPedalboard({ host, context, input, destination=contex
     let origin;
     function refresh(){
       const value=item.controls[index], formatted=formatControl(item.id,index,value);
+      const readout=dsp.pedalControlText?.(item.id,index,value)??formatted;
       button.style.setProperty('--turn',`${value*268-134}deg`);
-      button.setAttribute('aria-valuenow',formatted);amount.textContent=formatted;
+      button.setAttribute('aria-valuenow',formatted);
+      button.setAttribute('aria-valuetext',readout);
+      amount.textContent=readout;
     }
     button.addEventListener('pointerdown',event=>{
       if(choose(item.id,index)){event.preventDefault();return;}

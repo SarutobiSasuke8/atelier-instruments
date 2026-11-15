@@ -1,6 +1,6 @@
 # Atelier Pedalboard
 
-The pedalboard has ten original pedals. Use Chrome or Edge for interactive audio, device selection and Web MIDI.
+The pedalboard has thirteen original pedals. Use Chrome or Edge for interactive audio, device selection and Web MIDI.
 
 Set `ATELIER_DSP_ROOT` to the absolute path of a **private Atelier DSP checkout that contains the pedal DSP**. Start `npm run serve` and open the Pedalboard from the local instrument launcher. The server mounts only the pedalboard and primitive browser modules over loopback. The project does not include the private engine source. This dependency must be resolved before a public demo.
 
@@ -9,6 +9,8 @@ Choose **Play test phrase** for an original synthetic guitar-like phrase, or sel
 Drag the handle under a pedal to change the signal order, or use its arrow buttons. Click the footswitch to toggle bypass. Drag a knob vertically or use the mouse wheel and cursor keys. Shift makes finer adjustments. Double-click restores the default. The Eleven gain scale goes from 0 to 11.
 
 Use **Connect MIDI** then **MIDI learn**, select a knob or footswitch and move a controller. Preset JSON contains order, each pedal's settings and MIDI assignments. A pedal's left arrow moves it earlier in the signal path.
+
+**Sunken Coil** is a modelled spring reverb with decay, tone and mix. **Night Pulse** varies amplitude from smooth to chopped, with rate in Hz. **Iron Press** is a stereo-linked compressor with threshold, ratio and makeup gain. Earlier ten-pedal presets load with these three pedals bypassed.
 
 ## Embed in an instrument
 

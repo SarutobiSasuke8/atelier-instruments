@@ -39,6 +39,7 @@
   --shape: inset(0 round var(--round));
   --title: Cinzel, Georgia, serif;
   --art-position: center;
+  --art-fit: fill;
 }
 .enclosure {
   display: grid;
@@ -81,6 +82,7 @@
   align-content: center;
   justify-items: center;
   gap: 3px;
+  text-shadow: 0 1px 3px #000, 0 2px 7px #000;
 }
 .pedal-series {
   display: flex;
@@ -126,6 +128,10 @@
 .dial-label {
   font: 700 10px/1 "Barlow Condensed", system-ui, sans-serif;
   letter-spacing: .055em;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: #141016b8;
+  text-shadow: 0 1px 2px #000;
 }
 .knob {
   width: 39px;
@@ -138,36 +144,37 @@
 .knob-pointer { top: 3px; height: 11px; background: var(--ink); }
 .dial-value { background: #171419; color: var(--ink); border-color: #ffffff28; }
 .face-art {
-  position: relative;
-  z-index: 1;
-  align-self: stretch;
-  margin: 2px 0;
-  border-radius: var(--art-radius, 7px);
+  position: absolute;
+  inset: 3px;
+  z-index: 0;
+  clip-path: var(--shape);
   overflow: hidden;
-  background: var(--heel);
-  box-shadow: 0 0 0 1px #110d12, 0 0 0 2px #fff3, 0 3px 7px #0009;
+  pointer-events: none;
 }
 .face-art img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: var(--art-fit);
   object-position: var(--art-position);
 }
 .face-art::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(146deg, #fff3, transparent 40%, #0002 86%);
-  box-shadow: inset 0 1px 1px #fff5, inset 0 -3px 6px #0006;
+  background:
+    linear-gradient(90deg, #0005, transparent 10% 91%, #0006),
+    linear-gradient(180deg, #151018ae 0%, #151018d9 14%, #151018a8 30%,
+      #15101818 47%, transparent 70%, #100d12aa 100%);
+  box-shadow: inset 0 1px 3px #fff6, inset 0 -4px 7px #0008;
   pointer-events: none;
 }
 .heel {
+  grid-row: 4;
   grid-template-rows: 17px 44px;
   align-content: center;
 }
-.heel > span { color: var(--ink); opacity: .8; }
+.heel > span { color: var(--ink); opacity: .95; text-shadow: 0 1px 3px #000, 0 1px 5px #000; }
 .stomp {
   box-shadow: 0 0 0 3px #0009, 0 1px 1px 3px #b9a99a8c, 0 7px 8px #000f;
 }
@@ -185,7 +192,6 @@
 .wood {
   --case: #405426; --heel: #192619; --trim: #9b8150; --ink: #f4f2ba;
   --title: Shrikhand, Georgia, serif; --round: 28px 28px 18px 18px;
-  --art-radius: 21px 21px 10px 10px;
 }
 .wood .enclosure::after {
   background: repeating-linear-gradient(90deg, #e1a76b1c 0 1px, transparent 1px 6px),
@@ -199,19 +205,16 @@
   --shape: polygon(8% 0, 92% 0, 100% 9%, 100% 91%, 94% 100%, 6% 100%, 0 91%, 0 9%);
 }
 .tape .pedal-name { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
-.tape .face-art { border: 3px ridge #c08352; border-radius: 5px; }
 
 .orange {
   --case: #783647; --heel: #2d1828; --trim: #cc8154; --title: Shrikhand, Georgia, serif;
   --round: 46% 46% 16% 16% / 12% 12% 8% 8%;
-  --art-radius: 40% 40% 16% 16% / 18% 18% 12% 12%;
 }
 .orange .screw.tl, .orange .screw.tr { top: 26px; }
 
 .liquid {
   --case: #174a55; --heel: #171c35; --trim: #609eac; --ink: #d2f7f3;
   --title: Shrikhand, Georgia, serif; --round: 18px 39px 17px 32px;
-  --art-radius: 20% 8% 19% 8%;
 }
 
 .rainbow {
@@ -220,7 +223,6 @@
 }
 .rainbow .screw.tl, .rainbow .screw.tr, .rainbow .screw.bl, .rainbow .screw.br { top: 35px; bottom: auto; }
 .rainbow .screw.bl, .rainbow .screw.br { bottom: 37px; top: auto; }
-.rainbow .face-art { border-radius: 22px 22px 8px 8px; }
 .rainbow .stomp {
   width: 70%;
   border-radius: 9px;
@@ -232,7 +234,6 @@
   --case: #704465; --heel: #2c1b35; --trim: #be8eaf; --ink: #ffe7e8;
   --shape: polygon(0 0, 86% 0, 100% 9%, 100% 100%, 14% 100%, 0 91%);
 }
-.prism .face-art { --art-radius: 5px 21px 5px 21px; }
 
 .black {
   --case: #50262a; --heel: #21171a; --trim: #968581; --ink: #fff0e1;
@@ -240,7 +241,6 @@
   --shape: polygon(12% 0, 88% 0, 100% 10%, 100% 88%, 84% 100%, 16% 100%, 0 88%, 0 10%);
 }
 .black .pedal-name, .chrome .pedal-name { font-size: clamp(24px, 2.75vw, 40px); }
-.black .face-art { --art-radius: 19% 19% 15% 15% / 20% 20% 13% 13%; }
 .black .screw.tl, .black .screw.tr { top: 26px; }
 
 .plate {
@@ -248,16 +248,47 @@
   --title: "Barlow Condensed", sans-serif; --round: 5px;
 }
 .plate .pedal-name { font-weight: 700; text-transform: uppercase; }
-.plate .face-art { border: 3px ridge #747466; --art-radius: 3px; }
 
 .chrome {
   --case: #364362; --heel: #1a2034; --trim: #abb6ce; --ink: #ebf5ff;
   --title: UnifrakturMaguntia, Georgia, serif;
-  --art-position: center 18%;
   --shape: polygon(16% 0, 84% 0, 100% 12%, 96% 92%, 88% 100%, 12% 100%, 4% 92%, 0 12%);
 }
-.chrome .face-art { --art-radius: 18px 18px 9px 9px; }
 .chrome .screw.tl, .chrome .screw.tr { top: 30px; }
+
+.spring {
+  --case: #1b655d; --heel: #143830; --trim: #dbad58; --ink: #fff3c8;
+  --led: #7cf8d4; --round: 49% 49% 13% 13% / 16% 16% 7% 7%;
+  --art-fit: cover;
+}
+.spring .screw.tl, .spring .screw.tr { top: 38px; left: 15px; }
+.spring .screw.tr { left: auto; right: 15px; }
+
+.tremolo {
+  --case: #773358; --heel: #2f1636; --trim: #c07859; --ink: #ffdfce;
+  --led: #fa7fc2; --title: Shrikhand, Georgia, serif; --art-fit: cover;
+  --shape: polygon(4% 8%, 25% 0, 75% 0, 96% 8%, 100% 41%, 89% 94%, 76% 100%, 24% 100%, 11% 94%, 0 41%);
+}
+.tremolo .screw.tl, .tremolo .screw.tr { top: 29px; left: 17px; }
+.tremolo .screw.tr { left: auto; right: 17px; }
+.tremolo .screw.bl { left: 22%; }
+.tremolo .screw.br { right: 22%; }
+
+.compressor {
+  --case: #394b61; --heel: #2c2e35; --trim: #d99449; --ink: #fff0d1;
+  --led: #ffa05e; --title: "Barlow Condensed", sans-serif; --art-fit: cover;
+  --shape: polygon(0 0, 89% 0, 100% 7%, 100% 88%, 90% 88%, 90% 100%, 10% 100%, 10% 88%, 0 88%);
+}
+.compressor .pedal-name { font-weight: 700; text-transform: uppercase; }
+.compressor .screw.tr { top: 30px; }
+.compressor .screw.bl { left: 16%; }
+.compressor .screw.br { right: 16%; }
+
+@media (min-width: 1320px) {
+  .pedal-cells { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 31px 20px; }
+  .pedal-name { font-size: clamp(22px, 1.9vw, 30px); }
+  .black .pedal-name, .chrome .pedal-name { font-size: clamp(25px, 2.05vw, 34px); }
+}
 
 @media (max-width: 560px) {
   .pedal-cells { gap: 26px 16px; }
