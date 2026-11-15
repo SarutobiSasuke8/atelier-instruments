@@ -30,7 +30,11 @@ const effectLabels = {
   spring: 'Spring Reverb',
   tremolo: 'Tremolo',
   compressor: 'Compressor',
+  flanger: 'Flanger',
+  distortion: 'Rock Distortion',
+  eq: 'Graphic EQ + Boost',
 };
+const portraitArt = new Set(['spring','tremolo','compressor','flanger','distortion','eq']);
 export async function mountPedalboard({ host, context, input, destination=context.destination, initial, onChange=()=>{} }) {
   installStyle();
   const dsp=await getPedalDsp();
@@ -139,8 +143,11 @@ export async function mountPedalboard({ host, context, input, destination=contex
       const plate=node('div',{class:'enclosure'}), crown=node('header',{class:'face-label'});
       crown.append(node('span',{class:'pedal-series'},'Atelier'),node('h3',{class:'pedal-name'},spec.name),node('span',{class:'pedal-type'},effectLabels[spec.id]));
       const grips=node('div',{class:'knobs'});cell.knobs=spec.controls.map((_,i)=>dial(item,spec,i));grips.append(...cell.knobs.map(knob=>knob.holder));
-      const art=node('div',{class:'face-art','aria-hidden':'true'});
-      art.append(node('img',{src:new URL(`./art/${spec.id}.webp`,import.meta.url).href,alt:'',decoding:'async'}));
+      const portrait=portraitArt.has(spec.id);
+      const art=node('div',{class:portrait?'face-art':'face-art square-art','aria-hidden':'true'});
+      const image=new URL(`./art/${spec.id}.webp`,import.meta.url).href;
+      if(!portrait) art.style.setProperty('--art-image',`url("${image}")`);
+      art.append(node('img',{src:image,alt:'',decoding:'async'}));
       const led=node('i',{class:'lamp','aria-hidden':'true'});
       const foot=node('button',{class:'stomp',type:'button','aria-label':`Bypass ${spec.name}`,'aria-pressed':String(!item.bypass)});
       if(spec.family==='black') foot.append(node('span',{'aria-hidden':'true'},'☠'));

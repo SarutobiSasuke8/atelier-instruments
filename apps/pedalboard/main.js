@@ -32,15 +32,45 @@ function phrase(sr){
   }
   return out;
 }
+function monitorPeak(source,id){
+  const element=el(id), fill=element.firstElementChild;
+  const splitter=context.createChannelSplitter(2);
+  const windowSize=Math.min(32768,2**Math.ceil(Math.log2(context.sampleRate*.09)));
+  const channels=Array.from({length:2},(_,channel)=>{
+    const analyser=context.createAnalyser();
+    analyser.fftSize=windowSize;
+    splitter.connect(analyser,channel);
+    return analyser;
+  });
+  source.connect(splitter);
+  const data=new Float32Array(windowSize);
+  let clippedUntil=0;
+  return now=>{
+    let peak=0;
+    for(const analyser of channels){
+      analyser.getFloatTimeDomainData(data);
+      for(const sample of data) peak=Math.max(peak,Math.abs(sample));
+    }
+    const db=Math.max(-60,Math.round(20*Math.log10(peak)));
+    if(peak>=1) clippedUntil=now+1000;
+    const clipped=now<clippedUntil;
+    element.classList.toggle('clipped',clipped);
+    element.setAttribute('aria-valuenow',String(Math.min(0,db)));
+    element.setAttribute('aria-valuetext',clipped?'At or above 0 dBFS':`${db} dBFS`);
+    fill.style.width=`${Math.min(100,(db+60)*100/60)}%`;
+  };
+}
 async function start(){
   context=new AudioContext({latencyHint:'interactive'});
-  input=context.createGain();output=context.createGain();output.gain.value=.52;
-  const analyser=context.createAnalyser();
-  analyser.fftSize=1024;output.connect(analyser).connect(context.destination);
-  const data=new Float32Array(analyser.fftSize);
-  meter=setInterval(()=>{analyser.getFloatTimeDomainData(data);const peak=data.reduce((power,sample)=>Math.max(power,Math.abs(sample)),0);el('peak').style.width=Math.min(100,peak*110)+'%';},60);
+  input=context.createGain();output=context.createGain();
+  input.gain.value=10**(Number(el('trim').value)/20);
+  output.gain.value=Number(el('master').value)/100;
+  const chainBus=context.createGain();
+  chainBus.connect(output).connect(context.destination);
+  const inputMeter=monitorPeak(input,'input-peak'),chainMeter=monitorPeak(chainBus,'chain-peak');
+  meter=setInterval(()=>{const now=performance.now();inputMeter(now);chainMeter(now);},60);
   try{
-    await mountPedalboard({host:el('host'),context,input,destination:output});
+    await mountPedalboard({host:el('host'),context,input,destination:chainBus});
     say('Board ready.');
   }catch(error){
     clearInterval(meter);await context.close();context=null;
@@ -53,6 +83,11 @@ el('device').addEventListener('change',async()=>{
   if(running)await toggleInput();
   device=el('device').value;
   if(running){try{await toggleInput();}catch(error){say(error.message);}}
+});
+el('trim').addEventListener('input',()=>{
+  const db=Number(el('trim').value);
+  el('trim-level').value=`${db>0?'+':''}${db} dB`;
+  if(context&&input)input.gain.setTargetAtTime(10**(db/20),context.currentTime,.012);
 });
 el('master').addEventListener('input',()=>{if(context&&output)output.gain.setTargetAtTime(Number(el('master').value)/100,context.currentTime,.012);});
 action('refresh',refresh);action('live',toggleInput);

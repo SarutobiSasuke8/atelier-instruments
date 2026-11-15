@@ -10,3 +10,10 @@ test('presets preserve order and valid MIDI mapping and reject an unrelated sche
   assert.equal(formatControl('eleven',0,1),'11.0');
   assert.throws(()=>readPreset({},x=>x),/Expected/);
 });
+
+test('a six-control EQ keeps MIDI mappings through its boost knob',()=>{
+  const pedals=[{id:'eq',bypass:false,controls:[.5,.5,.5,.5,.5,.3]}];
+  const boost={id:'eq',knob:5,channel:1,number:42};
+  const midi=[boost,{...boost,knob:6}];
+  assert.deepEqual(readPreset({format,pedals,midi},x=>x).midi,[boost]);
+});

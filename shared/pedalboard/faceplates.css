@@ -27,7 +27,7 @@
   border: 1px solid #625343;
   box-shadow: inset 0 0 0 4px #1b1514, inset 0 8px 18px #000a, 0 24px 50px #0009;
 }
-.pedal-cells { gap: 31px 25px; }
+.pedal-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 31px 25px; }
 .pedal {
   --case: #612d2a;
   --heel: #281c1d;
@@ -39,7 +39,7 @@
   --shape: inset(0 round var(--round));
   --title: Cinzel, Georgia, serif;
   --art-position: center;
-  --art-fit: fill;
+  --art-fit: cover;
 }
 .enclosure {
   display: grid;
@@ -157,6 +157,20 @@
   height: 100%;
   object-fit: var(--art-fit);
   object-position: var(--art-position);
+}
+.square-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--art-image) center / cover no-repeat;
+  filter: brightness(.68);
+}
+.square-art img {
+  position: absolute;
+  inset: 57% 0 auto;
+  height: auto;
+  transform: translateY(-50%);
+  mask-image: linear-gradient(transparent, #000 23% 75%, transparent);
 }
 .face-art::after {
   content: "";
@@ -284,14 +298,37 @@
 .compressor .screw.bl { left: 16%; }
 .compressor .screw.br { right: 16%; }
 
-@media (min-width: 1320px) {
-  .pedal-cells { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 31px 20px; }
-  .pedal-name { font-size: clamp(22px, 1.9vw, 30px); }
-  .black .pedal-name, .chrome .pedal-name { font-size: clamp(25px, 2.05vw, 34px); }
+.flanger {
+  --case: #332e62; --heel: #201b38; --trim: #aba870; --led: #e5f755;
+  --title: Shrikhand, Georgia, serif;
+  --shape: polygon(21% 0, 79% 0, 92% 13%, 100% 51%, 92% 79%, 77% 100%, 23% 100%, 8% 79%, 0 51%, 8% 13%);
 }
+.flanger .screw.tl, .flanger .screw.bl { left: 25%; }
+.flanger .screw.tr, .flanger .screw.br { right: 25%; }
+
+.distortion {
+  --case: #8f3830; --heel: #321e1b; --trim: #d88a57; --led: #ffb04b;
+  --title: "Barlow Condensed", sans-serif;
+  --shape: polygon(7% 0, 93% 0, 100% 7%, 100% 94%, 95% 100%, 5% 100%, 0 94%, 0 7%);
+}
+.distortion .pedal-name, .graphic-eq .pedal-name { font-weight: 700; text-transform: uppercase; }
+.distortion .screw.tl, .distortion .screw.tr { top: 18px; }
+
+.graphic-eq {
+  --case: #285565; --heel: #192c39; --trim: #cfa36e; --led: #8df0e0;
+  --title: "Barlow Condensed", sans-serif;
+  --round: 13px 13px 35px 35px;
+}
+.graphic-eq .enclosure { grid-template-rows: 108px 146px 84px 68px; }
+.graphic-eq .knobs { align-content: center; row-gap: 9px; }
+.graphic-eq .knob { width: 34px; height: 34px; }
+.graphic-eq .screw.bl { left: 21px; }
+.graphic-eq .screw.br { right: 21px; }
+
+@media (max-width: 790px) { .pedal-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 @media (max-width: 560px) {
-  .pedal-cells { gap: 26px 16px; }
+  .pedal-cells { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
   .enclosure { grid-template-rows: 92px 63px 110px 57px; padding: 7px 8px; }
   .pedal-name, .wood .pedal-name, .rainbow .pedal-name,
   .black .pedal-name, .chrome .pedal-name { font-size: 23px; }
@@ -301,4 +338,7 @@
   .dial-label { font-size: 9px; letter-spacing: 0; }
   .heel { grid-template-rows: 13px 39px; }
   .stomp { height: 38px; width: 38px; }
+  .graphic-eq .enclosure { grid-template-rows: 92px 119px 54px 57px; }
+  .graphic-eq .knob { width: 27px; height: 27px; }
+  .graphic-eq .dial-value { font-size: 7px; padding-inline: 1px; }
 }
