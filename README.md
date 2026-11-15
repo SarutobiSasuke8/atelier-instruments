@@ -92,6 +92,14 @@ const audio = renderAmbience(
 - Tap tempo, or detect it from the audio. Factory JSON presets ship in `presets/`.
 - Export WAV renders `processPumpSweep(buffer, params)` from `engine.js`, which does not touch the DOM. Gestures printed while the transport is running are included.
 
+## Chord Pad Player
+
+[apps/chord-pads](apps/chord-pads/index.html) is sixteen pads in a chosen key and scale. Chord color is triad, 7th, 9th, sus, or add9, with inversion, voicing spread, optional voice leading, and a strum (speed and direction). Sounds are a warm pad, a piano-like tone, a pluck, and a supersaw.
+
+Pads answer to the pointer, the computer keys `1–4` `Q–R` `A–F` `Z–V`, and a Web MIDI note bank, and the chord can be sent to a MIDI output. A recorder stores a progression — factory sets cover trance, lo-fi, house, film, and pop — and exports JSON, WAV, and a Standard MIDI file.
+
+`engine.js` has no DOM. `renderProgression(chords, params)` returns stereo PCM plus the voiced notes and MIDI events.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
