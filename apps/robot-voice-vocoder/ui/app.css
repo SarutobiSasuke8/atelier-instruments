@@ -1,0 +1,193 @@
+.vocoder { max-width: 1180px; }
+
+.nameplate .transport { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+.status {
+  display: block;
+  margin: 0 0 14px;
+  text-align: left;
+  min-height: 44px;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(320px, 1.3fr) minmax(240px, 0.9fr);
+  gap: 12px;
+}
+
+.module {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--edge-soft);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.stage .module { margin-top: 0; }
+
+.module h2 {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.seg, .presets, .octave, .keys-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.seg .key, .presets .key { flex: 1 1 72px; }
+
+.grid-2, .fx-grid { display: grid; gap: 10px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.fx-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.slider output, .note-read, .octave strong {
+  font-family: var(--mono);
+  color: var(--phosphor);
+  font-variant-numeric: tabular-nums;
+}
+
+.drop {
+  min-height: 88px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px dashed var(--brass-deep);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.drop p, .hint { margin: 4px 0 0; color: var(--ink-dim); font-size: 14px; line-height: 1.4; }
+.file-btn { width: 100%; margin-top: 8px; }
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--brass);
+}
+.check input { width: 18px; height: 18px; accent-color: var(--amber); }
+
+.key[aria-pressed="true"], .key.is-on {
+  color: #1a1206;
+  background: linear-gradient(#ffd089, var(--amber));
+  border-color: var(--brass-deep);
+}
+
+.key.danger[aria-pressed="true"] {
+  color: #2a0906;
+  background: linear-gradient(#ffb0a4, var(--alert));
+}
+
+.display {
+  display: grid;
+  grid-template-columns: 1fr 18px;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.screen {
+  position: relative;
+  min-height: 148px;
+  background: #100c08;
+  border: 1px solid #3a2c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+.screen canvas { display: block; width: 100%; height: 148px; }
+.note-read { position: absolute; left: 10px; top: 8px; z-index: 1; font-size: 12px; }
+
+.meter {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+  height: 148px;
+  padding: 4px;
+  background: var(--groove);
+  border: 1px solid var(--edge-soft);
+  border-radius: 6px;
+}
+
+.meter i { display: block; flex: 1; border-radius: 1px; background: #24180e; }
+.meter i.on { background: var(--amber); }
+.meter i.on.hot { background: var(--alert); }
+
+.kb-scroll { overflow-x: auto; }
+.piano {
+  position: relative;
+  height: 150px;
+  min-width: 720px;
+  user-select: none;
+  touch-action: none;
+}
+
+.ivory, .ebony {
+  position: absolute;
+  top: 0;
+  border: 1px solid #1a1612;
+  padding: 0;
+}
+
+.ivory {
+  height: 100%;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(#f4ecdf, #d7ccba);
+  color: #2a241c;
+  box-shadow: inset 0 -8px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ebony {
+  z-index: 2;
+  height: 58%;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(#3a342c, #0c0b09);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.45);
+}
+
+.ivory small {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.ivory.is-on { background: linear-gradient(#ffe7c2, var(--amber)); }
+.ebony.is-on { background: linear-gradient(#ffd089, #8a5a12); }
+
+.dimmed { opacity: 0.5; }
+body.is-drag .drop { border-color: var(--amber); background: rgba(255, 176, 58, 0.08); }
+.is-live .power { box-shadow: inset 0 0 0 1px var(--amber), 0 0 12px rgba(255, 176, 58, 0.35); }
+
+.keys-head { justify-content: space-between; margin-bottom: 8px; }
+.keys-head h2 { margin: 0; }
+
+@media (max-width: 980px) {
+  .stage, .fx-grid { grid-template-columns: 1fr 1fr; }
+  .stage .module:first-child, .fx { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+  .stage, .fx-grid, .grid-2 { grid-template-columns: 1fr; }
+  .transport { width: 100%; }
+  .transport .key { flex: 1; }
+}
