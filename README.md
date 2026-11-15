@@ -60,6 +60,22 @@ Export WAV bounces the performance. If you have not played yet, it prints a scri
 
 Lock keeps a take. Mutate nudges it. Revert returns to the lock. Presets are JSON. The UI pack and the platformer pack download a zip of WAVs named `ui-menu-click.wav`, `platformer-jump.wav`, and so on.
 
+## Ambience
+
+`apps/ambience/` layers up to six procedural textures: drone, rain, wind, cave, forest, ocean, city hum, space, and dread. Each layer has level, tone, movement, and density. Mood runs from calm to tense. Factory patches are JSON. Play and export render the same seamless loop.
+
+```js
+import { renderAmbience } from "./apps/ambience/engine.js";
+
+const audio = renderAmbience(
+  { mood: 0.2, layers: [{ kind: "ocean", level: 0.8, tone: 0.3, movement: 0.2, density: 0.5 }] },
+  12,
+  2048,
+);
+```
+
+`audio.left` and `audio.right` are `Float32Array`s at 44100 Hz. The same seed is the same bed.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
