@@ -61,3 +61,19 @@ export function listenMidi(access, handlers = {}) {
     for (const input of access.inputs.values()) input.onmidimessage = null;
   };
 }
+
+const NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+
+/** Equal temperament. MIDI note 69 is A4, 440 Hz. */
+export function midiToHz(note) {
+  return 440 * 2 ** ((Number(note) - 69) / 12);
+}
+
+/** Scientific pitch name. MIDI note 60 is C4. */
+export function noteName(note) {
+  const n = Math.round(Number(note));
+  if (!Number.isFinite(n)) return "–";
+  const pitch = ((n % 12) + 12) % 12;
+  const octave = Math.floor(n / 12) - 1;
+  return NOTE_NAMES[pitch] + octave;
+}
