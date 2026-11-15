@@ -42,6 +42,9 @@ export function listenMidi(access, handlers = {}) {
         handlers.onNoteOff?.({ note: data1, velocity: data2 / 127, channel });
       } else if (command === 0xb0) {
         handlers.onCC?.({ controller: data1, value: data2 / 127, channel });
+      } else if (command === 0xe0) {
+        const raw = (data2 << 7) | data1;
+        handlers.onPitchBend?.({ bend: (raw - 8192) / 8192, channel });
       }
     };
   };

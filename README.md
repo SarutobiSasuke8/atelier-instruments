@@ -30,6 +30,25 @@ apps/<name>/
 
 An app may add helpers under `ui/`. Shared code is reused; don't fork it per instrument.
 
+## Tape Glitch
+
+`apps/tape-glitch/` drops a reel onto a broken tape machine. A demo reel loads immediately. Hold a pad or its key while the tape rolls.
+
+| Pad | Key | What it does |
+| --- | --- | --- |
+| Wow | Q | Slow speed drift |
+| Flutter | W | Fast scrape |
+| Stop | A | Tape halt, pitch dives to silence |
+| Start | S | Spin up from silence |
+| Stutter | D | Repeat a slice |
+| Reverse | R | Run backward |
+| Crush | C | Bit depth and sample hold |
+| Dropout | X | Oxide gaps |
+
+Drag the scratch pad, or hold V and use the arrow keys. Space rolls or halts. Z randomises the trims. Escape releases every hold. Web MIDI notes 36–43 are the pads, note 48 arms scratch, and the pitch wheel or CC 1 moves the head while that note is held. CC 16–27 and CC 7 move the trims.
+
+Export WAV bounces the performance. If you have not played yet, it prints a scripted pass. Presets are JSON.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
