@@ -9,6 +9,20 @@ export const BAND_CHOICES = Object.freeze([8, 16, 24, 32]);
 export const WAVE_IDS = Object.freeze(["saw", "square", "supersaw", "noise"]);
 export const ARP_PATTERNS = Object.freeze(["up", "down", "updown", "random"]);
 
+/** Output ceiling: about -1.06 dBFS. The final tanh stage can never exceed it. */
+export const OUTPUT_CEILING = 0.885;
+
+/** Below the knee the signal passes untouched; above it a tanh curve approaches OUTPUT_CEILING. */
+const LIMIT_KNEE = 0.6;
+
+function softLimit(y) {
+  const mag = y < 0 ? -y : y;
+  if (mag <= LIMIT_KNEE) return y;
+  const room = OUTPUT_CEILING - LIMIT_KNEE;
+  const out = LIMIT_KNEE + room * Math.tanh((mag - LIMIT_KNEE) / room);
+  return y < 0 ? -out : out;
+}
+
 const CARRIER_GAIN = 0.62;
 const BAND_MAKEUP = 48;
 const SIB_GAIN = 4.5;
@@ -768,9 +782,7 @@ function processInner(engine, input, output) {
       if (preset.reverb > 0.001) y = reverbTick(engine, y, preset.reverb);
     }
     y *= preset.gain;
-    if (y > 1) y = 1;
-    else if (y < -1) y = -1;
-    else if (!Number.isFinite(y)) y = 0;
+    y = Number.isFinite(y) ? softLimit(y) : 0;
     output[i] = y;
     const abs = y < 0 ? -y : y;
     if (abs > blockPeak) blockPeak = abs;
