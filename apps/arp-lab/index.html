@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arpeggiator Lab</title>
+  <link rel="stylesheet" href="../../shared/ui-kit.css">
+  <link rel="stylesheet" href="./ui/app.css">
+</head>
+<body>
+  <main class="chassis lab">
+    <span class="screw nw" aria-hidden="true"></span>
+    <span class="screw ne" aria-hidden="true"></span>
+    <span class="screw sw" aria-hidden="true"></span>
+    <span class="screw se" aria-hidden="true"></span>
+    <header class="nameplate">
+      <div>
+        <div class="brand"><a href="../../index.html">ATELIER</a> · AL-04</div>
+        <h1>ARPEGGIATOR</h1>
+        <p class="tagline">Held chords, stepped patterns, MIDI out.</p>
+      </div>
+      <canvas id="scope" width="240" height="64" aria-hidden="true"></canvas>
+    </header>
+    <div class="transport" role="group" aria-label="Transport">
+        <button type="button" class="key" id="play">Play</button>
+        <button type="button" class="key" id="stop">Stop</button>
+        <label class="field">BPM
+          <input id="bpm" type="number" min="40" max="240" step="1" value="112">
+        </label>
+        <button type="button" class="key" id="latch" aria-pressed="true">Latch</button>
+        <button type="button" class="key" id="walk" aria-pressed="false">Walk</button>
+        <span class="led-readout" id="step-readout" aria-live="polite">—</span>
+    </div>
+
+    <section class="panel pattern" aria-label="Step lanes">
+      <div class="panel-head">
+        <h2>Pattern</h2>
+        <p class="legend"><span>Accent</span><span>Chance</span><span>Ratchet</span></p>
+        <label class="field">Steps
+          <select id="step-count">
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="32">32</option>
+          </select>
+        </label>
+      </div>
+      <div class="step-scroll">
+        <div class="steps" id="steps"></div>
+      </div>
+    </section>
+
+    <div class="columns">
+      <section class="panel" aria-label="Harmony">
+        <div class="panel-head">
+          <h2>Harmony</h2>
+          <div class="octave-shift">
+            <button type="button" class="key" id="oct-down" aria-label="Lower keyboard octave">−</button>
+            <span id="oct-label">C3</span>
+            <button type="button" class="key" id="oct-up" aria-label="Raise keyboard octave">+</button>
+          </div>
+        </div>
+        <p class="readout" id="chord-readout">Silence</p>
+        <div class="keyboard" id="keys"></div>
+        <p class="hint">Keys A through K play a chromatic octave from the keyboard root. Space starts and stops. Latch keeps the chord after you let go.</p>
+        <div class="qualities" id="qualities"></div>
+        <div class="slots" id="slots"></div>
+        <div class="row">
+          <button type="button" class="key" id="capture">Capture slot</button>
+          <button type="button" class="key" id="clear-slot">Clear slot</button>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Arpeggio">
+        <div class="panel-head"><h2>Arpeggio</h2></div>
+        <div class="modes" id="modes" role="group" aria-label="Arpeggio mode"></div>
+        <label class="field">Rate
+          <select id="rate">
+            <option value="1">1/4</option>
+            <option value="2">1/8</option>
+            <option value="3">1/8 triplet</option>
+            <option value="4" selected>1/16</option>
+            <option value="6">1/16 triplet</option>
+            <option value="8">1/32</option>
+          </select>
+        </label>
+        <label class="slider">Gate <span id="gate-val"></span>
+          <input id="gate" type="range" min="0.05" max="1" step="0.01" value="0.65">
+        </label>
+        <div class="modes" id="octaves" role="group" aria-label="Octave range"></div>
+        <label class="slider">Swing <span id="swing-val"></span>
+          <input id="swing" type="range" min="0" max="1" step="0.01" value="0">
+        </label>
+        <label class="field">Seed
+          <input id="seed" type="number" min="1" max="999999" step="1" value="1">
+        </label>
+        <button type="button" class="key" id="reseed">New seed</button>
+      </section>
+
+      <section class="panel" aria-label="Synth">
+        <div class="panel-head"><h2>Synth</h2></div>
+        <div class="modes" id="waves" role="group" aria-label="Waveform"></div>
+        <label class="slider">Cutoff <span id="cutoff-val"></span>
+          <input id="cutoff" type="range" min="80" max="8000" step="1" value="1800">
+        </label>
+        <label class="slider">Resonance <span id="res-val"></span>
+          <input id="resonance" type="range" min="0" max="0.9" step="0.01" value="0.25">
+        </label>
+        <label class="slider">Attack <span id="attack-val"></span>
+          <input id="attack" type="range" min="0.001" max="0.4" step="0.001" value="0.008">
+        </label>
+        <label class="slider">Decay <span id="decay-val"></span>
+          <input id="decay" type="range" min="0.01" max="1.2" step="0.01" value="0.16">
+        </label>
+        <label class="slider">Sustain <span id="sustain-val"></span>
+          <input id="sustain" type="range" min="0" max="1" step="0.01" value="0.35">
+        </label>
+        <label class="slider">Release <span id="release-val"></span>
+          <input id="release" type="range" min="0.02" max="1.5" step="0.01" value="0.2">
+        </label>
+        <label class="slider">Level <span id="gain-val"></span>
+          <input id="gain" type="range" min="0" max="1" step="0.01" value="0.7">
+        </label>
+      </section>
+    </div>
+
+    <section class="panel io" aria-label="Presets and output">
+      <div class="io-grid">
+        <label class="field">Preset
+          <select id="preset-select"></select>
+        </label>
+        <label class="field">Name
+          <input id="preset-name" type="text" maxlength="48" value="Copper Lattice">
+        </label>
+        <button type="button" class="key" id="store">Store</button>
+        <button type="button" class="key" id="download-preset">JSON</button>
+        <button type="button" class="key" id="load-preset">Load</button>
+        <input id="preset-file" type="file" accept="application/json,.json" hidden>
+        <label class="field">Bars
+          <input id="bars" type="number" min="1" max="16" step="1" value="4">
+        </label>
+        <button type="button" class="key" id="export-midi">Export MIDI</button>
+        <button type="button" class="key" id="export-wav">Export WAV</button>
+        <label class="field">MIDI out
+          <select id="midi-out"><option value="">Internal synth</option></select>
+        </label>
+        <label class="field">Channel
+          <input id="midi-channel" type="number" min="1" max="16" step="1" value="1">
+        </label>
+        <button type="button" class="key" id="bus" aria-pressed="true">Atelier bus</button>
+        <button type="button" class="key" id="midi-in" aria-pressed="false">MIDI in</button>
+      </div>
+      <p class="status" id="status" role="status">Hold a chord and press Play.</p>
+    </section>
+  </main>
+  <script type="module" src="./ui/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "After Hours",
+  "mood": 0.4,
+  "seed": 440,
+  "layers": [
+    { "kind": "city", "level": 0.78, "tone": 0.36, "movement": 0.28, "density": 0.58 },
+    { "kind": "drone", "level": 0.34, "tone": 0.2, "movement": 0.12, "density": 0.42 },
+    { "kind": "rain", "level": 0.22, "tone": 0.48, "movement": 0.3, "density": 0.36 },
+    { "kind": "wind", "level": 0.12, "tone": 0.3, "movement": 0.4, "density": 0.2 },
+    { "kind": "space", "level": 0, "tone": 0.5, "movement": 0.2, "density": 0.2 },
+    { "kind": "dread", "level": 0, "tone": 0.3, "movement": 0.3, "density": 0.3 }
+  ]
+}

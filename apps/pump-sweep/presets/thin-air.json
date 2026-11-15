@@ -1,0 +1,9 @@
+{
+  "name": "Thin Air",
+  "bpm": 136,
+  "sweepBars": 4,
+  "output": 0.9,
+  "pump": { "enabled": true, "depth": 0.48, "shape": 0.58, "rate": "1/16", "offset": 0 },
+  "filter": { "enabled": true, "type": "highpass", "cutoff": 640, "resonance": 0.22 },
+  "performance": []
+}

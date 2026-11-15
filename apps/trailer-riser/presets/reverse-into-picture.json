@@ -1,0 +1,13 @@
+{
+  "name": "Reverse Into Picture",
+  "kind": "reverse",
+  "lengthMode": "bars",
+  "seconds": 4,
+  "bars": 2,
+  "tempo": 120,
+  "intensity": 0.7,
+  "pitch": 40,
+  "darkness": 0.33,
+  "size": 0.66,
+  "seed": 4
+}

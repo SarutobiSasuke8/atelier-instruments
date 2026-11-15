@@ -1,0 +1,9 @@
+{
+  "name": "Triplet Gate",
+  "bpm": 128,
+  "sweepBars": 4,
+  "output": 0.9,
+  "pump": { "enabled": true, "depth": 0.9, "shape": 0.92, "rate": "1/8T", "offset": 0 },
+  "filter": { "enabled": true, "type": "bandpass", "cutoff": 1400, "resonance": 0.55 },
+  "performance": []
+}

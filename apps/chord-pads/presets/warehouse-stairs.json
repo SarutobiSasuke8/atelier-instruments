@@ -1,0 +1,24 @@
+{
+  "name": "Warehouse Stairs",
+  "genre": "house",
+  "key": "A",
+  "scale": "naturalMinor",
+  "chordType": "7th",
+  "inversion": 0,
+  "spread": 0,
+  "voiceLeading": false,
+  "strum": { "enabled": true, "speedMs": 8, "direction": "down" },
+  "sound": "pluck",
+  "bpm": 122,
+  "loop": true,
+  "progression": [
+    { "pad": 8, "startBeat": 0, "durationBeats": 2, "velocity": 0.9 },
+    { "pad": 8, "startBeat": 2, "durationBeats": 2, "velocity": 0.72 },
+    { "pad": 13, "startBeat": 4, "durationBeats": 2, "velocity": 0.86 },
+    { "pad": 14, "startBeat": 6, "durationBeats": 2, "velocity": 0.84 },
+    { "pad": 8, "startBeat": 8, "durationBeats": 2, "velocity": 0.9 },
+    { "pad": 8, "startBeat": 10, "durationBeats": 2, "velocity": 0.7 },
+    { "pad": 10, "startBeat": 12, "durationBeats": 2, "velocity": 0.82 },
+    { "pad": 14, "startBeat": 14, "durationBeats": 2, "velocity": 0.86 }
+  ]
+}

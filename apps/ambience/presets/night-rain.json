@@ -1,0 +1,13 @@
+{
+  "name": "Night Rain",
+  "mood": 0.28,
+  "seed": 881,
+  "layers": [
+    { "kind": "rain", "level": 0.86, "tone": 0.62, "movement": 0.34, "density": 0.72 },
+    { "kind": "wind", "level": 0.36, "tone": 0.4, "movement": 0.48, "density": 0.4 },
+    { "kind": "drone", "level": 0.32, "tone": 0.22, "movement": 0.16, "density": 0.3 },
+    { "kind": "cave", "level": 0, "tone": 0.35, "movement": 0.2, "density": 0.4 },
+    { "kind": "city", "level": 0, "tone": 0.4, "movement": 0.3, "density": 0.4 },
+    { "kind": "forest", "level": 0, "tone": 0.5, "movement": 0.3, "density": 0.4 }
+  ]
+}
