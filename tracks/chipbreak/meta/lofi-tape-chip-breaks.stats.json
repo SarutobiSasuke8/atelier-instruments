@@ -1,0 +1,159 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "lofi-tape-chip-breaks",
+  "title": "Dusty Cassette Corridor",
+  "kind": "track",
+  "genre": [
+    "lo-fi",
+    "chip breaks",
+    "tape"
+  ],
+  "mood": [
+    "dreamy",
+    "mellow",
+    "melancholy"
+  ],
+  "bpm": 86,
+  "key": "A minor",
+  "durationSec": 100.47,
+  "seed": 861,
+  "peakDbfs": -1.600129,
+  "truePeakDbtp": -1.6,
+  "lufs": -11.3,
+  "lra": 2.4,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "lofi-tape-chip-breaks.wav",
+    "bytes": 17986692,
+    "lufs": -11.3,
+    "lra": 2.4,
+    "truePeakDbtp": -1.6,
+    "samplePeakDbfs": -1.600129
+  },
+  "mp3": {
+    "file": "lofi-tape-chip-breaks.mp3",
+    "bytes": 4081415,
+    "lufs": -11.3,
+    "lra": 2.4,
+    "truePeakDbtp": -1.6,
+    "samplePeakDbfs": -1.556577
+  },
+  "analysis": {
+    "peakDbfs": -1.6,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -11.34,
+    "lraJs": 2.4,
+    "rmsDbfs": -12.44,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 214,
+    "bandShare": {
+      "sub": 0.272,
+      "low": 0.649,
+      "mid": 0.076,
+      "high": 0.003
+    },
+    "dropBandShare": {
+      "sub": 0.357,
+      "low": 0.611,
+      "mid": 0.03,
+      "high": 0.001
+    },
+    "dropOnsetsPerSec": 8.99,
+    "dropGrid": {
+      "localBpm": 86,
+      "relative": 0.6
+    },
+    "dropTempo": {
+      "bpm": 86,
+      "strength": 0.14
+    },
+    "plrDb": 9.7,
+    "tapeEdits": {
+      "counts": {
+        "wow": 9,
+        "flutter": 9,
+        "stop": 3,
+        "dropout": 3,
+        "stutter": 3,
+        "reverse": 1
+      },
+      "wowBars": 31,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 7,
+          "rmsBeforeDb": -10.9,
+          "rmsEndDb": -31.1,
+          "centroidEarlyHz": 191,
+          "centroidMidHz": 86
+        },
+        {
+          "section": "build2",
+          "atBar": 23,
+          "rmsBeforeDb": -8.8,
+          "rmsEndDb": -31.4,
+          "centroidEarlyHz": 228,
+          "centroidMidHz": 165
+        },
+        {
+          "section": "outro",
+          "atBar": 33,
+          "rmsBeforeDb": -12.3,
+          "rmsEndDb": -53.3,
+          "centroidEarlyHz": 231,
+          "centroidMidHz": 52
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 4,
+        "rmsDb": -13.3
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -13.7
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -11
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 4,
+        "rmsDb": -14
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -13.1
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -11
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 4,
+        "rmsDb": -17.2
+      }
+    ]
+  }
+}

@@ -1,0 +1,1206 @@
+{
+  "format": "chipbreak-recipe/1",
+  "id": "chip-breakcore",
+  "style": "chip-breakcore",
+  "title": "Shard Counter",
+  "genre": [
+    "breakcore",
+    "chip breaks"
+  ],
+  "mood": [
+    "frantic",
+    "energetic",
+    "bright"
+  ],
+  "bpm": 190,
+  "key": "E minor",
+  "tonic": 40,
+  "scale": "minor",
+  "progression": [
+    {
+      "deg": 0,
+      "q": "min"
+    },
+    {
+      "deg": 8,
+      "q": "maj"
+    },
+    {
+      "deg": 3,
+      "q": "maj"
+    },
+    {
+      "deg": 10,
+      "q": "maj"
+    }
+  ],
+  "seed": 1901,
+  "kit": {
+    "kick": {
+      "voice": "kick",
+      "character": "909",
+      "decay": 0.35,
+      "tone": 0.7,
+      "drive": 0.7
+    },
+    "snare": {
+      "voice": "snare",
+      "character": "909",
+      "decay": 0.22,
+      "tone": 0.75,
+      "drive": 0.65,
+      "tune": 9
+    },
+    "ghost": {
+      "voice": "snare",
+      "character": "707",
+      "decay": 0.12,
+      "tone": 0.6,
+      "drive": 0.3,
+      "tune": 7,
+      "vel": 0.45,
+      "seed": 3
+    },
+    "hat": {
+      "voice": "closed-hat",
+      "decay": 0.05,
+      "tone": 0.8,
+      "vel": 0.55,
+      "seed": 5
+    },
+    "openhat": {
+      "voice": "open-hat",
+      "decay": 0.3,
+      "tone": 0.7,
+      "vel": 0.5,
+      "seed": 6
+    },
+    "ride": {
+      "voice": "ride",
+      "decay": 0.6,
+      "tone": 0.6,
+      "vel": 0.4,
+      "seed": 7
+    },
+    "crash": {
+      "voice": "crash",
+      "decay": 1.6,
+      "tone": 0.7,
+      "vel": 0.7,
+      "seed": 8
+    }
+  },
+  "break": {
+    "swing": 0,
+    "preDrive": 1.9,
+    "pattern": {
+      "0": [
+        [
+          "kick",
+          1
+        ],
+        [
+          "ride",
+          1
+        ]
+      ],
+      "1": [
+        [
+          "ghost",
+          0.5
+        ]
+      ],
+      "2": [
+        [
+          "kick",
+          0.7
+        ],
+        [
+          "hat",
+          1
+        ]
+      ],
+      "3": [
+        [
+          "ghost",
+          0.9
+        ]
+      ],
+      "4": [
+        [
+          "snare",
+          1
+        ],
+        [
+          "hat",
+          1
+        ]
+      ],
+      "5": [
+        [
+          "kick",
+          0.6
+        ]
+      ],
+      "6": [
+        [
+          "hat",
+          1
+        ],
+        [
+          "ghost",
+          0.7
+        ]
+      ],
+      "7": [
+        [
+          "ghost",
+          0.85
+        ]
+      ],
+      "8": [
+        [
+          "kick",
+          0.95
+        ],
+        [
+          "ride",
+          0.8
+        ]
+      ],
+      "9": [
+        [
+          "hat",
+          0.8
+        ]
+      ],
+      "10": [
+        [
+          "kick",
+          0.85
+        ],
+        [
+          "hat",
+          1
+        ]
+      ],
+      "11": [
+        [
+          "ghost",
+          0.8
+        ]
+      ],
+      "12": [
+        [
+          "snare",
+          1
+        ],
+        [
+          "openhat",
+          1
+        ]
+      ],
+      "13": [
+        [
+          "ghost",
+          0.6
+        ]
+      ],
+      "14": [
+        [
+          "kick",
+          0.7
+        ],
+        [
+          "hat",
+          1
+        ]
+      ],
+      "15": [
+        [
+          "snare",
+          0.55
+        ]
+      ]
+    }
+  },
+  "chops": {
+    "straight": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+    "a": "0 1 2 3 4 5 6* 7* 8 9 10 11 12 13 12* 13*",
+    "b": "0 0* 2 3 4 4* 6^ 7^ 8 8* 10 11 12 12* 14^* 15^*",
+    "c": "4 4* 4^* 4^^* 12 12* 12^* 12^^* 0 2 10 14 4r 5r 12 15",
+    "d": "0 1 12 13 4 5 0* 0* 10 11 12 13 4* 4^* 12^ 15r",
+    "e": "0 2 4 6 8 10 12 14 1 3 5 7 9 11 13 15",
+    "roll": "4 4 4* 4 12 12 12* 12* 4^ 4^* 12^ 12^* 4^* 4^* 12^* 12^*",
+    "storm": "4* 4** 12* 12** 4^* 4^** 12^* 12^** 0* 10* 2** 14** 4r* 12r* 4^^** 12^^**"
+  },
+  "chip": {
+    "gain": 0.55,
+    "arp": {
+      "minor": [
+        0,
+        3,
+        7,
+        12,
+        15,
+        12,
+        7,
+        3
+      ],
+      "major": [
+        0,
+        4,
+        7,
+        12,
+        16,
+        12,
+        7,
+        4
+      ],
+      "beats": 0.125,
+      "octave": 12,
+      "pulseWidth": 0.25,
+      "slow": [
+        0,
+        7,
+        12,
+        19
+      ]
+    },
+    "lead": {
+      "preset": "pulse-lead",
+      "octave": 12,
+      "phraseBars": 2,
+      "legato": 0.85,
+      "patch": {
+        "pwm": 0.3,
+        "pulseWidth": 0.2
+      },
+      "phrases": {
+        "A": [
+          [
+            0,
+            19
+          ],
+          [
+            1,
+            19
+          ],
+          [
+            3,
+            22
+          ],
+          [
+            4,
+            19
+          ],
+          [
+            6,
+            17
+          ],
+          [
+            8,
+            15
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            12,
+            19
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            16,
+            12
+          ],
+          [
+            18,
+            15
+          ],
+          [
+            20,
+            19
+          ],
+          [
+            22,
+            24
+          ],
+          [
+            23,
+            22
+          ],
+          [
+            24,
+            19
+          ],
+          [
+            27,
+            22
+          ],
+          [
+            28,
+            24
+          ],
+          [
+            30,
+            26
+          ]
+        ],
+        "B": [
+          [
+            0,
+            24
+          ],
+          [
+            2,
+            22
+          ],
+          [
+            4,
+            19
+          ],
+          [
+            6,
+            22
+          ],
+          [
+            8,
+            24
+          ],
+          [
+            10,
+            27
+          ],
+          [
+            12,
+            24
+          ],
+          [
+            14,
+            22
+          ],
+          [
+            16,
+            19
+          ],
+          [
+            18,
+            17
+          ],
+          [
+            20,
+            15
+          ],
+          [
+            22,
+            17
+          ],
+          [
+            24,
+            19
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            28,
+            12
+          ],
+          [
+            30,
+            14
+          ]
+        ]
+      }
+    }
+  },
+  "bass": {
+    "reese": {
+      "gain": 0.8
+    },
+    "reeseSat": {
+      "drive": 4,
+      "pre": 1.5
+    },
+    "acid": {
+      "preset": "warehouse-floor",
+      "drive": 0.6
+    },
+    "patterns": {
+      "main": [
+        [
+          0,
+          1.4
+        ],
+        [
+          1.5,
+          1.2
+        ],
+        [
+          3,
+          0.9
+        ]
+      ],
+      "busy": [
+        [
+          0,
+          0.7
+        ],
+        [
+          0.75,
+          0.7
+        ],
+        [
+          1.5,
+          0.7
+        ],
+        [
+          2.25,
+          0.7
+        ],
+        [
+          3,
+          0.9
+        ]
+      ]
+    }
+  },
+  "vox": {
+    "stab": {
+      "preset": "robot-stab",
+      "midis": [
+        64,
+        67,
+        71,
+        69
+      ],
+      "steps": 1.5,
+      "patterns": {
+        "A": [
+          [
+            2,
+            3
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            11,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            13,
+            0
+          ]
+        ],
+        "B": [
+          [
+            3,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            7,
+            1
+          ],
+          [
+            14,
+            2
+          ]
+        ]
+      }
+    }
+  },
+  "tape": {
+    "preset": {
+      "stopTime": 0.5,
+      "startTime": 0.12,
+      "stutterMs": 45
+    }
+  },
+  "master": {
+    "targetLufs": -10.5
+  },
+  "sections": [
+    {
+      "name": "intro",
+      "role": "intro",
+      "bars": 8,
+      "chip": {
+        "arp": 0.7,
+        "hats": "even",
+        "tribass": {
+          "from": 4
+        }
+      },
+      "drums": {
+        "patterns": [
+          "straight"
+        ],
+        "from": 6,
+        "gain": [
+          0.2,
+          0.6
+        ]
+      }
+    },
+    {
+      "name": "build",
+      "role": "build",
+      "bars": 8,
+      "riser": {
+        "gain": 0.55,
+        "intensity": 0.85
+      },
+      "chip": {
+        "arp": 0.9,
+        "hats": "all"
+      },
+      "drums": {
+        "patterns": [
+          "straight",
+          "a"
+        ],
+        "roll": "roll",
+        "rollBars": 2,
+        "gain": [
+          0.6,
+          0.95
+        ]
+      },
+      "vox": {
+        "ooh": 0.35
+      },
+      "sfx": [
+        [
+          7,
+          3.5,
+          "power-up"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stop",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop1",
+      "role": "drop",
+      "bars": 16,
+      "impact": 1,
+      "chip": {
+        "arp": 0.9,
+        "lead": "A",
+        "leadFrom": 4
+      },
+      "drums": {
+        "patterns": [
+          "straight",
+          "a",
+          "b",
+          "c"
+        ],
+        "gain": 1
+      },
+      "bass": {
+        "engine": "reese",
+        "pattern": "main",
+        "gain": 0.9
+      },
+      "vox": {
+        "stab": "A,B",
+        "gain": 0.42
+      },
+      "dist": {
+        "drums": {
+          "bits": 10,
+          "hold": 2,
+          "drive": 2.2,
+          "mix": 0.45
+        },
+        "bass": {
+          "bits": 12,
+          "hold": 1,
+          "drive": 2.8,
+          "mix": 0.4
+        },
+        "vox": {
+          "bits": 6,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "sfx": [
+        [
+          3,
+          3.75,
+          "laser"
+        ],
+        [
+          7,
+          2,
+          "coin"
+        ],
+        [
+          11,
+          3.5,
+          "hit"
+        ],
+        [
+          15,
+          3,
+          "error"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.75,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 0.75
+            },
+            {
+              "type": "reverse",
+              "t0": 0.75,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 11,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "crush",
+              "t0": 0,
+              "t1": 0.5
+            },
+            {
+              "type": "stutter",
+              "t0": 0.875,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 15,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stop",
+              "t0": 0.25,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "breakdown",
+      "role": "breakdown",
+      "bars": 8,
+      "chip": {
+        "arp": 0.8,
+        "arpMode": "slow",
+        "lead": "A",
+        "leadOctave": 0,
+        "legato": 1.6
+      },
+      "drums": {
+        "mode": "halftime",
+        "gain": 0.85
+      },
+      "vox": {
+        "pad": "talkbox-lead",
+        "padGain": 0.4
+      },
+      "sfx": [
+        [
+          4,
+          0,
+          "pickup"
+        ],
+        [
+          7,
+          2,
+          "level-up"
+        ]
+      ],
+      "whooshIn": 0.4,
+      "dist": {
+        "chip": {
+          "bits": 8,
+          "hold": 2,
+          "drive": 1.5,
+          "mix": 0.3
+        }
+      },
+      "tape": [
+        {
+          "bar": 0,
+          "bars": 8,
+          "gestures": [
+            {
+              "type": "wow",
+              "t0": 0,
+              "t1": 1
+            },
+            {
+              "type": "flutter",
+              "t0": 0,
+              "t1": 1
+            },
+            {
+              "type": "dropout",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "build2",
+      "role": "build",
+      "bars": 4,
+      "riser": {
+        "gain": 0.6,
+        "intensity": 1
+      },
+      "chip": {
+        "arp": 1,
+        "hats": "all"
+      },
+      "drums": {
+        "patterns": [
+          "d",
+          "roll"
+        ],
+        "roll": "storm",
+        "rollBars": 2,
+        "gain": 0.85
+      },
+      "vox": {
+        "ooh": 0.35
+      },
+      "sfx": [
+        [
+          3,
+          3,
+          "power-up"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 0.875
+            },
+            {
+              "type": "stop",
+              "t0": 0.875,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop2",
+      "role": "drop",
+      "bars": 16,
+      "impact": 1,
+      "chip": {
+        "arp": 0.9,
+        "lead": [
+          "A",
+          "B"
+        ],
+        "pulseWidth": 0.12
+      },
+      "ratchet": {
+        "gain": 0.6,
+        "mode": "up-down",
+        "rate": 4,
+        "octaves": 2,
+        "ratchets": 2,
+        "probability": 0.9,
+        "wave": "square",
+        "gate": 0.5
+      },
+      "drums": {
+        "patterns": [
+          "a",
+          "e",
+          "d",
+          "b",
+          "c",
+          "e"
+        ],
+        "gain": 1.05
+      },
+      "bass": {
+        "engine": "reese-sat",
+        "pattern": "busy",
+        "gain": 0.9
+      },
+      "vox": {
+        "stab": "A,B",
+        "gain": 0.42
+      },
+      "dist": {
+        "drums": {
+          "bits": 7,
+          "hold": 3,
+          "drive": 3.5,
+          "mix": 0.6
+        },
+        "chip": {
+          "bits": 6,
+          "hold": 4,
+          "drive": 2.5,
+          "mix": 0.35
+        },
+        "bass": {
+          "bits": 12,
+          "hold": 1,
+          "drive": 2.8,
+          "mix": 0.4
+        },
+        "vox": {
+          "bits": 6,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "sfx": [
+        [
+          2,
+          3.5,
+          "laser"
+        ],
+        [
+          4,
+          1.5,
+          "hit"
+        ],
+        [
+          6,
+          3.75,
+          "jump"
+        ],
+        [
+          8,
+          2.5,
+          "laser"
+        ],
+        [
+          10,
+          0.5,
+          "coin"
+        ],
+        [
+          12,
+          3.5,
+          "hit"
+        ],
+        [
+          14,
+          2,
+          "laser"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 5,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "reverse",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "crush",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 9,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 11,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "dropout",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 13,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "reverse",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 15,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0,
+              "t1": 0.5
+            },
+            {
+              "type": "reverse",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop3",
+      "role": "drop",
+      "bars": 12,
+      "chip": {
+        "arp": 1,
+        "lead": "B",
+        "pulseWidth": 0.12
+      },
+      "ratchet": {
+        "gain": 0.6,
+        "mode": "up",
+        "rate": 4,
+        "octaves": 2,
+        "ratchets": 2,
+        "probability": 0.95,
+        "wave": "saw",
+        "gate": 0.45
+      },
+      "drums": {
+        "patterns": [
+          "storm",
+          "c",
+          "b",
+          "a"
+        ],
+        "gain": 1.05
+      },
+      "bass": {
+        "engine": "acid",
+        "pattern": "main",
+        "gain": 0.5
+      },
+      "vox": {
+        "stab": "B,A",
+        "gain": 0.42
+      },
+      "dist": {
+        "drums": {
+          "bits": 6,
+          "hold": 3,
+          "drive": 3.8,
+          "mix": 0.65
+        },
+        "chip": {
+          "bits": 6,
+          "hold": 4,
+          "drive": 2.5,
+          "mix": 0.4
+        },
+        "bass": {
+          "bits": 10,
+          "hold": 2,
+          "drive": 3,
+          "mix": 0.45
+        },
+        "vox": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.55
+        }
+      },
+      "sfx": [
+        [
+          2,
+          3.5,
+          "laser"
+        ],
+        [
+          5,
+          3.5,
+          "explosion"
+        ],
+        [
+          9,
+          3.75,
+          "laser"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "crush",
+              "t0": 0,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 11,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0,
+              "t1": 0.5
+            },
+            {
+              "type": "stop",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "outro",
+      "role": "outro",
+      "bars": 8,
+      "chip": {
+        "arp": 0.7,
+        "hats": "even"
+      },
+      "drums": {
+        "patterns": [
+          "straight",
+          "d"
+        ],
+        "until": 4,
+        "gain": [
+          0.8,
+          0.3
+        ]
+      },
+      "sfx": [
+        [
+          7,
+          0,
+          "error"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 6,
+          "bars": 2,
+          "preset": {
+            "stopTime": 2.2
+          },
+          "gestures": [
+            {
+              "type": "stop",
+              "t0": 0.25,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

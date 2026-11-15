@@ -1,0 +1,42 @@
+{
+  "format": "lmms-mcp-meta/1",
+  "title": "Shard Counter",
+  "composer": "Atelier Instruments",
+  "era": "original",
+  "genre": [
+    "chiptune",
+    "dance",
+    "breakcore",
+    "chip breaks"
+  ],
+  "mood": [
+    "frantic",
+    "energetic",
+    "bright"
+  ],
+  "arrangement": "chiptune",
+  "instrumentation": [
+    "atelier-dsp groovebox pad voices (synthesised break)",
+    "atelier-dsp chiptune (pulse, triangle, noise lanes)",
+    "atelier-dsp wavetable (reese, formant growl)",
+    "atelier-dsp formant (vocal chops)",
+    "atelier-instruments tape-glitch",
+    "atelier-instruments game-sfx",
+    "atelier-instruments trailer-riser",
+    "atelier-instruments acid-bass"
+  ],
+  "durationSeconds": 101.05,
+  "loop": false,
+  "licence": "MIT (own work)",
+  "date": "2026-11-15",
+  "kind": "piece",
+  "tags": [
+    "chipbreak",
+    "chip-breakcore",
+    "bpm-190",
+    "key-e-minor",
+    "synthesised",
+    "no-samples"
+  ],
+  "notes": "Synthesised only, no samples. 190 BPM, E minor, seed 1901. Measured: sample peak -1.893781 dBFS, true peak -1.5 dBTP, -10.5 LUFS integrated, LRA 7.2 LU. Full measurements and engine commits are in the matching .stats.json."
+}

@@ -1,0 +1,43 @@
+{
+  "format": "lmms-mcp-meta/1",
+  "title": "Dusty Cassette Corridor",
+  "composer": "Atelier Instruments",
+  "era": "original",
+  "genre": [
+    "chiptune",
+    "dance",
+    "lo-fi",
+    "chip breaks",
+    "tape"
+  ],
+  "mood": [
+    "dreamy",
+    "mellow",
+    "melancholy"
+  ],
+  "arrangement": "chiptune",
+  "instrumentation": [
+    "atelier-dsp groovebox pad voices (synthesised break)",
+    "atelier-dsp chiptune (pulse, triangle, noise lanes)",
+    "atelier-dsp wavetable (reese, formant growl)",
+    "atelier-dsp formant (vocal chops)",
+    "atelier-instruments tape-glitch",
+    "atelier-instruments game-sfx",
+    "atelier-instruments trailer-riser",
+    "atelier-instruments acid-bass"
+  ],
+  "durationSeconds": 100.47,
+  "loop": false,
+  "licence": "MIT (own work)",
+  "date": "2026-11-15",
+  "kind": "piece",
+  "tags": [
+    "chipbreak",
+    "lofi-tape-chip-breaks",
+    "bpm-86",
+    "key-a-minor",
+    "synthesised",
+    "no-samples"
+  ],
+  "notes": "Synthesised only, no samples. 86 BPM, A minor, seed 861. Measured: sample peak -1.600129 dBFS, true peak -1.6 dBTP, -11.3 LUFS integrated, LRA 2.4 LU. Full measurements and engine commits are in the matching .stats.json."
+}

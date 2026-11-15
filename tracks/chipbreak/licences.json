@@ -1,0 +1,5 @@
+{
+  "note": "Every chipbreak track is synthesised from atelier-dsp and atelier-instruments engines. No samples and no third-party audio are used. If a CC0 asset is ever added it must be listed here with its source URL, author, licence and sha256.",
+  "ownWork": "MIT",
+  "thirdPartyAudio": []
+}

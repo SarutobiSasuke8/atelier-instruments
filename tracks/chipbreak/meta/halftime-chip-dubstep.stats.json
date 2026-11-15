@@ -1,0 +1,176 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "halftime-chip-dubstep",
+  "title": "Cartridge Wobble Cathedral",
+  "kind": "track",
+  "genre": [
+    "dubstep",
+    "half-time",
+    "chip bass"
+  ],
+  "mood": [
+    "heavy",
+    "dark",
+    "cinematic"
+  ],
+  "bpm": 140,
+  "key": "F minor",
+  "durationSec": 109.71,
+  "seed": 1401,
+  "peakDbfs": -1.600129,
+  "truePeakDbtp": -1.5,
+  "lufs": -10.3,
+  "lra": 6.3,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "halftime-chip-dubstep.wav",
+    "bytes": 19618244,
+    "lufs": -10.3,
+    "lra": 6.3,
+    "truePeakDbtp": -1.5,
+    "samplePeakDbfs": -1.600129
+  },
+  "mp3": {
+    "file": "halftime-chip-dubstep.mp3",
+    "bytes": 4451309,
+    "lufs": -10.3,
+    "lra": 6.3,
+    "truePeakDbtp": -1.3,
+    "samplePeakDbfs": -1.376132
+  },
+  "analysis": {
+    "peakDbfs": -1.6,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -10.27,
+    "lraJs": 6.2,
+    "rmsDbfs": -11.36,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 963,
+    "bandShare": {
+      "sub": 0.308,
+      "low": 0.536,
+      "mid": 0.079,
+      "high": 0.078
+    },
+    "dropBandShare": {
+      "sub": 0.334,
+      "low": 0.556,
+      "mid": 0.058,
+      "high": 0.051
+    },
+    "dropOnsetsPerSec": 7.72,
+    "dropGrid": {
+      "localBpm": 139.75,
+      "relative": 1
+    },
+    "dropTempo": {
+      "bpm": 139.8,
+      "strength": 0.41
+    },
+    "plrDb": 8.7,
+    "tapeEdits": {
+      "counts": {
+        "stop": 5,
+        "stutter": 6,
+        "reverse": 2,
+        "crush": 2,
+        "wow": 1,
+        "flutter": 1,
+        "dropout": 1
+      },
+      "wowBars": 8,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 15,
+          "rmsBeforeDb": -11.4,
+          "rmsEndDb": -11.4,
+          "centroidEarlyHz": 3174,
+          "centroidMidHz": 2133
+        },
+        {
+          "section": "drop1",
+          "atBar": 31,
+          "rmsBeforeDb": -12.1,
+          "rmsEndDb": -18.3,
+          "centroidEarlyHz": 2385,
+          "centroidMidHz": 669
+        },
+        {
+          "section": "build2",
+          "atBar": 43,
+          "rmsBeforeDb": -10.8,
+          "rmsEndDb": -11,
+          "centroidEarlyHz": 3517,
+          "centroidMidHz": 2464
+        },
+        {
+          "section": "drop2",
+          "atBar": 59,
+          "rmsBeforeDb": -7.3,
+          "rmsEndDb": -22.1,
+          "centroidEarlyHz": 78,
+          "centroidMidHz": 62
+        },
+        {
+          "section": "outro",
+          "atBar": 61,
+          "rmsBeforeDb": -19.7,
+          "rmsEndDb": -51.6,
+          "centroidEarlyHz": 916,
+          "centroidMidHz": 496
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 8,
+        "rmsDb": -16.3
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -12.2
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -10.8
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 8,
+        "rmsDb": -12.6
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -11.1
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -9.4
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 4,
+        "rmsDb": -15.4
+      }
+    ]
+  }
+}
