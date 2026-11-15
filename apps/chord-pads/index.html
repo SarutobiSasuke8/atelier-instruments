@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chord Pad Player — Atelier</title>
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="./ui/app.css" />
+</head>
+<body>
+  <main class="chassis">
+    <span class="screw nw"></span>
+    <span class="screw ne"></span>
+    <span class="screw sw"></span>
+    <span class="screw se"></span>
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER</div>
+        <h1>CHORD PADS</h1>
+        <p class="tagline">One finger plays the whole chord.</p>
+      </div>
+      <div class="readout" id="readout" aria-live="polite">READY</div>
+    </header>
+
+    <div class="layout">
+      <section>
+        <p class="section-label">PADS</p>
+        <div class="pad-grid" id="pads"></div>
+        <p class="hint">Keys 1–4, Q–R, A–F, Z–V. MIDI notes from the chosen base, sixteen in a row. Escape silences.</p>
+      </section>
+      <div class="deck">
+        <section class="stack">
+          <p class="section-label">KEY AND COLOR</p>
+          <div class="grid-2">
+            <label class="field"><span>Key</span><select id="key"></select></label>
+            <label class="field"><span>Scale</span><select id="scale"></select></label>
+            <label class="field"><span>Chord</span><select id="chord-type"></select></label>
+            <label class="field"><span>Sound</span><select id="sound"></select></label>
+          </div>
+          <div class="field">
+            <span>Inversion</span>
+            <div class="seg" id="inversion" role="group" aria-label="Inversion"></div>
+          </div>
+          <div class="field">
+            <span>Voicing spread</span>
+            <div class="seg" id="spread" role="group" aria-label="Voicing spread"></div>
+          </div>
+          <label class="check"><input type="checkbox" id="voice-leading" /> Voice leading</label>
+          <label class="check"><input type="checkbox" id="latch" /> Latch pads</label>
+        </section>
+        <section class="stack">
+          <p class="section-label">STRUM AND LEVEL</p>
+          <label class="check"><input type="checkbox" id="strum-enabled" /> Strum</label>
+          <label class="slider field"><span class="slider-name">Speed <b id="strum-speed-label">18 ms</b></span>
+            <input id="strum-speed" type="range" min="0" max="80" step="1" value="18" />
+          </label>
+          <div class="field">
+            <span>Direction</span>
+            <div class="seg" id="strum-direction" role="group" aria-label="Strum direction"></div>
+          </div>
+          <div class="grid-2">
+            <label class="field"><span>Tempo</span>
+              <input id="bpm" type="number" min="40" max="200" step="1" value="100" />
+            </label>
+            <label class="slider field"><span class="slider-name">Volume <b id="volume-label">85</b></span>
+              <input id="volume" type="range" min="0" max="100" step="1" value="85" />
+            </label>
+          </div>
+        </section>
+        <section class="stack">
+          <p class="section-label">MIDI</p>
+          <div class="row">
+            <button class="key" id="midi-enable" type="button">Enable MIDI</button>
+            <button class="key" id="panic" type="button">Silence</button>
+          </div>
+          <label class="field"><span>Pad bank starts at</span>
+            <select id="midi-base">
+              <option value="36">C2 (note 36)</option>
+              <option value="48" selected>C3 (note 48)</option>
+              <option value="60">C4 (note 60)</option>
+            </select>
+          </label>
+          <label class="field"><span>MIDI out</span>
+            <select id="midi-out"><option value="">No output</option></select>
+          </label>
+        </section>
+      </div>
+    </div>
+
+    <section class="stack progression">
+      <p class="section-label">PROGRESSION</p>
+      <div class="row">
+        <button class="key warn" id="record" type="button" aria-pressed="false">Record</button>
+        <button class="key" id="play" type="button">Play</button>
+        <button class="key" id="stop" type="button">Stop</button>
+        <button class="key" id="clear" type="button">Clear</button>
+      </div>
+      <div class="field">
+        <span>Quantize</span>
+        <div class="seg" id="quantize" role="group" aria-label="Quantize"></div>
+      </div>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="loop" checked /> Loop</label>
+        <label class="check"><input type="checkbox" id="metronome" checked /> Metronome</label>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <div class="grid-2">
+        <label class="field"><span>Saved progressions</span><select id="preset-select"></select></label>
+        <label class="field"><span>Name</span><input id="preset-name" type="text" maxlength="48" value="My progression" /></label>
+      </div>
+      <div class="row">
+        <button class="key" id="preset-save" type="button">Save</button>
+        <button class="key" id="preset-delete" type="button">Delete saved</button>
+        <button class="key" id="json-in" type="button">Import JSON</button>
+        <button class="key" id="json-out" type="button">Export JSON</button>
+        <button class="key" id="wav" type="button">Export WAV</button>
+        <button class="key" id="midi-file" type="button">Export MIDI</button>
+      </div>
+    </section>
+    <p class="hint"><a class="back" href="../../index.html">ALL INSTRUMENTS</a></p>
+  </main>
+  <script type="module" src="./ui/main.js"></script>
+</body>
+</html>

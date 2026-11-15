@@ -1,0 +1,20 @@
+{
+  "name": "Radio Smile",
+  "genre": "pop",
+  "key": "C",
+  "scale": "major",
+  "chordType": "triad",
+  "inversion": 0,
+  "spread": 1,
+  "voiceLeading": true,
+  "strum": { "enabled": false, "speedMs": 12, "direction": "up" },
+  "sound": "piano",
+  "bpm": 104,
+  "loop": true,
+  "progression": [
+    { "pad": 8, "startBeat": 0, "durationBeats": 4, "velocity": 0.82 },
+    { "pad": 12, "startBeat": 4, "durationBeats": 4, "velocity": 0.8 },
+    { "pad": 13, "startBeat": 8, "durationBeats": 4, "velocity": 0.78 },
+    { "pad": 11, "startBeat": 12, "durationBeats": 4, "velocity": 0.8 }
+  ]
+}

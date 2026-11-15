@@ -1,0 +1,9 @@
+{
+  "name": "Eighth Flutter",
+  "bpm": 132,
+  "sweepBars": 2,
+  "output": 0.9,
+  "pump": { "enabled": true, "depth": 0.55, "shape": 0.84, "rate": "1/8", "offset": 0 },
+  "filter": { "enabled": true, "type": "lowpass", "cutoff": 9000, "resonance": 0.28 },
+  "performance": []
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trailer Riser & Impact</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Cpath d='M4 22 L16 6 L28 22' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="./ui/app.css" />
+</head>
+<body>
+  <main class="chassis rise">
+    <span class="screw nw" aria-hidden="true"></span>
+    <span class="screw ne" aria-hidden="true"></span>
+    <span class="screw sw" aria-hidden="true"></span>
+    <span class="screw se" aria-hidden="true"></span>
+
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER · TR-4</div>
+        <h1>RISER & IMPACT</h1>
+        <p class="tagline"><a href="../../index.html">All instruments</a></p>
+      </div>
+      <div class="plate-readouts">
+        <p id="time-readout" class="readout">—</p>
+        <p id="status" class="status" role="status">Warming up</p>
+      </div>
+    </header>
+
+    <section class="layout">
+      <div class="kinds" id="kinds" aria-label="Gesture"></div>
+
+      <div class="scope-panel">
+        <div class="scope-head">
+          <span class="slider-name">Wave</span>
+          <span id="peak-readout" class="peak">– dB</span>
+        </div>
+        <canvas id="scope" aria-label="Rendered waveform"></canvas>
+        <p id="hint" class="lede hint"></p>
+      </div>
+
+      <div class="controls" id="controls">
+        <div class="mode-row" role="group" aria-label="Length unit">
+          <button type="button" class="key mode" id="mode-seconds" aria-pressed="true">Seconds</button>
+          <button type="button" class="key mode" id="mode-bars" aria-pressed="false">Bars</button>
+        </div>
+        <div id="faders"></div>
+        <label class="field seed-field">
+          <span>Seed</span>
+          <input id="seed" type="number" min="1" max="999999999" step="1" value="1" />
+        </label>
+      </div>
+    </section>
+
+    <section class="transport" aria-label="Transport">
+      <button type="button" class="key play" id="play">Play</button>
+      <button type="button" class="key" id="stop">Stop</button>
+      <button type="button" class="key" id="export">Export WAV</button>
+      <button type="button" class="key" id="batch">Batch 8</button>
+    </section>
+
+    <section class="preset-bar">
+      <label class="field">
+        <span>Preset</span>
+        <select id="preset-select"></select>
+      </label>
+      <label class="field grow">
+        <span>Name</span>
+        <input id="preset-name" type="text" maxlength="64" value="Custom" />
+      </label>
+      <button type="button" class="key" id="save-preset">Save JSON</button>
+      <button type="button" class="key" id="load-preset">Load JSON</button>
+      <button type="button" class="key" id="midi-arm">Enable MIDI</button>
+      <input id="preset-file" type="file" accept="application/json,.json" hidden />
+    </section>
+
+    <section class="batch-drawer" id="batch-drawer" hidden>
+      <div class="scope-head">
+        <h2>Variations</h2>
+        <button type="button" class="key" id="download-all">Download all</button>
+      </div>
+      <p class="lede">Eight cousins of the current patch. Each file is its own WAV.</p>
+      <ol id="batch-list"></ol>
+    </section>
+
+    <footer class="legend">
+      <span>1–6 play a type</span>
+      <span>Space play / stop</span>
+      <span>E export</span>
+      <span>B batch</span>
+      <span>[ ] pitch</span>
+      <span>MIDI note triggers · CC1 intensity · CC74 darkness · CC71 size</span>
+    </footer>
+  </main>
+  <script type="module" src="./ui/app.js"></script>
+</body>
+</html>

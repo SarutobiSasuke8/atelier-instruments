@@ -1,0 +1,9 @@
+{
+  "name": "Low Room",
+  "bpm": 118,
+  "sweepBars": 8,
+  "output": 0.94,
+  "pump": { "enabled": true, "depth": 0.68, "shape": 0.4, "rate": "1/2", "offset": 0 },
+  "filter": { "enabled": true, "type": "lowpass", "cutoff": 980, "resonance": 0.42 },
+  "performance": []
+}

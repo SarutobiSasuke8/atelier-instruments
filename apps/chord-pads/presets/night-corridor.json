@@ -1,0 +1,20 @@
+{
+  "name": "Night Corridor",
+  "genre": "trance",
+  "key": "F",
+  "scale": "harmonicMinor",
+  "chordType": "7th",
+  "inversion": 0,
+  "spread": 1,
+  "voiceLeading": true,
+  "strum": { "enabled": false, "speedMs": 14, "direction": "up" },
+  "sound": "supersaw",
+  "bpm": 138,
+  "loop": true,
+  "progression": [
+    { "pad": 8, "startBeat": 0, "durationBeats": 4, "velocity": 0.84 },
+    { "pad": 13, "startBeat": 4, "durationBeats": 4, "velocity": 0.8 },
+    { "pad": 10, "startBeat": 8, "durationBeats": 4, "velocity": 0.8 },
+    { "pad": 14, "startBeat": 12, "durationBeats": 4, "velocity": 0.86 }
+  ]
+}
