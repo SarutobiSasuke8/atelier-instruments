@@ -89,3 +89,47 @@ export function storePresets(key, presets) {
   const clean = presets.map((entry) => JSON.parse(serializePreset(entry)));
   bin.setItem(key, JSON.stringify(clean));
 }
+
+/**
+ * Generic preset document. Does not reshape fields — instruments with their
+ * own schema should use this instead of parsePreset.
+ * @param {string} text
+ */
+export function readJsonObject(text) {
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error("Preset is not valid JSON");
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new Error("Preset must be a JSON object");
+  }
+  return data;
+}
+
+export function writeJsonObject(value) {
+  return JSON.stringify(value, null, 2);
+}
+
+export function loadJson(key, fallback = null) {
+  const bin = storage();
+  if (!bin) return fallback;
+  const raw = bin.getItem(key);
+  if (!raw) return fallback;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return fallback;
+  }
+}
+
+export function saveJson(key, value) {
+  const bin = storage();
+  if (!bin) return;
+  try {
+    bin.setItem(key, JSON.stringify(value));
+  } catch {
+    /* private mode or quota */
+  }
+}
