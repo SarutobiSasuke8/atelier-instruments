@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creature Sound Generator</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%2307110c' width='32' height='32'/%3E%3Cpath d='M6 22c3-9 6 6 10-2 3 7 6 4 10-6' fill='none' stroke='%23b7d17a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="ui/app.css" />
+</head>
+<body>
+  <main class="chassis">
+    <span class="screw nw"></span>
+    <span class="screw ne"></span>
+    <span class="screw sw"></span>
+    <span class="screw se"></span>
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER · CV-7</div>
+        <h1>FAUNA VOX</h1>
+        <p class="tagline">Creature Sound Generator</p>
+      </div>
+      <div class="readout" id="readout" aria-live="polite">READY · SEED ------</div>
+    </header>
+
+    <div class="stage">
+      <section class="scope-wrap" aria-label="Creature monitor">
+        <canvas id="scope" width="640" height="400"></canvas>
+        <div class="meter" id="meter" aria-hidden="true"></div>
+        <div class="scope-meta">
+          <span id="speciesCaption">BEAST</span>
+          <span id="gestureCaption">IDLE</span>
+        </div>
+      </section>
+
+      <section class="sliders" aria-label="Voice">
+        <label class="slider">
+          <div class="slider-top">
+            <span class="slider-name">Size</span>
+            <span class="slider-value" id="sizeValue">MEDIUM</span>
+          </div>
+          <input id="size" type="range" min="0" max="1" step="0.001" value="0.48" />
+          <div class="scale"><span>TINY</span><span>HUGE</span></div>
+        </label>
+        <label class="slider">
+          <div class="slider-top">
+            <span class="slider-name">Mood</span>
+            <span class="slider-value" id="moodValue">HAPPY</span>
+          </div>
+          <input id="mood" type="range" min="0" max="1" step="0.001" value="0.08" />
+          <div class="scale"><span>HAPPY</span><span>ANGRY</span><span>SCARED</span><span>SLEEPY</span></div>
+        </label>
+        <label class="slider">
+          <div class="slider-top">
+            <span class="slider-name">Species</span>
+            <span class="slider-value" id="speciesValue">BEAST</span>
+          </div>
+          <input id="species" type="range" min="0" max="1" step="0.001" value="0" />
+          <div class="scale"><span>BEAST</span><span>BIRD</span><span>INSECT</span><span>ROBOT</span><span>SLIME</span></div>
+        </label>
+        <label class="slider">
+          <div class="slider-top">
+            <span class="slider-name">Roughness</span>
+            <span class="slider-value" id="roughValue">30%</span>
+          </div>
+          <input id="roughness" type="range" min="0" max="1" step="0.001" value="0.32" />
+          <div class="scale"><span>SMOOTH</span><span>HARSH</span></div>
+        </label>
+        <label class="slider">
+          <div class="slider-top">
+            <span class="slider-name">Level</span>
+            <span class="slider-value" id="levelValue">80%</span>
+          </div>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
+        </label>
+      </section>
+    </div>
+
+    <section class="pads" aria-label="Gestures">
+      <button class="pad" type="button" data-gesture="idle"><span class="lamp"></span><strong>Idle</strong><small>Q · 1</small></button>
+      <button class="pad" type="button" data-gesture="attack"><span class="lamp"></span><strong>Attack</strong><small>W · 2</small></button>
+      <button class="pad" type="button" data-gesture="hurt"><span class="lamp"></span><strong>Hurt</strong><small>E · 3</small></button>
+      <button class="pad" type="button" data-gesture="death"><span class="lamp"></span><strong>Death</strong><small>R · 4</small></button>
+      <button class="pad" type="button" data-gesture="talk"><span class="lamp"></span><strong>Talk</strong><small>T · 5</small></button>
+    </section>
+
+    <section class="transport" aria-label="Export and presets">
+      <button class="key" type="button" id="exportOne">Export WAV</button>
+      <button class="key" type="button" id="exportBatch">Batch 10 WAVs</button>
+      <label class="field">
+        <span>Preset</span>
+        <select id="preset"></select>
+      </label>
+      <label class="field">
+        <span>Save as</span>
+        <input id="presetName" type="text" maxlength="48" value="My creature" />
+      </label>
+      <button class="key" type="button" id="savePreset">Save JSON</button>
+      <button class="key" type="button" id="importPreset">Import</button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden />
+      <button class="key" type="button" id="midi">Enable MIDI</button>
+    </section>
+    <p class="hint-row">
+      <span>SPACE retriggers · [ ] species · MIDI C4–G4 · CC20 size · CC21 mood · CC22 species · CC23 grit</span>
+      <a href="../../index.html">All instruments</a>
+    </p>
+  </main>
+  <script type="module" src="ui/main.js"></script>
+</body>
+</html>

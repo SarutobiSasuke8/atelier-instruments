@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Pocket Chirper",
+    "size": 0.06,
+    "mood": 0.02,
+    "species": 0.25,
+    "roughness": 0.12
+  },
+  {
+    "name": "Den Mother",
+    "size": 0.74,
+    "mood": 0.06,
+    "species": 0,
+    "roughness": 0.28
+  },
+  {
+    "name": "Pit Brawler",
+    "size": 0.68,
+    "mood": 0.34,
+    "species": 0.02,
+    "roughness": 0.74
+  },
+  {
+    "name": "Startled Moth",
+    "size": 0.16,
+    "mood": 0.66,
+    "species": 0.5,
+    "roughness": 0.36
+  },
+  {
+    "name": "Night Watch",
+    "size": 0.5,
+    "mood": 0.33,
+    "species": 0.75,
+    "roughness": 0.58
+  },
+  {
+    "name": "Bog Nap",
+    "size": 0.86,
+    "mood": 1,
+    "species": 1,
+    "roughness": 0.18
+  },
+  {
+    "name": "Hive Whisper",
+    "size": 0.22,
+    "mood": 0.04,
+    "species": 0.5,
+    "roughness": 0.42
+  },
+  {
+    "name": "Nursery Slime",
+    "size": 0.34,
+    "mood": 0.94,
+    "species": 0.98,
+    "roughness": 0.14
+  }
+]

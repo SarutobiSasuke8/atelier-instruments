@@ -104,6 +104,17 @@ Pads answer to the pointer, the computer keys `1–4` `Q–R` `A–F` `Z–V`, a
 
 `apps/arp-lab/` turns a held chord into a pattern. Modes are up, down, up-down, random, chord, and as-played, with rate, gate, octave range, swing, and per-step probability, ratchets, and accents. `engine.js` exports `renderArp(chords, params)` and does not touch the DOM. Hear it on the built-in synth, or send Web MIDI — and a same-origin atelier note bus — toward other instruments such as the vocoder and vowel choir. Presets are JSON. Export writes a Standard MIDI file or a WAV from the offline voice renderer.
 
+## Creature Sound Generator
+
+`apps/creature-sound-generator/` vocalizes game characters: grunts, growls, purrs, chirps and chatter.
+
+- Sliders: size (tiny to huge), mood (happy, angry, scared, sleepy), species (beast, bird, insect, robot, slime), roughness.
+- Performance pads: idle, attack, hurt, death, talk. Each press is a new variation.
+- Keys `Q W E R T` or `1 2 3 4 5`. Space retriggers the last gesture.
+- Web MIDI notes C3–G3 and C4–G4 play the five gestures. CC20 size, CC21 mood, CC22 species, CC23 roughness, CC1 grit, CC7 level.
+- Export one WAV, or a zip of 10 fresh variations.
+- `engine.js` exports `renderCreature(params, seed)`.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
