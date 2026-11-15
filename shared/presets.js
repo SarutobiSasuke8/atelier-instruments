@@ -38,6 +38,32 @@ export function serializePreset(preset) {
   return JSON.stringify(parsed, null, 2);
 }
 
+/**
+ * Parse a preset document without forcing one instrument's fields.
+ * parsePreset stays shaped for the creature desk.
+ * @param {string} text
+ */
+export function parseLoosePreset(text) {
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error("Preset is not valid JSON");
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new Error("Preset must be a JSON object");
+  }
+  if (data.performance != null && !Array.isArray(data.performance)) {
+    throw new Error("performance must be an array");
+  }
+  return data;
+}
+
+export function serializeLoosePreset(preset) {
+  const data = parseLoosePreset(JSON.stringify(preset ?? {}));
+  return JSON.stringify(data, null, 2);
+}
+
 export function presetFilename(name) {
   const slug = String(name || "preset")
     .toLowerCase()

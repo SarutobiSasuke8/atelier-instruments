@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pump Sweep — Atelier Instruments</title>
+  <meta name="description" content="Tempo-synced sidechain pumping and live filter build-ups, drops and cuts." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Cpath d='M4 22c6-12 8 4 12-6 3 8 6 10 12 2' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../shared/ui-kit.css" />
+  <link rel="stylesheet" href="./ui/app.css" />
+</head>
+<body>
+  <main class="chassis pump">
+    <span class="screw nw" aria-hidden="true"></span>
+    <span class="screw ne" aria-hidden="true"></span>
+    <span class="screw sw" aria-hidden="true"></span>
+    <span class="screw se" aria-hidden="true"></span>
+
+    <header class="nameplate">
+      <div>
+        <div class="brand">ATELIER · PS-1</div>
+        <h1>PUMP SWEEP</h1>
+        <p class="tagline"><a href="../../index.html">All instruments</a></p>
+      </div>
+      <div class="plate-readouts">
+        <p id="clock" class="readout">0:00.0</p>
+        <p class="readout"><span id="bpm-value">124.0</span> BPM</p>
+      </div>
+    </header>
+
+    <section class="deck" id="deck">
+      <div class="scope-head">
+        <span class="slider-name" id="clip-name">No audio</span>
+        <span id="clip-time" class="slider-name">Drop a loop</span>
+      </div>
+      <svg id="wave" viewBox="0 0 1000 168" preserveAspectRatio="none" role="img" aria-label="Waveform. Click to move the playhead."></svg>
+      <div class="transport">
+        <button class="key accent" id="play" type="button">Play</button>
+        <button class="key" id="stop" type="button">Stop</button>
+        <button class="key" id="load-btn" type="button">Load audio</button>
+        <button class="key" id="demo" type="button">Desk loop</button>
+      </div>
+      <input id="file" type="file" accept="audio/*,.wav,.mp3,.ogg,.flac,.m4a,.aac" hidden />
+    </section>
+
+    <div class="modules">
+      <section class="panel" aria-labelledby="pump-heading">
+        <h2 id="pump-heading" class="slider-name">Pump</h2>
+        <div class="toggles">
+          <label class="audition"><input id="pump-on" type="checkbox" checked /> Engage</label>
+          <label class="audition"><input id="loop" type="checkbox" checked /> Loop</label>
+        </div>
+        <svg class="envelope" id="envelope" viewBox="0 0 160 52" aria-hidden="true">
+          <path id="envelope-path" d="M0 26 L160 26"></path>
+        </svg>
+        <label class="slider">Depth <input id="depth" type="range" min="0" max="100" value="75" /> <output id="depth-out">75%</output></label>
+        <label class="slider">Shape <input id="shape" type="range" min="0" max="100" value="62" /> <output id="shape-out">Pump</output></label>
+        <p class="slider-name">Rate</p>
+        <div class="seg" id="rates" data-key="rate" role="group" aria-label="Pump rate"></div>
+        <label class="slider">Align <input id="offset" type="range" min="0" max="100" value="0" /> <output id="offset-out">0%</output></label>
+      </section>
+
+      <section class="panel" aria-labelledby="filter-heading">
+        <h2 id="filter-heading" class="slider-name">Filter</h2>
+        <div class="toggles">
+          <label class="audition"><input id="filter-on" type="checkbox" checked /> Engage</label>
+          <div class="seg" id="types" data-key="type" role="group" aria-label="Filter type"></div>
+        </div>
+        <div id="pad" class="xy" tabindex="0" role="application" aria-label="Filter pad. Horizontal is cutoff, vertical is resonance. Arrow keys nudge.">
+          <span class="axis y">Resonance</span>
+          <span class="axis x">Cutoff</span>
+          <div id="thumb" class="thumb"></div>
+        </div>
+        <div class="filter-readouts">
+          <p class="readout"><span id="cutoff-value">14.0</span> <span id="cutoff-unit">kHz</span></p>
+          <p class="readout"><span id="q-value">0.18</span> res</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="holds" aria-label="Performance holds">
+      <button class="key hold hold-build" id="build" type="button" aria-pressed="false">
+        <span class="hold-kicker">Hold · Z</span>
+        <span class="hold-name">Build</span>
+        <span class="hold-note">Upward riser</span>
+      </button>
+      <button class="key hold hold-drop" id="drop-btn" type="button" aria-pressed="false">
+        <span class="hold-kicker">Hold · X</span>
+        <span class="hold-name">Drop</span>
+        <span class="hold-note">Filter fall</span>
+      </button>
+      <button class="key hold hold-cut" id="cut" type="button" aria-pressed="false">
+        <span class="hold-kicker">Hold · C</span>
+        <span class="hold-name">Cut</span>
+        <span class="hold-note">Mute</span>
+      </button>
+    </section>
+
+    <div class="bottom">
+      <section class="panel">
+        <h2 class="slider-name">Tempo and print</h2>
+        <div class="transport">
+          <button class="key" id="tap" type="button">Tap T</button>
+          <button class="key" id="detect" type="button">Detect</button>
+        </div>
+        <label class="slider">BPM <input id="bpm" type="range" min="70" max="180" step="0.1" value="124" /> <output id="bpm-out">124.0</output></label>
+        <p class="slider-name">Sweep length</p>
+        <div class="seg" id="bars" data-key="bars" role="group" aria-label="Sweep length in bars"></div>
+        <label class="slider">Level <input id="output" type="range" min="0" max="100" value="92" /> <output id="output-out">92%</output></label>
+        <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+        <ul class="gesture-list" id="gestures"></ul>
+        <button class="key" id="clear-gestures" type="button">Clear gestures</button>
+      </section>
+      <section class="panel">
+        <h2 class="slider-name">Presets and bounce</h2>
+        <label class="field">
+          <span>Factory</span>
+          <select id="preset"></select>
+        </label>
+        <div class="transport">
+          <button class="key accent" id="export" type="button">Export WAV</button>
+          <button class="key" id="save-preset" type="button">Save JSON</button>
+          <button class="key" id="load-preset" type="button">Load JSON</button>
+          <button class="key" id="midi" type="button">Enable MIDI</button>
+        </div>
+        <input id="preset-file" type="file" accept="application/json,.json" hidden />
+        <p class="status" id="status" role="status"></p>
+        <p class="hint-row">Space plays. Z builds, X drops, C cuts. MIDI notes 48, 50 and 52 hold the same moves. CC 74 or CC 1 sets cutoff, CC 71 sets resonance. Holds during playback are printed into the bounce.</p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./ui/app.js"></script>
+</body>
+</html>

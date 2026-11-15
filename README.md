@@ -82,6 +82,16 @@ const audio = renderAmbience(
 
 `engine.js` has no DOM. `renderAcidPattern(pattern, params)` returns `{ sampleRate, samples, duration }`. A pattern is `{ steps }` or `{ patterns: { A, B, C, D }, chain }`. Each step is `{ gate, note, octave, accent, slide }` — `note` is a pitch class 0–11 and `octave` is 0–2 above C2.
 
+## Pump Sweep
+
+[apps/pump-sweep](apps/pump-sweep/) ducks a loop on the grid and sweeps a filter while you hold a button.
+
+- Pump depth, shape and note-division rate, plus an align control so the duck sits on the kick.
+- Low-pass, high-pass or band-pass. The pad is cutoff and resonance.
+- Build (Z, MIDI note 48), Drop (X, note 50) and Cut (C, note 52) are holds. CC 74 and CC 1 move cutoff, CC 71 moves resonance.
+- Tap tempo, or detect it from the audio. Factory JSON presets ship in `presets/`.
+- Export WAV renders `processPumpSweep(buffer, params)` from `engine.js`, which does not touch the DOM. Gestures printed while the transport is running are included.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
