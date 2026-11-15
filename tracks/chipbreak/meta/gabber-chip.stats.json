@@ -1,0 +1,181 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "gabber-chip",
+  "title": "Square Wave Stampede",
+  "kind": "track",
+  "genre": [
+    "gabber",
+    "hardcore",
+    "chiptune"
+  ],
+  "mood": [
+    "relentless",
+    "aggressive",
+    "raw"
+  ],
+  "bpm": 190,
+  "key": "G minor",
+  "durationSec": 101.05,
+  "seed": 1902,
+  "peakDbfs": -2.010937,
+  "truePeakDbtp": -1.8,
+  "lufs": -9.8,
+  "lra": 3,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "gabber-chip.wav",
+    "bytes": 18090332,
+    "lufs": -9.8,
+    "lra": 3,
+    "truePeakDbtp": -1.8,
+    "samplePeakDbfs": -2.010937
+  },
+  "mp3": {
+    "file": "gabber-chip.mp3",
+    "bytes": 4104403,
+    "lufs": -9.8,
+    "lra": 3,
+    "truePeakDbtp": -1.8,
+    "samplePeakDbfs": -1.935622
+  },
+  "analysis": {
+    "peakDbfs": -2.01,
+    "truePeakDbtp": -1.79,
+    "lufsJs": -9.8,
+    "lraJs": 3,
+    "rmsDbfs": -10.4,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 270,
+    "bandShare": {
+      "sub": 0.346,
+      "low": 0.581,
+      "mid": 0.061,
+      "high": 0.011
+    },
+    "dropBandShare": {
+      "sub": 0.354,
+      "low": 0.581,
+      "mid": 0.057,
+      "high": 0.008
+    },
+    "dropOnsetsPerSec": 7.42,
+    "dropGrid": {
+      "localBpm": 189.75,
+      "relative": 0.71
+    },
+    "dropTempo": {
+      "bpm": 95,
+      "strength": 0.28
+    },
+    "plrDb": 7.8,
+    "tapeEdits": {
+      "counts": {
+        "stop": 5,
+        "stutter": 8,
+        "reverse": 3,
+        "crush": 3,
+        "wow": 1,
+        "flutter": 1
+      },
+      "wowBars": 8,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 15,
+          "rmsBeforeDb": -11,
+          "rmsEndDb": -18,
+          "centroidEarlyHz": 151,
+          "centroidMidHz": 107
+        },
+        {
+          "section": "drop1",
+          "atBar": 31,
+          "rmsBeforeDb": -9.9,
+          "rmsEndDb": -24.3,
+          "centroidEarlyHz": 129,
+          "centroidMidHz": 64
+        },
+        {
+          "section": "build2",
+          "atBar": 47,
+          "rmsBeforeDb": -9.8,
+          "rmsEndDb": -11.1,
+          "centroidEarlyHz": 624,
+          "centroidMidHz": 199
+        },
+        {
+          "section": "drop3",
+          "atBar": 75,
+          "rmsBeforeDb": -9.7,
+          "rmsEndDb": -19.4,
+          "centroidEarlyHz": 128,
+          "centroidMidHz": 85
+        },
+        {
+          "section": "outro",
+          "atBar": 77,
+          "rmsBeforeDb": -11.5,
+          "rmsEndDb": -38.3,
+          "centroidEarlyHz": 152,
+          "centroidMidHz": 71
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 8,
+        "rmsDb": -13.6
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -9.7
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -9.8
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 8,
+        "rmsDb": -11.9
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -9.7
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -10.1
+      },
+      {
+        "name": "drop3",
+        "role": "drop",
+        "bars": 12,
+        "rmsDb": -10
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 4,
+        "rmsDb": -12.1
+      }
+    ]
+  }
+}

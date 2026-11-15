@@ -1,0 +1,173 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "glitch-hop-chip",
+  "title": "Crunch Cartridge Shuffle",
+  "kind": "track",
+  "genre": [
+    "glitch hop",
+    "chip breaks",
+    "game funk"
+  ],
+  "mood": [
+    "playful",
+    "bouncy",
+    "crunchy"
+  ],
+  "bpm": 100,
+  "key": "C minor",
+  "durationSec": 105.6,
+  "seed": 1001,
+  "peakDbfs": -1.600129,
+  "truePeakDbtp": -1.5,
+  "lufs": -10.5,
+  "lra": 6.3,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "glitch-hop-chip.wav",
+    "bytes": 18892484,
+    "lufs": -10.5,
+    "lra": 6.3,
+    "truePeakDbtp": -1.5,
+    "samplePeakDbfs": -1.600129
+  },
+  "mp3": {
+    "file": "glitch-hop-chip.mp3",
+    "bytes": 4286215,
+    "lufs": -10.5,
+    "lra": 6.3,
+    "truePeakDbtp": -1.3,
+    "samplePeakDbfs": -1.289667
+  },
+  "analysis": {
+    "peakDbfs": -1.6,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -10.52,
+    "lraJs": 6.3,
+    "rmsDbfs": -10.98,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 895,
+    "bandShare": {
+      "sub": 0.317,
+      "low": 0.52,
+      "mid": 0.09,
+      "high": 0.072
+    },
+    "dropBandShare": {
+      "sub": 0.327,
+      "low": 0.532,
+      "mid": 0.084,
+      "high": 0.057
+    },
+    "dropOnsetsPerSec": 7.47,
+    "dropGrid": {
+      "localBpm": 100,
+      "relative": 0.84
+    },
+    "dropTempo": {
+      "bpm": 199,
+      "strength": 0.21
+    },
+    "plrDb": 8.9,
+    "tapeEdits": {
+      "counts": {
+        "stop": 4,
+        "stutter": 7,
+        "reverse": 3,
+        "wow": 1,
+        "dropout": 1,
+        "crush": 1
+      },
+      "wowBars": 4,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 7,
+          "rmsBeforeDb": -12,
+          "rmsEndDb": -28,
+          "centroidEarlyHz": 3137,
+          "centroidMidHz": 1244
+        },
+        {
+          "section": "build2",
+          "atBar": 23,
+          "rmsBeforeDb": -12.1,
+          "rmsEndDb": -10.9,
+          "centroidEarlyHz": 1474,
+          "centroidMidHz": 2220
+        },
+        {
+          "section": "drop2",
+          "atBar": 31,
+          "rmsBeforeDb": -7.1,
+          "rmsEndDb": -43.2,
+          "centroidEarlyHz": 146,
+          "centroidMidHz": 88
+        },
+        {
+          "section": "outro",
+          "atBar": 41,
+          "rmsBeforeDb": -11.1,
+          "rmsEndDb": -53.1,
+          "centroidEarlyHz": 749,
+          "centroidMidHz": 46
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 4,
+        "rmsDb": -13.9
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -12.8
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -10.2
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 4,
+        "rmsDb": -13.2
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -11.8
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -9.3
+      },
+      {
+        "name": "drop3",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -9.6
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 4,
+        "rmsDb": -15.6
+      }
+    ]
+  }
+}

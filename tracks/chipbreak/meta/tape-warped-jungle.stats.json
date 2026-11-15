@@ -1,0 +1,181 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "tape-warped-jungle",
+  "title": "Slow Reel Rollers",
+  "kind": "track",
+  "genre": [
+    "jungle",
+    "tape music",
+    "chip breaks"
+  ],
+  "mood": [
+    "dark",
+    "rolling",
+    "dizzy"
+  ],
+  "bpm": 168,
+  "key": "F minor",
+  "durationSec": 125.71,
+  "seed": 1681,
+  "peakDbfs": -1.600129,
+  "truePeakDbtp": -1.5,
+  "lufs": -10.8,
+  "lra": 5,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "tape-warped-jungle.wav",
+    "bytes": 22440644,
+    "lufs": -10.8,
+    "lra": 5,
+    "truePeakDbtp": -1.5,
+    "samplePeakDbfs": -1.600129
+  },
+  "mp3": {
+    "file": "tape-warped-jungle.mp3",
+    "bytes": 5090787,
+    "lufs": -10.8,
+    "lra": 5,
+    "truePeakDbtp": -1.3,
+    "samplePeakDbfs": -1.551525
+  },
+  "analysis": {
+    "peakDbfs": -1.6,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -10.75,
+    "lraJs": 5,
+    "rmsDbfs": -12.22,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 739,
+    "bandShare": {
+      "sub": 0.217,
+      "low": 0.664,
+      "mid": 0.061,
+      "high": 0.058
+    },
+    "dropBandShare": {
+      "sub": 0.219,
+      "low": 0.689,
+      "mid": 0.055,
+      "high": 0.037
+    },
+    "dropOnsetsPerSec": 8.61,
+    "dropGrid": {
+      "localBpm": 168,
+      "relative": 0.65
+    },
+    "dropTempo": {
+      "bpm": 84,
+      "strength": 0.27
+    },
+    "plrDb": 9.2,
+    "tapeEdits": {
+      "counts": {
+        "wow": 11,
+        "flutter": 11,
+        "stop": 5,
+        "dropout": 3,
+        "stutter": 4,
+        "reverse": 1
+      },
+      "wowBars": 79,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 15,
+          "rmsBeforeDb": -13.2,
+          "rmsEndDb": -26.4,
+          "centroidEarlyHz": 3440,
+          "centroidMidHz": 1682
+        },
+        {
+          "section": "drop1",
+          "atBar": 31,
+          "rmsBeforeDb": -13.2,
+          "rmsEndDb": -28.6,
+          "centroidEarlyHz": 642,
+          "centroidMidHz": 59
+        },
+        {
+          "section": "build2",
+          "atBar": 47,
+          "rmsBeforeDb": -12.4,
+          "rmsEndDb": -18.8,
+          "centroidEarlyHz": 3875,
+          "centroidMidHz": 1782
+        },
+        {
+          "section": "drop3",
+          "atBar": 79,
+          "rmsBeforeDb": -9.8,
+          "rmsEndDb": -14.8,
+          "centroidEarlyHz": 92,
+          "centroidMidHz": 68
+        },
+        {
+          "section": "outro",
+          "atBar": 86,
+          "rmsBeforeDb": -21.8,
+          "rmsEndDb": -22.2,
+          "centroidEarlyHz": 716,
+          "centroidMidHz": 349
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 8,
+        "rmsDb": -14.7
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -12.5
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -11.6
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 8,
+        "rmsDb": -15
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -12.1
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -11.2
+      },
+      {
+        "name": "drop3",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -11.2
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 8,
+        "rmsDb": -14.9
+      }
+    ]
+  }
+}

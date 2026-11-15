@@ -19,6 +19,18 @@ if (existsSync(appsDir)) {
   }
 }
 
+// Track packs (tracks/<pack>/test/*.test.mjs). Their render tests skip themselves when atelier-dsp is not found.
+const tracksDir = path.join(root, "tracks");
+if (existsSync(tracksDir)) {
+  for (const pack of readdirSync(tracksDir, { withFileTypes: true })) {
+    const testDir = path.join(tracksDir, pack.name, "test");
+    if (!pack.isDirectory() || !existsSync(testDir)) continue;
+    for (const entry of readdirSync(testDir)) {
+      if (entry.endsWith(".test.mjs") || entry.endsWith(".test.js")) files.push(path.join(testDir, entry));
+    }
+  }
+}
+
 if (files.length === 0) {
   console.log("No app tests found.");
   process.exit(0);

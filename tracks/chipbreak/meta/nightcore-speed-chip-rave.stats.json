@@ -1,0 +1,189 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "nightcore-speed-chip-rave",
+  "title": "Sugar Rush Hardcore",
+  "kind": "track",
+  "genre": [
+    "nightcore",
+    "rave",
+    "happy hardcore"
+  ],
+  "mood": [
+    "bright",
+    "euphoric",
+    "energetic"
+  ],
+  "bpm": 176,
+  "key": "C major",
+  "durationSec": 109.09,
+  "seed": 1761,
+  "peakDbfs": -1.600129,
+  "truePeakDbtp": -1.6,
+  "lufs": -9.7,
+  "lra": 3.7,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "nightcore-speed-chip-rave.wav",
+    "bytes": 19508284,
+    "lufs": -9.7,
+    "lra": 3.7,
+    "truePeakDbtp": -1.6,
+    "samplePeakDbfs": -1.600129
+  },
+  "mp3": {
+    "file": "nightcore-speed-chip-rave.mp3",
+    "bytes": 4426231,
+    "lufs": -9.7,
+    "lra": 3.7,
+    "truePeakDbtp": -1.3,
+    "samplePeakDbfs": -1.534864
+  },
+  "analysis": {
+    "peakDbfs": -1.6,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -9.74,
+    "lraJs": 3.7,
+    "rmsDbfs": -11.07,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 378,
+    "bandShare": {
+      "sub": 0.181,
+      "low": 0.686,
+      "mid": 0.116,
+      "high": 0.017
+    },
+    "dropBandShare": {
+      "sub": 0.195,
+      "low": 0.708,
+      "mid": 0.083,
+      "high": 0.014
+    },
+    "dropOnsetsPerSec": 9.34,
+    "dropGrid": {
+      "localBpm": 175.25,
+      "relative": 0.78
+    },
+    "dropTempo": {
+      "bpm": 117.5,
+      "strength": 0.59
+    },
+    "plrDb": 8.1,
+    "tapeEdits": {
+      "counts": {
+        "stop": 6,
+        "stutter": 9,
+        "crush": 1,
+        "wow": 1,
+        "flutter": 1,
+        "reverse": 1
+      },
+      "wowBars": 8,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 15,
+          "rmsBeforeDb": -8.3,
+          "rmsEndDb": -15,
+          "centroidEarlyHz": 378,
+          "centroidMidHz": 254
+        },
+        {
+          "section": "drop1",
+          "atBar": 31,
+          "rmsBeforeDb": -11.1,
+          "rmsEndDb": -36,
+          "centroidEarlyHz": 277,
+          "centroidMidHz": 51
+        },
+        {
+          "section": "build2",
+          "atBar": 47,
+          "rmsBeforeDb": -9,
+          "rmsEndDb": -7.8,
+          "centroidEarlyHz": 294,
+          "centroidMidHz": 214
+        },
+        {
+          "section": "drop2",
+          "atBar": 63,
+          "rmsBeforeDb": -7.6,
+          "rmsEndDb": -35.5,
+          "centroidEarlyHz": 95,
+          "centroidMidHz": 446
+        },
+        {
+          "section": "drop3",
+          "atBar": 71,
+          "rmsBeforeDb": -7.6,
+          "rmsEndDb": -20.2,
+          "centroidEarlyHz": 94,
+          "centroidMidHz": 484
+        },
+        {
+          "section": "outro",
+          "atBar": 78,
+          "rmsBeforeDb": -17.4,
+          "rmsEndDb": -15.1,
+          "centroidEarlyHz": 312,
+          "centroidMidHz": 297
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 8,
+        "rmsDb": -14.1
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -10.5
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -10.6
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 8,
+        "rmsDb": -13.8
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -9.9
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -10.2
+      },
+      {
+        "name": "drop3",
+        "role": "drop",
+        "bars": 8,
+        "rmsDb": -10.2
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 8,
+        "rmsDb": -13.1
+      }
+    ]
+  }
+}

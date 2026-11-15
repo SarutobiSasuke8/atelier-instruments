@@ -1,0 +1,43 @@
+{
+  "format": "lmms-mcp-meta/1",
+  "title": "Sugar Rush Hardcore",
+  "composer": "Atelier Instruments",
+  "era": "original",
+  "genre": [
+    "chiptune",
+    "dance",
+    "nightcore",
+    "rave",
+    "happy hardcore"
+  ],
+  "mood": [
+    "bright",
+    "euphoric",
+    "energetic"
+  ],
+  "arrangement": "chiptune",
+  "instrumentation": [
+    "atelier-dsp groovebox pad voices (synthesised break)",
+    "atelier-dsp chiptune (pulse, triangle, noise lanes)",
+    "atelier-dsp wavetable (reese, formant growl)",
+    "atelier-dsp formant (vocal chops)",
+    "atelier-instruments tape-glitch",
+    "atelier-instruments game-sfx",
+    "atelier-instruments trailer-riser",
+    "atelier-instruments acid-bass"
+  ],
+  "durationSeconds": 109.09,
+  "loop": false,
+  "licence": "MIT (own work)",
+  "date": "2026-11-15",
+  "kind": "piece",
+  "tags": [
+    "chipbreak",
+    "nightcore-speed-chip-rave",
+    "bpm-176",
+    "key-c-major",
+    "synthesised",
+    "no-samples"
+  ],
+  "notes": "Synthesised only, no samples. 176 BPM, C major, seed 1761. Measured: sample peak -1.600129 dBFS, true peak -1.6 dBTP, -9.7 LUFS integrated, LRA 3.7 LU. Full measurements and engine commits are in the matching .stats.json."
+}

@@ -1,0 +1,43 @@
+{
+  "format": "lmms-mcp-meta/1",
+  "title": "Cartridge Wobble Cathedral",
+  "composer": "Atelier Instruments",
+  "era": "original",
+  "genre": [
+    "chiptune",
+    "dance",
+    "dubstep",
+    "half-time",
+    "chip bass"
+  ],
+  "mood": [
+    "heavy",
+    "dark",
+    "cinematic"
+  ],
+  "arrangement": "chiptune",
+  "instrumentation": [
+    "atelier-dsp groovebox pad voices (synthesised break)",
+    "atelier-dsp chiptune (pulse, triangle, noise lanes)",
+    "atelier-dsp wavetable (reese, formant growl)",
+    "atelier-dsp formant (vocal chops)",
+    "atelier-instruments tape-glitch",
+    "atelier-instruments game-sfx",
+    "atelier-instruments trailer-riser",
+    "atelier-instruments acid-bass"
+  ],
+  "durationSeconds": 109.71,
+  "loop": false,
+  "licence": "MIT (own work)",
+  "date": "2026-11-15",
+  "kind": "piece",
+  "tags": [
+    "chipbreak",
+    "halftime-chip-dubstep",
+    "bpm-140",
+    "key-f-minor",
+    "synthesised",
+    "no-samples"
+  ],
+  "notes": "Synthesised only, no samples. 140 BPM, F minor, seed 1401. Measured: sample peak -1.600129 dBFS, true peak -1.5 dBTP, -10.3 LUFS integrated, LRA 6.3 LU. Full measurements and engine commits are in the matching .stats.json."
+}

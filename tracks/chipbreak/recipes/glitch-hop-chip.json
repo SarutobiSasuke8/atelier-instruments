@@ -1,0 +1,1128 @@
+{
+  "format": "chipbreak-recipe/1",
+  "id": "glitch-hop-chip",
+  "style": "glitch-hop-chip",
+  "title": "Crunch Cartridge Shuffle",
+  "genre": [
+    "glitch hop",
+    "chip breaks",
+    "game funk"
+  ],
+  "mood": [
+    "playful",
+    "bouncy",
+    "crunchy"
+  ],
+  "bpm": 100,
+  "key": "C minor",
+  "tonic": 36,
+  "scale": "minor",
+  "seed": 1001,
+  "progression": [
+    {
+      "deg": 0,
+      "q": "min"
+    },
+    {
+      "deg": 5,
+      "q": "min"
+    },
+    {
+      "deg": 8,
+      "q": "maj"
+    },
+    {
+      "deg": 10,
+      "q": "maj"
+    }
+  ],
+  "kit": {
+    "kick": {
+      "voice": "kick",
+      "character": "909",
+      "decay": 0.4,
+      "tone": 0.6,
+      "drive": 0.55
+    },
+    "snare": {
+      "voice": "snare",
+      "character": "909",
+      "decay": 0.3,
+      "tone": 0.7,
+      "drive": 0.5,
+      "tune": 3
+    },
+    "ghost": {
+      "voice": "snare",
+      "character": "707",
+      "decay": 0.12,
+      "tone": 0.6,
+      "drive": 0.3,
+      "tune": 7,
+      "vel": 0.45,
+      "seed": 3
+    },
+    "hat": {
+      "voice": "closed-hat",
+      "decay": 0.045,
+      "tone": 0.8,
+      "vel": 0.5,
+      "seed": 5
+    },
+    "openhat": {
+      "voice": "open-hat",
+      "decay": 0.3,
+      "tone": 0.7,
+      "vel": 0.5,
+      "seed": 6
+    },
+    "ride": {
+      "voice": "ride",
+      "decay": 0.6,
+      "tone": 0.6,
+      "vel": 0.4,
+      "seed": 7
+    },
+    "crash": {
+      "voice": "crash",
+      "decay": 1.6,
+      "tone": 0.7,
+      "vel": 0.7,
+      "seed": 8
+    }
+  },
+  "break": {
+    "swing": 0.2,
+    "preDrive": 1.7,
+    "crush": {
+      "bits": 12,
+      "hold": 1
+    },
+    "pattern": {
+      "0": [
+        [
+          "kick",
+          1
+        ],
+        [
+          "hat",
+          0.8
+        ]
+      ],
+      "2": [
+        [
+          "hat",
+          0.6
+        ]
+      ],
+      "3": [
+        [
+          "ghost",
+          0.4
+        ]
+      ],
+      "4": [
+        [
+          "hat",
+          0.8
+        ]
+      ],
+      "6": [
+        [
+          "hat",
+          0.6
+        ],
+        [
+          "kick",
+          0.7
+        ]
+      ],
+      "8": [
+        [
+          "snare",
+          1
+        ],
+        [
+          "hat",
+          0.9
+        ]
+      ],
+      "10": [
+        [
+          "hat",
+          0.6
+        ]
+      ],
+      "11": [
+        [
+          "kick",
+          0.6
+        ]
+      ],
+      "12": [
+        [
+          "hat",
+          0.8
+        ],
+        [
+          "ghost",
+          0.35
+        ]
+      ],
+      "14": [
+        [
+          "hat",
+          0.6
+        ],
+        [
+          "openhat",
+          0.5
+        ]
+      ],
+      "15": [
+        [
+          "ghost",
+          0.5
+        ]
+      ]
+    }
+  },
+  "chops": {
+    "straight": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+    "a": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+    "b": "0 . 2 3 . 5 6* 7 8 9^ 10 11r 12 13 . 15",
+    "c": "0 1 2 2* 4 5 6 7 8 8* 10 11 12 12* 14 15^",
+    "d": "0 . . 3 4 . 6 7 8 . 10 11r 12 13 14* 15^",
+    "roll": "8 8 8* 8 8^ 8^ 8^* 8^* 8 8 8* 8* 8^ 8^* 8^** 8^**",
+    "fill": "0 2 3 6 8 8* 8^ 8^* 10 11 12 12* 12^* 14^ 14^* 15^*"
+  },
+  "chip": {
+    "gain": 0.55,
+    "arp": {
+      "minor": [
+        0,
+        3,
+        7,
+        12,
+        15,
+        12,
+        7,
+        3
+      ],
+      "major": [
+        0,
+        4,
+        7,
+        12,
+        16,
+        12,
+        7,
+        4
+      ],
+      "beats": 0.25,
+      "octave": 12,
+      "pulseWidth": 0.125,
+      "slow": [
+        0,
+        7,
+        12,
+        19
+      ]
+    },
+    "lead": {
+      "preset": "pulse-lead",
+      "octave": 24,
+      "phraseBars": 2,
+      "legato": 0.8,
+      "patch": {
+        "pwm": 0.2,
+        "pulseWidth": 0.125
+      },
+      "phrases": {
+        "A": [
+          [
+            0,
+            7
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            4,
+            12
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            11,
+            3
+          ],
+          [
+            12,
+            5
+          ],
+          [
+            14,
+            7
+          ],
+          [
+            16,
+            12
+          ],
+          [
+            19,
+            10
+          ],
+          [
+            20,
+            7
+          ],
+          [
+            22,
+            10
+          ],
+          [
+            24,
+            12
+          ],
+          [
+            27,
+            15
+          ],
+          [
+            28,
+            12
+          ],
+          [
+            30,
+            10
+          ]
+        ],
+        "B": [
+          [
+            0,
+            12
+          ],
+          [
+            2,
+            15
+          ],
+          [
+            4,
+            12
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            16,
+            15
+          ],
+          [
+            18,
+            12
+          ],
+          [
+            20,
+            10
+          ],
+          [
+            22,
+            7
+          ],
+          [
+            24,
+            5
+          ],
+          [
+            26,
+            7
+          ],
+          [
+            28,
+            10
+          ],
+          [
+            30,
+            12
+          ]
+        ]
+      }
+    }
+  },
+  "bass": {
+    "reese": {
+      "gain": 0.8
+    },
+    "reeseSat": {
+      "drive": 3,
+      "pre": 1.4
+    },
+    "patterns": {
+      "bounce": [
+        [
+          0,
+          0.75
+        ],
+        [
+          1,
+          0.5
+        ],
+        [
+          1.75,
+          0.5
+        ],
+        [
+          2.5,
+          0.75
+        ],
+        [
+          3.25,
+          0.5
+        ]
+      ],
+      "sync": [
+        [
+          0,
+          0.5
+        ],
+        [
+          0.75,
+          0.5
+        ],
+        [
+          2,
+          0.75
+        ],
+        [
+          3,
+          0.5,
+          12
+        ]
+      ]
+    }
+  },
+  "vox": {
+    "stab": {
+      "preset": "robot-stab",
+      "midis": [
+        60,
+        63,
+        67,
+        72
+      ],
+      "steps": 1.5,
+      "patterns": {
+        "A": [
+          [
+            3,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            11,
+            2
+          ]
+        ],
+        "B": [
+          [
+            2,
+            3
+          ],
+          [
+            7,
+            1
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            13,
+            2
+          ]
+        ]
+      }
+    }
+  },
+  "tape": {
+    "preset": {
+      "stopTime": 0.7,
+      "startTime": 0.15,
+      "stutterMs": 70,
+      "crushBits": 5
+    }
+  },
+  "master": {
+    "targetLufs": -10.8
+  },
+  "sections": [
+    {
+      "name": "intro",
+      "role": "intro",
+      "bars": 4,
+      "chip": {
+        "arp": 0.8,
+        "hats": "all",
+        "tribass": {
+          "from": 0
+        }
+      },
+      "drums": {
+        "patterns": [
+          "straight"
+        ],
+        "from": 2,
+        "gain": [
+          0.3,
+          0.7
+        ]
+      },
+      "dist": {
+        "chip": {
+          "bits": 6,
+          "hold": 3,
+          "drive": 1.8,
+          "mix": 0.35
+        }
+      }
+    },
+    {
+      "name": "build",
+      "role": "build",
+      "bars": 4,
+      "riser": {
+        "gain": 0.5,
+        "intensity": 0.8
+      },
+      "chip": {
+        "arp": 1,
+        "hats": "all"
+      },
+      "drums": {
+        "patterns": [
+          "a"
+        ],
+        "roll": "roll",
+        "rollBars": 2,
+        "gain": [
+          0.6,
+          0.95
+        ]
+      },
+      "sfx": [
+        [
+          1,
+          3,
+          "jump"
+        ],
+        [
+          3,
+          2,
+          "power-up"
+        ]
+      ],
+      "dist": {
+        "chip": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.45
+        }
+      },
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stop",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop1",
+      "role": "drop",
+      "bars": 8,
+      "impact": 1,
+      "chip": {
+        "arp": 0.8,
+        "lead": "A"
+      },
+      "drums": {
+        "patterns": [
+          "a",
+          "b",
+          "c",
+          "fill"
+        ],
+        "gain": 1
+      },
+      "bass": {
+        "engine": "reese-sat",
+        "pattern": "bounce",
+        "gain": 0.85
+      },
+      "vox": {
+        "stab": "A,B",
+        "gain": 0.4
+      },
+      "dist": {
+        "drums": {
+          "bits": 9,
+          "hold": 2,
+          "drive": 2,
+          "mix": 0.4
+        },
+        "chip": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2.4,
+          "mix": 0.55
+        },
+        "bass": {
+          "bits": 11,
+          "hold": 1,
+          "drive": 2.4,
+          "mix": 0.4
+        },
+        "vox": {
+          "bits": 6,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "sfx": [
+        [
+          1,
+          1,
+          "coin"
+        ],
+        [
+          1,
+          3.5,
+          "jump"
+        ],
+        [
+          3,
+          2.5,
+          "laser"
+        ],
+        [
+          3,
+          3.75,
+          "hit"
+        ],
+        [
+          5,
+          0.5,
+          "coin"
+        ],
+        [
+          5,
+          2,
+          "pickup"
+        ],
+        [
+          6,
+          3,
+          "laser"
+        ],
+        [
+          7,
+          3.5,
+          "error"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 0.75
+            },
+            {
+              "type": "reverse",
+              "t0": 0.75,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "breakdown",
+      "role": "breakdown",
+      "bars": 4,
+      "chip": {
+        "arp": 0.8,
+        "arpMode": "slow",
+        "lead": "B",
+        "leadOctave": 12,
+        "legato": 1.4
+      },
+      "drums": {
+        "mode": "halftime",
+        "gain": 0.8
+      },
+      "vox": {
+        "pad": "talkbox-lead",
+        "padGain": 0.4
+      },
+      "sfx": [
+        [
+          2,
+          0,
+          "pickup"
+        ],
+        [
+          3,
+          2,
+          "level-up"
+        ]
+      ],
+      "whooshIn": 0.4,
+      "dist": {
+        "chip": {
+          "bits": 7,
+          "hold": 2,
+          "drive": 1.5,
+          "mix": 0.3
+        }
+      },
+      "tape": [
+        {
+          "bar": 0,
+          "bars": 4,
+          "gestures": [
+            {
+              "type": "wow",
+              "t0": 0,
+              "t1": 1
+            },
+            {
+              "type": "dropout",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "build2",
+      "role": "build",
+      "bars": 4,
+      "riser": {
+        "gain": 0.6,
+        "intensity": 1
+      },
+      "chip": {
+        "arp": 1,
+        "hats": "all"
+      },
+      "drums": {
+        "patterns": [
+          "d",
+          "a"
+        ],
+        "roll": "fill",
+        "rollBars": 2,
+        "gain": 0.9
+      },
+      "sfx": [
+        [
+          2,
+          2,
+          "power-up"
+        ],
+        [
+          3,
+          3,
+          "laser"
+        ]
+      ],
+      "dist": {
+        "chip": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.4,
+              "t1": 0.75
+            },
+            {
+              "type": "stop",
+              "t0": 0.75,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop2",
+      "role": "drop",
+      "bars": 8,
+      "impact": 1,
+      "chip": {
+        "arp": 0.8,
+        "lead": [
+          "A",
+          "B"
+        ]
+      },
+      "ratchet": {
+        "gain": 0.5,
+        "mode": "up-down",
+        "rate": 2,
+        "octaves": 2,
+        "ratchets": 3,
+        "probability": 0.9,
+        "wave": "square",
+        "pulseWidth": 0.25,
+        "gate": 0.5
+      },
+      "drums": {
+        "patterns": [
+          "b",
+          "c",
+          "a",
+          "fill"
+        ],
+        "gain": 1.05
+      },
+      "bass": {
+        "engine": "reese-sat",
+        "pattern": "sync",
+        "gain": 0.85
+      },
+      "vox": {
+        "stab": "B,A",
+        "gain": 0.4
+      },
+      "dist": {
+        "drums": {
+          "bits": 7,
+          "hold": 3,
+          "drive": 3,
+          "mix": 0.55
+        },
+        "chip": {
+          "bits": 4,
+          "hold": 4,
+          "drive": 2.8,
+          "mix": 0.6
+        },
+        "bass": {
+          "bits": 10,
+          "hold": 1,
+          "drive": 2.8,
+          "mix": 0.45
+        },
+        "vox": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "sfx": [
+        [
+          0,
+          1.5,
+          "coin"
+        ],
+        [
+          1,
+          3.5,
+          "laser"
+        ],
+        [
+          2,
+          2,
+          "jump"
+        ],
+        [
+          3,
+          3.75,
+          "hit"
+        ],
+        [
+          4,
+          1,
+          "coin"
+        ],
+        [
+          5,
+          3,
+          "laser"
+        ],
+        [
+          6,
+          2.5,
+          "power-up"
+        ],
+        [
+          7,
+          3.5,
+          "explosion"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 1,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "crush",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 5,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "reverse",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0,
+              "t1": 0.5
+            },
+            {
+              "type": "stop",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop3",
+      "role": "drop",
+      "bars": 8,
+      "chip": {
+        "arp": 0.9,
+        "lead": "A",
+        "leadOctave": 36
+      },
+      "drums": {
+        "patterns": [
+          "c",
+          "fill",
+          "b",
+          "a"
+        ],
+        "gain": 1.05
+      },
+      "bass": {
+        "engine": "reese-sat",
+        "pattern": "bounce",
+        "gain": 0.85
+      },
+      "vox": {
+        "stab": "A,B",
+        "gain": 0.4
+      },
+      "dist": {
+        "drums": {
+          "bits": 7,
+          "hold": 3,
+          "drive": 3,
+          "mix": 0.55
+        },
+        "chip": {
+          "bits": 4,
+          "hold": 4,
+          "drive": 2.8,
+          "mix": 0.6
+        },
+        "bass": {
+          "bits": 10,
+          "hold": 1,
+          "drive": 2.8,
+          "mix": 0.45
+        },
+        "vox": {
+          "bits": 5,
+          "hold": 3,
+          "drive": 2,
+          "mix": 0.5
+        }
+      },
+      "sfx": [
+        [
+          1,
+          3,
+          "laser"
+        ],
+        [
+          3,
+          2,
+          "hit"
+        ],
+        [
+          4,
+          0.5,
+          "coin"
+        ],
+        [
+          5,
+          3.5,
+          "jump"
+        ],
+        [
+          7,
+          2,
+          "level-up"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 3,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        },
+        {
+          "bar": 7,
+          "bars": 1,
+          "gestures": [
+            {
+              "type": "stutter",
+              "t0": 0.25,
+              "t1": 0.5
+            },
+            {
+              "type": "reverse",
+              "t0": 0.5,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "outro",
+      "role": "outro",
+      "bars": 4,
+      "chip": {
+        "arp": 0.7,
+        "hats": "even"
+      },
+      "drums": {
+        "patterns": [
+          "straight"
+        ],
+        "until": 2,
+        "gain": [
+          0.7,
+          0.3
+        ]
+      },
+      "sfx": [
+        [
+          3,
+          0,
+          "error"
+        ]
+      ],
+      "tape": [
+        {
+          "bar": 1,
+          "bars": 3,
+          "preset": {
+            "stopTime": 2.2
+          },
+          "gestures": [
+            {
+              "type": "stop",
+              "t0": 0.15,
+              "t1": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

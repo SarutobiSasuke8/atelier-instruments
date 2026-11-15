@@ -1,0 +1,181 @@
+{
+  "format": "chipbreak-stats/1",
+  "id": "chip-breakcore",
+  "title": "Shard Counter",
+  "kind": "track",
+  "genre": [
+    "breakcore",
+    "chip breaks"
+  ],
+  "mood": [
+    "frantic",
+    "energetic",
+    "bright"
+  ],
+  "bpm": 190,
+  "key": "E minor",
+  "durationSec": 101.05,
+  "seed": 1901,
+  "peakDbfs": -1.893781,
+  "truePeakDbtp": -1.5,
+  "lufs": -10.5,
+  "lra": 7.2,
+  "licence": "MIT (own work)",
+  "engines": [
+    "atelier-dsp@9ca58bc",
+    "atelier-instruments@9981f47"
+  ],
+  "wav": {
+    "file": "chip-breakcore.wav",
+    "bytes": 18090332,
+    "lufs": -10.5,
+    "lra": 7.2,
+    "truePeakDbtp": -1.5,
+    "samplePeakDbfs": -1.893781
+  },
+  "mp3": {
+    "file": "chip-breakcore.mp3",
+    "bytes": 4104403,
+    "lufs": -10.5,
+    "lra": 7.2,
+    "truePeakDbtp": -1.4,
+    "samplePeakDbfs": -1.657545
+  },
+  "analysis": {
+    "peakDbfs": -1.89,
+    "truePeakDbtp": -1.6,
+    "lufsJs": -10.46,
+    "lraJs": 7.2,
+    "rmsDbfs": -12.05,
+    "nonFinite": 0,
+    "flatTopRuns": 0,
+    "silentBars": [],
+    "centroidHz": 1087,
+    "bandShare": {
+      "sub": 0.206,
+      "low": 0.604,
+      "mid": 0.1,
+      "high": 0.09
+    },
+    "dropBandShare": {
+      "sub": 0.21,
+      "low": 0.614,
+      "mid": 0.103,
+      "high": 0.073
+    },
+    "dropOnsetsPerSec": 6.14,
+    "dropGrid": {
+      "localBpm": 189.75,
+      "relative": 0.82
+    },
+    "dropTempo": {
+      "bpm": 95,
+      "strength": 0.29
+    },
+    "plrDb": 8.6,
+    "tapeEdits": {
+      "counts": {
+        "stop": 5,
+        "stutter": 9,
+        "reverse": 4,
+        "crush": 3,
+        "wow": 1,
+        "flutter": 1,
+        "dropout": 2
+      },
+      "wowBars": 8,
+      "stops": [
+        {
+          "section": "build",
+          "atBar": 15,
+          "rmsBeforeDb": -12.1,
+          "rmsEndDb": -28.4,
+          "centroidEarlyHz": 2062,
+          "centroidMidHz": 1544
+        },
+        {
+          "section": "drop1",
+          "atBar": 31,
+          "rmsBeforeDb": -12.4,
+          "rmsEndDb": -24.4,
+          "centroidEarlyHz": 2219,
+          "centroidMidHz": 456
+        },
+        {
+          "section": "build2",
+          "atBar": 43,
+          "rmsBeforeDb": -10,
+          "rmsEndDb": -10.6,
+          "centroidEarlyHz": 221,
+          "centroidMidHz": 238
+        },
+        {
+          "section": "drop3",
+          "atBar": 71,
+          "rmsBeforeDb": -9.9,
+          "rmsEndDb": -31.1,
+          "centroidEarlyHz": 143,
+          "centroidMidHz": 92
+        },
+        {
+          "section": "outro",
+          "atBar": 78,
+          "rmsBeforeDb": -22.1,
+          "rmsEndDb": -21.4,
+          "centroidEarlyHz": 973,
+          "centroidMidHz": 446
+        }
+      ]
+    },
+    "sectionRmsDb": [
+      {
+        "name": "intro",
+        "role": "intro",
+        "bars": 8,
+        "rmsDb": -16.6
+      },
+      {
+        "name": "build",
+        "role": "build",
+        "bars": 8,
+        "rmsDb": -12.1
+      },
+      {
+        "name": "drop1",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -11.2
+      },
+      {
+        "name": "breakdown",
+        "role": "breakdown",
+        "bars": 8,
+        "rmsDb": -15.3
+      },
+      {
+        "name": "build2",
+        "role": "build",
+        "bars": 4,
+        "rmsDb": -11.8
+      },
+      {
+        "name": "drop2",
+        "role": "drop",
+        "bars": 16,
+        "rmsDb": -10.9
+      },
+      {
+        "name": "drop3",
+        "role": "drop",
+        "bars": 12,
+        "rmsDb": -10.6
+      },
+      {
+        "name": "outro",
+        "role": "outro",
+        "bars": 8,
+        "rmsDb": -14.5
+      }
+    ]
+  }
+}
