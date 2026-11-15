@@ -76,6 +76,12 @@ const audio = renderAmbience(
 
 `audio.left` and `audio.right` are `Float32Array`s at 44100 Hz. The same seed is the same bed.
 
+## Acid Bass Box
+
+`apps/acid-bass/` is a mono bassline machine: saw or square oscillator, resonant 24 dB low-pass, cutoff, resonance, envelope mod, decay, accent, and drive. The sequencer has 16 steps with note, octave, accent, and slide, patterns A–D with an ordered chain, randomise-in-key, tempo, and swing. Play from the computer keyboard or Web MIDI. Internal clock can send MIDI clock, or the machine can slave to MIDI clock in. Presets are JSON. Export WAV or MIDI.
+
+`engine.js` has no DOM. `renderAcidPattern(pattern, params)` returns `{ sampleRate, samples, duration }`. A pattern is `{ steps }` or `{ patterns: { A, B, C, D }, chain }`. Each step is `{ gate, note, octave, accent, slide }` — `note` is a pitch class 0–11 and `octave` is 0–2 above C2.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

@@ -89,3 +89,34 @@ export function storePresets(key, presets) {
   const clean = presets.map((entry) => JSON.parse(serializePreset(entry)));
   bin.setItem(key, JSON.stringify(clean));
 }
+
+/** Arbitrary JSON documents. Does not run them through the scalar preset schema. */
+export function loadLibrary(key) {
+  const bin = storage();
+  if (!bin) return [];
+  try {
+    const data = JSON.parse(bin.getItem(key) || "[]");
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveLibrary(key, items) {
+  const bin = storage();
+  if (!bin) return;
+  bin.setItem(key, JSON.stringify(Array.isArray(items) ? items : []));
+}
+
+export function downloadDocument(data, filename) {
+  if (typeof document === "undefined") return;
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename.endsWith(".json") ? filename : `${filename}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
