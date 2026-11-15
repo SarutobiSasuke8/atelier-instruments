@@ -76,7 +76,7 @@ const els = {
   seed: document.getElementById('seed'),
   modeSeconds: document.getElementById('mode-seconds'),
   modeBars: document.getElementById('mode-bars'),
-  app: document.querySelector('.app'),
+  app: document.querySelector('.rise'),
 };
 
 const faderInputs = new Map();
@@ -308,7 +308,12 @@ async function ensureContext() {
     const Ctx = window.AudioContext || window.webkitAudioContext;
     state.ctx = new Ctx();
   }
-  if (state.ctx.state === 'suspended') await state.ctx.resume();
+  if (state.ctx.state === 'suspended') {
+    await Promise.race([
+      state.ctx.resume(),
+      new Promise((resolve) => setTimeout(resolve, 300)),
+    ]);
+  }
   return state.ctx;
 }
 
