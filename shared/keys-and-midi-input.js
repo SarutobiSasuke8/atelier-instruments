@@ -59,6 +59,28 @@ export async function bindMidiPerformance(handlers = {}) {
 
 export { supportsMidi };
 
+/**
+ * Key-up partner for bindKeys. Same text-field guard, including range inputs.
+ * @param {Record<string, (event: KeyboardEvent) => void>} bindings
+ * @param {EventTarget} [target]
+ * @returns {() => void}
+ */
+export function bindKeyReleases(bindings, target = globalThis) {
+  const onKey = (event) => {
+    const el = event.target;
+    if (el && TEXT_FIELDS.has(el.tagName)) {
+      const type = el.getAttribute?.("type");
+      if (type !== "range") return;
+    }
+    const fn = bindings[event.code];
+    if (!fn) return;
+    event.preventDefault();
+    fn(event);
+  };
+  target.addEventListener("keyup", onKey);
+  return () => target.removeEventListener("keyup", onKey);
+}
+
 const NOTE_CODES = {
   KeyA: 0,
   KeyW: 1,

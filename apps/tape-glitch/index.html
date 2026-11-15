@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tape Glitch — Atelier</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110f0c' width='32' height='32'/%3E%3Cpath d='M4 20c4-8 8 8 12 0s8 8 12 0' fill='none' stroke='%23ffb03a' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../shared/ui-kit.css">
+  <link rel="stylesheet" href="ui/app.css">
+</head>
+<body>
+  <main class="chassis deck">
+    <span class="screw nw"></span>
+    <span class="screw ne"></span>
+    <span class="screw sw"></span>
+    <span class="screw se"></span>
+    <header class="nameplate">
+      <div>
+        <div class="brand"><a href="../../index.html">ATELIER</a> · DECK 01</div>
+        <h1>TAPE GLITCH</h1>
+        <p class="tagline">Hold a pad. The tape does the rest.</p>
+      </div>
+      <div class="deck-meta">
+        <div class="meters" aria-hidden="true">
+          <span class="led" id="led-roll"></span>
+          <span class="led rec" id="led-rec"></span>
+          <div class="vu"><i id="vu-l"></i><i id="vu-r"></i></div>
+        </div>
+        <p class="readout" id="clock">00:00.0</p>
+      </div>
+    </header>
+
+    <section class="window" id="drop">
+      <canvas id="wave" width="960" height="320"></canvas>
+      <div class="window-copy">
+        <p id="reel-name">Demo reel</p>
+        <p id="reel-hint">Drop audio on the deck to replace it</p>
+      </div>
+    </section>
+
+    <div class="transport">
+      <button class="key" id="roll" type="button" aria-pressed="false">Roll</button>
+      <button class="key" id="load" type="button">Load reel</button>
+      <input id="file" class="sr-only" type="file" accept="audio/*,.wav,.mp3,.ogg,.flac,.m4a">
+      <button class="key" id="midi" type="button">Enable MIDI</button>
+      <p id="status" role="status">Hold a pad or its key. Space rolls the tape.</p>
+    </div>
+
+    <section class="pads" id="pads" aria-label="Hold-to-play effects"></section>
+
+    <section
+      class="scratch"
+      id="scratch"
+      tabindex="0"
+      role="slider"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-label="Scratch pad. Drag sideways to scrub. Hold V and use the arrow keys."
+    >
+      <div class="scratch-grooves"></div>
+      <div class="scratch-head" id="scratch-head"></div>
+      <div class="scratch-copy">
+        <span>Scratch</span>
+        <kbd>V</kbd>
+        <em id="scratch-read">head 0.00</em>
+      </div>
+    </section>
+
+    <section class="knobs" id="knobs" aria-label="Deck trims"></section>
+
+    <section class="bench">
+      <label class="field">
+        <span>Preset</span>
+        <select id="preset"></select>
+      </label>
+      <label class="field">
+        <span>Name</span>
+        <input id="preset-name" type="text" maxlength="48" placeholder="Preset name">
+      </label>
+      <button class="key" id="random" type="button">Randomise</button>
+      <button class="key" id="save" type="button">Save JSON</button>
+      <button class="key" id="import" type="button">Load JSON</button>
+      <input id="preset-file" class="sr-only" type="file" accept="application/json,.json">
+      <button class="key alert" id="export" type="button">Export WAV</button>
+      <button class="key" id="clear-take" type="button">Clear take</button>
+    </section>
+    <p class="foot">Q wow · W flutter · A stop · S start · D stutter · R reverse · C crush · X dropout · V scratch · arrows while V · Space roll · Z randomise · Esc release</p>
+  </main>
+  <script type="module" src="ui/app.js"></script>
+</body>
+</html>
