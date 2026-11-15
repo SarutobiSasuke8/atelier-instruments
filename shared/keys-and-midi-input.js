@@ -45,6 +45,7 @@ export async function bindMidiPerformance(handlers = {}) {
   }
   try {
     const access = await openMidi();
+    handlers.onAccess?.(access);
     return listenMidi(access, handlers);
   } catch (error) {
     handlers.onStatus?.({
@@ -57,3 +58,75 @@ export async function bindMidiPerformance(handlers = {}) {
 }
 
 export { supportsMidi };
+
+const NOTE_CODES = {
+  KeyA: 0,
+  KeyW: 1,
+  KeyS: 2,
+  KeyE: 3,
+  KeyD: 4,
+  KeyF: 5,
+  KeyT: 6,
+  KeyG: 7,
+  KeyY: 8,
+  KeyH: 9,
+  KeyU: 10,
+  KeyJ: 11,
+  KeyK: 12,
+};
+
+/**
+ * Performance keyboard: note on/off for the letter row, Z/X octave, space transport.
+ * Text fields are ignored. Buttons keep their own space activation.
+ */
+export function bindKeyboardNotes(handlers, target = globalThis) {
+  const held = new Set();
+
+  function typing(event) {
+    const el = event.target;
+    if (!el || !TEXT_FIELDS.has(el.tagName)) return false;
+    const type = el.getAttribute?.("type");
+    return type !== "range";
+  }
+
+  function down(event) {
+    if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || typing(event)) return;
+    if (event.code === "Space") {
+      if (event.target?.closest?.("button, a")) return;
+      event.preventDefault();
+      handlers.onTransport?.();
+      return;
+    }
+    if (event.code === "KeyZ" || event.code === "KeyX") {
+      event.preventDefault();
+      handlers.onOctave?.(event.code === "KeyZ" ? -1 : 1);
+      return;
+    }
+    if (!Object.prototype.hasOwnProperty.call(NOTE_CODES, event.code)) return;
+    event.preventDefault();
+    if (held.has(event.code)) return;
+    held.add(event.code);
+    handlers.onNoteOn?.(NOTE_CODES[event.code], event);
+  }
+
+  function up(event) {
+    if (!held.has(event.code)) return;
+    held.delete(event.code);
+    handlers.onNoteOff?.(NOTE_CODES[event.code], event);
+  }
+
+  function blur() {
+    for (const code of held) handlers.onNoteOff?.(NOTE_CODES[code]);
+    held.clear();
+  }
+
+  target.addEventListener("keydown", down);
+  target.addEventListener("keyup", up);
+  globalThis.addEventListener?.("blur", blur);
+  return () => {
+    target.removeEventListener("keydown", down);
+    target.removeEventListener("keyup", up);
+    globalThis.removeEventListener?.("blur", blur);
+    blur();
+  };
+}
