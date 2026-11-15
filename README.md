@@ -15,6 +15,22 @@ npm run serve
 
 Open the launcher, then an instrument.
 
+## Robot Voice Vocoder
+
+`apps/robot-voice-vocoder/`
+
+A channel vocoder. The voice is the live microphone or a dropped WAV/MP3 (it can loop), and a built-in vowel speaks before either is connected. The carrier is a polyphonic saw, square, or supersaw with detune and unison, played from the computer keyboard, the on-screen keys, or Web MIDI, with chord hold and an arpeggiator.
+
+The vocoder runs at 8, 16, 24, or 32 bands, with formant shift of ±12 semitones, attack, release, sibilance, noise blend, and dry/wet. Modes are robot, choir, talkbox, whisper, and monotone. Chorus, delay, and reverb sit after the mix, with a level meter and a live band display. Record the output, or export a WAV. Six JSON presets ship in `presets/`.
+
+```js
+import { renderVocoded } from "./apps/robot-voice-vocoder/engine.js";
+
+const rendered = renderVocoded(voiceBuffer, midiNotes, preset);
+```
+
+`voiceBuffer` is a `Float32Array` or `{ samples, sampleRate }`. `midiNotes` is `[{ note, start, duration, velocity }]`. `rendered.samples` is mono PCM.
+
 ## Layout
 
 ```

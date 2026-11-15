@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Robot Voice Vocoder</title>
+    <link rel="stylesheet" href="../../shared/ui-kit.css" />
+    <link rel="stylesheet" href="ui/app.css" />
+  </head>
+  <body>
+    <main class="chassis vocoder">
+      <span class="screw nw"></span>
+      <span class="screw ne"></span>
+      <span class="screw sw"></span>
+      <span class="screw se"></span>
+      <header class="nameplate">
+        <div>
+          <a class="brand" href="../../index.html">ATELIER · RV-1</a>
+          <h1>ROBOT VOICE</h1>
+          <p class="tagline">Channel vocoder. Mic or a dropped vocal, played from the keys.</p>
+        </div>
+        <div class="transport">
+          <button class="key power" id="power" type="button" aria-pressed="false">Power</button>
+          <button class="key danger" id="record" type="button" aria-pressed="false">Record</button>
+          <button class="key" id="export" type="button">Export WAV</button>
+        </div>
+      </header>
+      <p class="readout status" id="status" role="status">Standby. Press power, then play.</p>
+
+      <div class="stage">
+        <section class="module" aria-label="Voice">
+          <h2>Voice</h2>
+          <div class="seg" role="group" aria-label="Voice source">
+            <button class="key is-on" id="src-demo" type="button" aria-pressed="true">Vowel</button>
+            <button class="key" id="src-mic" type="button" aria-pressed="false">Mic</button>
+            <button class="key" id="src-file" type="button" aria-pressed="false">File</button>
+          </div>
+          <div class="drop" id="drop">
+            <strong id="voice-name">Built-in vowel</strong>
+            <p>Drop a WAV or MP3. It loops into the modulator.</p>
+          </div>
+          <button class="key file-btn" id="file-btn" type="button">Load vocal</button>
+          <input id="file" type="file" accept="audio/*,.wav,.mp3,.ogg,.flac" hidden />
+          <label class="check"><input id="loop" type="checkbox" checked /> Loop vocal</label>
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Input</span><output id="inputGain-read">1.00</output></span>
+            <input id="inputGain" data-path="inputGain" type="range" min="0" max="2" step="0.01" value="1" />
+          </label>
+          <p class="hint">Use headphones with the mic, or the speaker feeds back.</p>
+        </section>
+
+        <section class="module" aria-label="Vocoder">
+          <h2>Vocoder</h2>
+          <div class="seg" id="modes" role="group" aria-label="Mode">
+            <button class="key" type="button" data-mode="robot" aria-pressed="true">Robot</button>
+            <button class="key" type="button" data-mode="choir">Choir</button>
+            <button class="key" type="button" data-mode="talkbox">Talkbox</button>
+            <button class="key" type="button" data-mode="whisper">Whisper</button>
+            <button class="key" type="button" data-mode="monotone">Monotone</button>
+          </div>
+          <div class="seg" id="bands" role="group" aria-label="Bands">
+            <button class="key" type="button" data-bands="8">8</button>
+            <button class="key" type="button" data-bands="16">16</button>
+            <button class="key" type="button" data-bands="24">24</button>
+            <button class="key" type="button" data-bands="32">32</button>
+          </div>
+          <div class="grid-2">
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Formant</span><output id="formant-read">0 st</output></span>
+              <input id="formant" data-path="formant" type="range" min="-12" max="12" step="1" value="0" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Resonance</span><output id="q-read">4.8</output></span>
+              <input id="q" data-path="q" type="range" min="0.8" max="14" step="0.1" value="4.8" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Attack</span><output id="attack-read">7 ms</output></span>
+              <input id="attack" data-path="attack" type="range" min="0.001" max="0.4" step="0.001" value="0.007" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Release</span><output id="release-read">50 ms</output></span>
+              <input id="release" data-path="release" type="range" min="0.008" max="0.8" step="0.001" value="0.05" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Sibilance</span><output id="sibilance-read">42%</output></span>
+              <input id="sibilance" data-path="sibilance" type="range" min="0" max="1" step="0.01" value="0.42" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Noise</span><output id="noiseBlend-read">4%</output></span>
+              <input id="noiseBlend" data-path="noiseBlend" type="range" min="0" max="1" step="0.01" value="0.04" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Dry / wet</span><output id="dryWet-read">0/100</output></span>
+              <input id="dryWet" data-path="dryWet" type="range" min="0" max="1" step="0.01" value="1" />
+            </label>
+            <label class="slider" id="root-wrap">
+              <span class="slider-top"><span class="slider-name">Drone</span><output id="root-read">A2</output></span>
+              <input id="root" data-path="root" type="range" min="24" max="84" step="1" value="45" />
+            </label>
+          </div>
+          <div class="display">
+            <div class="screen">
+              <div class="note-read" id="notes">—</div>
+              <canvas id="spectrum" width="640" height="148" aria-label="Vocoder band spectrum"></canvas>
+            </div>
+            <div class="meter" id="meter" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="module" aria-label="Carrier">
+          <h2>Carrier</h2>
+          <div class="seg" id="waves" role="group" aria-label="Wave">
+            <button class="key" type="button" data-wave="saw">Saw</button>
+            <button class="key" type="button" data-wave="square">Square</button>
+            <button class="key" type="button" data-wave="supersaw">Super</button>
+            <button class="key" type="button" data-wave="noise">Noise</button>
+          </div>
+          <div class="grid-2">
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Detune</span><output id="detune-read">7 ct</output></span>
+              <input id="detune" data-path="detune" type="range" min="0" max="50" step="1" value="7" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Unison</span><output id="unison-read">1</output></span>
+              <input id="unison" data-path="unison" type="range" min="1" max="8" step="1" value="1" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Level</span><output id="gain-read">0.90</output></span>
+              <input id="gain" data-path="gain" type="range" min="0" max="1.5" step="0.01" value="0.9" />
+            </label>
+          </div>
+          <h2>Arpeggiator</h2>
+          <div class="seg">
+            <button class="key" id="arp" type="button" aria-pressed="false">Arp off</button>
+            <button class="key" id="hold" type="button" aria-pressed="false">Hold</button>
+          </div>
+          <label class="field">
+            <span>Pattern</span>
+            <select id="pattern">
+              <option value="up">Up</option>
+              <option value="down">Down</option>
+              <option value="updown">Up / down</option>
+              <option value="random">Random</option>
+            </select>
+          </label>
+          <div class="grid-2">
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Rate</span><output id="arp-rate-read">8.0 hz</output></span>
+              <input id="arp-rate" data-path="arp.rate" type="range" min="0.5" max="16" step="0.1" value="8" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Gate</span><output id="arp-gate-read">62%</output></span>
+              <input id="arp-gate" data-path="arp.gate" type="range" min="0.08" max="0.98" step="0.01" value="0.62" />
+            </label>
+            <label class="slider">
+              <span class="slider-top"><span class="slider-name">Octaves</span><output id="arp-octaves-read">1</output></span>
+              <input id="arp-octaves" data-path="arp.octaves" type="range" min="1" max="3" step="1" value="1" />
+            </label>
+          </div>
+          <button class="key" id="midi" type="button">Enable MIDI</button>
+          <p class="hint" id="midi-state">Web MIDI is idle.</p>
+        </section>
+      </div>
+
+      <section class="module fx" aria-label="Effects">
+        <h2>Effects</h2>
+        <div class="fx-grid">
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Chorus</span><output id="chorus-read">8%</output></span>
+            <input id="chorus" data-path="chorus" type="range" min="0" max="1" step="0.01" value="0.08" />
+          </label>
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Delay</span><output id="delayMix-read">8%</output></span>
+            <input id="delayMix" data-path="delayMix" type="range" min="0" max="1" step="0.01" value="0.08" />
+          </label>
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Time</span><output id="delayTime-read">180 ms</output></span>
+            <input id="delayTime" data-path="delayTime" type="range" min="0.04" max="1.2" step="0.01" value="0.18" />
+          </label>
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Feedback</span><output id="delayFeedback-read">22%</output></span>
+            <input id="delayFeedback" data-path="delayFeedback" type="range" min="0" max="0.88" step="0.01" value="0.22" />
+          </label>
+          <label class="slider">
+            <span class="slider-top"><span class="slider-name">Reverb</span><output id="reverb-read">6%</output></span>
+            <input id="reverb" data-path="reverb" type="range" min="0" max="1" step="0.01" value="0.06" />
+          </label>
+        </div>
+      </section>
+
+      <section class="module" aria-label="Presets">
+        <h2>Presets</h2>
+        <div class="presets" id="presets">
+          <button class="key" type="button" data-preset="classic-robot.json">Classic Robot</button>
+          <button class="key" type="button" data-preset="glass-choir.json">Glass Choir</button>
+          <button class="key" type="button" data-preset="resonant-box.json">Resonant Box</button>
+          <button class="key" type="button" data-preset="night-whisper.json">Night Whisper</button>
+          <button class="key" type="button" data-preset="monotone-drone.json">Monotone Drone</button>
+          <button class="key" type="button" data-preset="wide-stack.json">Wide Stack</button>
+          <button class="key" id="save-preset" type="button">Save JSON</button>
+        </div>
+      </section>
+
+      <section class="module" aria-label="Keyboard">
+        <div class="keys-head">
+          <h2>Keyboard</h2>
+          <div class="octave">
+            <button class="key" id="oct-down" type="button" aria-label="Octave down">−</button>
+            <strong id="oct-label">C3</strong>
+            <button class="key" id="oct-up" type="button" aria-label="Octave up">+</button>
+            <button class="key" id="panic" type="button">Panic</button>
+          </div>
+        </div>
+        <div class="kb-scroll">
+          <div class="piano" id="kb" role="group" aria-label="On-screen keyboard"></div>
+        </div>
+        <p class="hint">Computer keys follow the Z row and the Q row. Hold latches a chord.</p>
+      </section>
+    </main>
+    <script type="module" src="ui/app.js"></script>
+  </body>
+</html>
