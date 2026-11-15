@@ -1,0 +1,9 @@
+{
+  "name": "Quarter Pump",
+  "bpm": 124,
+  "sweepBars": 4,
+  "output": 0.92,
+  "pump": { "enabled": true, "depth": 0.82, "shape": 0.7, "rate": "1/4", "offset": 0 },
+  "filter": { "enabled": true, "type": "lowpass", "cutoff": 14000, "resonance": 0.16 },
+  "performance": []
+}
