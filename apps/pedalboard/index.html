@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atelier Pedalboard</title><link rel="stylesheet" href="../../shared/pedalboard/pedalboard.css"><link rel="stylesheet" href="./workbench.css"></head>
+<body><main>
+<header class="workbench-head"><div><a href="../../">← Instrument workshop</a><h1>Atelier Pedalboard</h1></div><output id="signal" aria-live="polite"></output></header>
+<section class="signal-strip" aria-label="Audio input">
+<label>Input <select id="device"><option value="">Default input</option></select></label>
+<button id="refresh">Refresh</button><button id="live" aria-pressed="false">Enable live input</button><button id="demo">Play test phrase</button>
+<label>Output <input id="master" type="range" min="0" max="100" value="52"></label>
+<div class="signal-meter" aria-label="Output peak"><span id="peak"></span></div>
+</section>
+<div id="host"></div>
+</main><script type="module" src="./main.js"></script></body></html>

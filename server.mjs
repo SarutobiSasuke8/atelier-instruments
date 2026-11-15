@@ -5,7 +5,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
-const host = process.env.HOST || "0.0.0.0";
+const host = process.env.HOST || "127.0.0.1";
+const dsp = process.env.ATELIER_DSP_ROOT ? fs.realpathSync(process.env.ATELIER_DSP_ROOT) : null;
+if (dsp && !["127.0.0.1", "localhost", "::1"].includes(host)) {
+  throw new Error("The private DSP mount requires a loopback listener.");
+}
 const port = Number(process.env.PORT || 8080);
 
 const types = {
@@ -17,14 +21,32 @@ const types = {
   ".wav": "audio/wav",
   ".mid": "audio/midi",
   ".svg": "image/svg+xml",
+  ".png": "image/png",
   ".txt": "text/plain; charset=utf-8",
   ".md": "text/plain; charset=utf-8",
   ".zip": "application/zip",
 };
 
 const server = http.createServer((req, res) => {
-  const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
-  let pathname = decodeURIComponent(url.pathname);
+  let pathname;
+  try { pathname = decodeURIComponent(new URL(req.url || "/", "http://127.0.0.1").pathname); }
+  catch { res.writeHead(400).end("Invalid URL"); return; }
+  if (pathname.startsWith("/__atelier-dsp/")) {
+    const entry = pathname.match(/^\/__atelier-dsp\/(src\/(?:dsp|pedalboard)\/[a-z-]+\.js)$/);
+    if (!dsp || !entry || !["GET", "HEAD"].includes(req.method) || !/^(?:127\.0\.0\.1|localhost)(?::\d{1,5})?$/.test(req.headers.host ?? "")) {
+      res.writeHead(404).end("Private DSP is unavailable"); return;
+    }
+    const base = path.join(dsp, "src");
+    let filename;
+    try { filename = fs.realpathSync.native(path.join(dsp, entry[1])); } catch { /* Optional branch may be missing. */ }
+    if (!filename || !filename.startsWith(base + path.sep)) { res.writeHead(404).end("Not found"); return; }
+    fs.readFile(filename, (error, data) => {
+      if (error) { res.writeHead(404).end("Not found"); return; }
+      res.writeHead(200, { "Content-Type": types[".js"], "Cache-Control":"no-store" });
+      res.end(req.method === "HEAD" ? undefined : data);
+    });
+    return;
+  }
   if (pathname.endsWith("/")) pathname += "index.html";
   const file = path.resolve(root, `.${pathname}`);
   if (file !== root && !file.startsWith(root + path.sep)) {
@@ -48,5 +70,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`atelier-instruments listening on http://${host}:${port}`);
+  console.log(`atelier-instruments listening on http://${host}:${server.address().port}`);
 });
