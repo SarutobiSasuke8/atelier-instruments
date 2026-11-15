@@ -1,0 +1,160 @@
+/* Creature Sound Generator layout. Tokens live in the shared kit. */
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.scope-wrap {
+  background: var(--groove);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px #2a241c, inset 0 0 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+canvas#scope {
+  width: 100%;
+  height: 230px;
+  display: block;
+  background: #07110c;
+  border-radius: 6px;
+}
+
+.scope-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-dim);
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+.scale span { white-space: nowrap; }
+
+.meter {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  height: 10px;
+}
+
+.meter i {
+  display: block;
+  background: #1a2214;
+  border-radius: 1px;
+}
+
+.meter i.on { background: var(--phosphor); }
+.meter i.on.hot { background: var(--amber); }
+.meter i.on.clip { background: var(--alert); }
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.slider-top, .transport, .hint-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.slider-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+.pads {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.pad {
+  min-height: 92px;
+  padding: 10px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pad strong { font-size: 16px; font-weight: 700; }
+.pad small { font-family: var(--mono); letter-spacing: 0.08em; color: var(--ink-dim); font-size: 11px; }
+
+.pad .lamp {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2a2418;
+  box-shadow: inset 0 0 2px #000;
+}
+
+.pad.is-hot {
+  border-color: var(--amber);
+  color: #fff6e4;
+}
+
+.pad.is-hot .lamp {
+  background: var(--led, var(--amber));
+  box-shadow: 0 0 10px var(--led, var(--amber));
+}
+
+.pad[data-gesture="attack"] { --led: var(--alert); }
+.pad[data-gesture="hurt"] { --led: var(--amber); }
+.pad[data-gesture="death"] { --led: #c46b4a; }
+.pad[data-gesture="talk"] { --led: var(--phosphor); }
+.pad[data-gesture="idle"] { --led: var(--brass); }
+
+.transport {
+  margin-top: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.transport .field { flex: 1 1 150px; }
+.transport .key { flex: 0 0 auto; }
+
+.hint-row {
+  margin-top: 14px;
+  color: var(--ink-dim);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.hint-row span { font-family: var(--mono); letter-spacing: 0.04em; }
+
+@media (max-width: 840px) {
+  .stage { grid-template-columns: 1fr; }
+  canvas#scope { height: 190px; }
+  .pads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pad[data-gesture="talk"] { grid-column: 1 / -1; }
+  .pad { min-height: 76px; }
+}

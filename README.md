@@ -30,6 +30,17 @@ apps/<name>/
 
 An app may add helpers under `ui/`. Shared code is reused; don't fork it per instrument.
 
+## Creature Sound Generator
+
+`apps/creature-sound-generator/` vocalizes game characters: grunts, growls, purrs, chirps and chatter.
+
+- Sliders: size (tiny to huge), mood (happy, angry, scared, sleepy), species (beast, bird, insect, robot, slime), roughness.
+- Performance pads: idle, attack, hurt, death, talk. Each press is a new variation.
+- Keys `Q W E R T` or `1 2 3 4 5`. Space retriggers the last gesture.
+- Web MIDI notes C3–G3 and C4–G4 play the five gestures. CC20 size, CC21 mood, CC22 species, CC23 roughness, CC1 grit, CC7 level.
+- Export one WAV, or a zip of 10 fresh variations.
+- `engine.js` exports `renderCreature(params, seed)`.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
