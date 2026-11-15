@@ -1,0 +1,13 @@
+{
+  "name": "Cold Open",
+  "kind": "riser",
+  "lengthMode": "bars",
+  "seconds": 8,
+  "bars": 4,
+  "tempo": 140,
+  "intensity": 0.74,
+  "pitch": 34,
+  "darkness": 0.36,
+  "size": 0.64,
+  "seed": 2
+}

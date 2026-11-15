@@ -15,6 +15,8 @@ npm run serve
 
 Open the launcher, then an instrument.
 
+- [Trailer Riser & Impact](apps/trailer-riser/) — risers, whooshes, brass hits, sub drops, reverses, and impacts. `render()` in `engine.js` returns stereo PCM with no DOM.
+
 ## Layout
 
 ```
