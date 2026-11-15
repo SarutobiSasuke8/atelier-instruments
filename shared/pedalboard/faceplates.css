@@ -224,7 +224,6 @@
   --case: #783647; --heel: #2d1828; --trim: #cc8154; --title: Shrikhand, Georgia, serif;
   --round: 46% 46% 16% 16% / 12% 12% 8% 8%;
 }
-.orange .screw.tl, .orange .screw.tr { top: 26px; }
 
 .liquid {
   --case: #174a55; --heel: #171c35; --trim: #609eac; --ink: #d2f7f3;
@@ -234,14 +233,6 @@
 .rainbow {
   --case: #523878; --heel: #241b3e; --trim: #ba8b8d; --title: Shrikhand, Georgia, serif;
   --shape: polygon(14% 0, 86% 0, 100% 16%, 100% 80%, 90% 100%, 10% 100%, 0 80%, 0 16%);
-}
-.rainbow .screw.tl, .rainbow .screw.tr, .rainbow .screw.bl, .rainbow .screw.br { top: 35px; bottom: auto; }
-.rainbow .screw.bl, .rainbow .screw.br { bottom: 37px; top: auto; }
-.rainbow .stomp {
-  width: 70%;
-  border-radius: 9px;
-  background: repeating-linear-gradient(0deg, #46404b 0 3px, #211d27 4px 7px);
-  border-color: #635864;
 }
 
 .prism {
@@ -255,7 +246,6 @@
   --shape: polygon(12% 0, 88% 0, 100% 10%, 100% 88%, 84% 100%, 16% 100%, 0 88%, 0 10%);
 }
 .black .pedal-name, .chrome .pedal-name { font-size: clamp(24px, 2.75vw, 40px); }
-.black .screw.tl, .black .screw.tr { top: 26px; }
 
 .plate {
   --case: #4a5341; --heel: #232a20; --trim: #929582; --ink: #f4f1c8;
@@ -268,25 +258,18 @@
   --title: UnifrakturMaguntia, Georgia, serif;
   --shape: polygon(16% 0, 84% 0, 100% 12%, 96% 92%, 88% 100%, 12% 100%, 4% 92%, 0 12%);
 }
-.chrome .screw.tl, .chrome .screw.tr { top: 30px; }
 
 .spring {
   --case: #1b655d; --heel: #143830; --trim: #dbad58; --ink: #fff3c8;
   --led: #7cf8d4; --round: 49% 49% 13% 13% / 16% 16% 7% 7%;
   --art-fit: cover;
 }
-.spring .screw.tl, .spring .screw.tr { top: 38px; left: 15px; }
-.spring .screw.tr { left: auto; right: 15px; }
 
 .tremolo {
   --case: #773358; --heel: #2f1636; --trim: #c07859; --ink: #ffdfce;
   --led: #fa7fc2; --title: Shrikhand, Georgia, serif; --art-fit: cover;
   --shape: polygon(4% 8%, 25% 0, 75% 0, 96% 8%, 100% 41%, 89% 94%, 76% 100%, 24% 100%, 11% 94%, 0 41%);
 }
-.tremolo .screw.tl, .tremolo .screw.tr { top: 29px; left: 17px; }
-.tremolo .screw.tr { left: auto; right: 17px; }
-.tremolo .screw.bl { left: 22%; }
-.tremolo .screw.br { right: 22%; }
 
 .compressor {
   --case: #394b61; --heel: #2c2e35; --trim: #d99449; --ink: #fff0d1;
@@ -294,17 +277,12 @@
   --shape: polygon(0 0, 89% 0, 100% 7%, 100% 88%, 90% 88%, 90% 100%, 10% 100%, 10% 88%, 0 88%);
 }
 .compressor .pedal-name { font-weight: 700; text-transform: uppercase; }
-.compressor .screw.tr { top: 30px; }
-.compressor .screw.bl { left: 16%; }
-.compressor .screw.br { right: 16%; }
 
 .flanger {
   --case: #332e62; --heel: #201b38; --trim: #aba870; --led: #e5f755;
   --title: Shrikhand, Georgia, serif;
   --shape: polygon(21% 0, 79% 0, 92% 13%, 100% 51%, 92% 79%, 77% 100%, 23% 100%, 8% 79%, 0 51%, 8% 13%);
 }
-.flanger .screw.tl, .flanger .screw.bl { left: 25%; }
-.flanger .screw.tr, .flanger .screw.br { right: 25%; }
 
 .distortion {
   --case: #8f3830; --heel: #321e1b; --trim: #d88a57; --led: #ffb04b;
@@ -312,7 +290,6 @@
   --shape: polygon(7% 0, 93% 0, 100% 7%, 100% 94%, 95% 100%, 5% 100%, 0 94%, 0 7%);
 }
 .distortion .pedal-name, .graphic-eq .pedal-name { font-weight: 700; text-transform: uppercase; }
-.distortion .screw.tl, .distortion .screw.tr { top: 18px; }
 
 .graphic-eq {
   --case: #285565; --heel: #192c39; --trim: #cfa36e; --led: #8df0e0;
@@ -322,8 +299,128 @@
 .graphic-eq .enclosure { grid-template-rows: 108px 146px 84px 68px; }
 .graphic-eq .knobs { align-content: center; row-gap: 9px; }
 .graphic-eq .knob { width: 34px; height: 34px; }
-.graphic-eq .screw.bl { left: 21px; }
-.graphic-eq .screw.br { right: 21px; }
+
+.looper {
+  --case: #662631; --heel: #331b29; --trim: #c98e57; --led: #ffb05f;
+  --shape: polygon(10% 0, 90% 0, 100% 11%, 100% 84%, 87% 84%, 87% 100%, 13% 100%, 13% 84%, 0 84%, 0 11%);
+}
+.tuner {
+  --case: #215557; --heel: #15282a; --trim: #b49a60; --led: #83efb5;
+  --round: 38% 38% 18px 18px / 10% 10% 18px 18px;
+}
+.tuner .knobs { grid-template-columns: 1fr; }
+.tuner-screen, .looper-status {
+  border: 1px solid #c8b48880;
+  border-radius: 7px;
+  background: #111816e8;
+  box-shadow: inset 0 2px 5px #000d, 0 2px 5px #000d;
+  color: #e7dfb5;
+}
+.tuner-screen { display: grid; justify-items: center; gap: 3px; margin: 0 12px; padding: 5px; }
+.tuner-note { font: 700 22px/1 "Barlow Condensed", sans-serif; }
+.tuner-status, .looper-status { font: 700 12px/1.15 "Barlow Condensed", sans-serif; }
+.tuner-screen[data-in-tune=true] { color: #a8ffd1; border-color: #a8ffd187; }
+.tuner-scale {
+  position: relative;
+  width: 78%;
+  height: 7px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #846235bb, #243830 44% 56%, #846235bb);
+}
+.tuner-needle {
+  position: absolute;
+  left: calc((var(--cents, 0) + 50) * 1%);
+  width: 3px;
+  height: 9px;
+  border-radius: 3px;
+  background: currentColor;
+}
+.looper .knobs { grid-template-columns: minmax(44px, 1fr) minmax(0, 2fr); }
+.looper-status { padding: 7px 4px; margin-right: 5px; }
+.looper .heel { padding-inline: 16%; }
+.loop-action {
+  grid-row: 2;
+  border: 1px solid #a986609c;
+  border-radius: 5px;
+  padding: 5px 4px;
+  color: #fee5bf;
+  background: linear-gradient(#533128, #251d1d);
+  font: 700 12px/1 "Barlow Condensed", sans-serif;
+  cursor: pointer;
+  align-self: center;
+}
+.loop-action:first-child { grid-column: 1; }
+.loop-action:last-child { grid-column: 3; }
+.loop-action:disabled { opacity: .6; cursor: default; }
+.looper:not([data-transport=recording]):not([data-transport=overdub]):not([data-transport=playing]) .lamp {
+  background: #38251f;
+  box-shadow: 0 0 0 2px #4b3d31;
+}
+.looper[data-transport=recording] { --led: #ff5c53; }
+.looper[data-transport=playing] { --led: #a1e583; }
+
+.rainbow .knobs { grid-template-columns: repeat(2, 1fr); }
+.rainbow .stomp {
+  width: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 38%, #e8dfc0 3%, #a8a492 40%, #4e524d 49% 60%, #b8b8a9 65% 72%, #353934 75% 90%);
+}
+.expression-rocker {
+  grid-column: 1;
+  grid-row: 3;
+  position: relative;
+  z-index: 3;
+  width: clamp(47px, 32%, 88px);
+  margin: 8px auto 3px;
+  border: 2px solid #8f8072;
+  border-radius: 15px 15px 12px 12px;
+  background: linear-gradient(100deg, #202029, #110e13 55%, #423945);
+  box-shadow: 0 5px 12px #000d, inset 0 0 8px #000;
+  perspective: 290px;
+}
+.expression-tread {
+  position: absolute;
+  inset: 6px 5px;
+  border: 1px solid #a69b89;
+  border-radius: 11px 11px 9px 9px;
+  background:
+    linear-gradient(90deg, #121015a6, transparent 20% 80%, #121015a6),
+    repeating-linear-gradient(0deg, #302b33 0 5px, #80736e 6px 7px, #201d24 8px 11px);
+  box-shadow: 0 7px 2px #100f13, 0 9px 8px #000e;
+  transform: rotateX(var(--tilt, 0deg));
+  pointer-events: none;
+}
+.expression-rocker input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  opacity: 0;
+  cursor: ns-resize;
+  touch-action: none;
+}
+.expression-rocker:focus-within { outline: 2px solid #ffd7a8; outline-offset: 4px; }
+
+.pedal .screw.tl { top: var(--top-y, 14px); left: var(--top-left, 14px); }
+.pedal .screw.tr { top: var(--top-y, 14px); right: var(--top-right, var(--top-left, 14px)); left: auto; }
+.pedal .screw.bl { top: auto; bottom: var(--foot-y, 14px); left: var(--foot-left, 14px); }
+.pedal .screw.br { top: auto; bottom: var(--foot-y, 14px); right: var(--foot-right, var(--foot-left, 14px)); }
+.wood { --top-y: 21px; }
+.tape { --top-y: 24px; --top-left: 21px; --foot-left: 21px; }
+.orange, .spring, .tuner { --top-y: 44px; --top-left: 23px; --foot-left: 22px; }
+.liquid { --top-y: 23px; --top-left: 19px; --top-right: 27px; --foot-left: 26px; --foot-right: 19px; }
+.rainbow { --top-y: 43px; --foot-y: 35px; --top-left: 27px; --foot-left: 35px; }
+.prism { --top-y: 24px; --top-right: 26px; --foot-y: 28px; --foot-left: 27px; }
+.black, .chrome { --top-y: 35px; --foot-y: 34px; --top-left: 24px; --foot-left: 33px; }
+.tremolo { --top-y: 39px; --top-left: 34px; --foot-y: 20px; --foot-left: 26%; }
+.compressor, .looper { --top-y: 23px; --top-right: 26px; --foot-left: 19%; }
+.looper { --top-left: 26px; }
+.flanger { --top-left: 26%; --foot-left: 26%; --top-y: 18px; --foot-y: 18px; }
+.distortion { --top-y: 24px; --top-left: 21px; }
+.graphic-eq { --foot-left: 26px; --foot-y: 18px; }
 
 @media (max-width: 790px) { .pedal-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
@@ -341,4 +438,8 @@
   .graphic-eq .enclosure { grid-template-rows: 92px 119px 54px 57px; }
   .graphic-eq .knob { width: 27px; height: 27px; }
   .graphic-eq .dial-value { font-size: 7px; padding-inline: 1px; }
+  .rainbow .stomp { width: 38px; }
+  .tuner-screen { margin-inline: 3px; }
+  .looper .heel { padding-inline: 4%; }
+  .loop-action { font-size: 11px; }
 }

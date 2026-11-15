@@ -1,5 +1,6 @@
 import { createBrowserChain, getPedalDsp, footClick } from './audio.js';
 import { format, readPreset, formatControl } from './preset.js';
+import { createPitchDetector, tuningNote } from './tuner.js';
 
 const styles=['pedalboard.css','faceplates.css'].map(file=>new URL(file,import.meta.url));
 const node = (tag, props={}, label) => {
@@ -33,8 +34,10 @@ const effectLabels = {
   flanger: 'Flanger',
   distortion: 'Rock Distortion',
   eq: 'Graphic EQ + Boost',
+  looper: 'Stereo Looper',
+  tuner: 'Tuner + Mute',
 };
-const portraitArt = new Set(['spring','tremolo','compressor','flanger','distortion','eq']);
+const portraitArt = new Set(['spring','tremolo','compressor','flanger','distortion','eq','looper','tuner']);
 export async function mountPedalboard({ host, context, input, destination=context.destination, initial, onChange=()=>{} }) {
   installStyle();
   const dsp=await getPedalDsp();
@@ -55,6 +58,18 @@ export async function mountPedalboard({ host, context, input, destination=contex
   let snapshot=initial?readPreset(initial,dsp.normalizePedalState):{format,pedals:dsp.normalizePedalState(),midi:[]};
   const chain=await createBrowserChain(context,snapshot.pedals);
   input.connect(chain).connect(destination);
+  const pitchInput=context.createAnalyser();
+  pitchInput.fftSize=8192;
+  input.connect(pitchInput);
+  const pitchSamples=new Float32Array(pitchInput.fftSize);
+  const detectPitch=createPitchDetector(context.sampleRate,pitchSamples.length);
+  let loop={state:'empty',seconds:0};
+  chain.port.onmessage=({data})=>{
+    if(data?.type==='loop'){
+      loop=data;
+      refreshLoop();
+    }
+  };
   let midi, learning=false, target, drag;
   const pressed=new Set();
   const cellsById=new Map();
@@ -69,7 +84,7 @@ export async function mountPedalboard({ host, context, input, destination=contex
     return true;
   }
   function move(id,destinationId){
-    if(id===destinationId)return;
+    if(id===destinationId||id==='tuner'||destinationId==='tuner')return;
     const from=snapshot.pedals.findIndex(pedal=>pedal.id===id), to=snapshot.pedals.findIndex(pedal=>pedal.id===destinationId);
     if(from<0||to<0)return;
     snapshot.pedals.splice(to,0,...snapshot.pedals.splice(from,1));emit();draw();
@@ -90,16 +105,87 @@ export async function mountPedalboard({ host, context, input, destination=contex
     }
   }
   function setValue(item,index,value) {
-    item.controls[index]=clamp(value);emit();cellsById.get(item.id)?.knobs[index].refresh();
+    item.controls[index]=clamp(value);emit();cellsById.get(item.id)?.knobs[index]?.refresh();
+  }
+  function setActive(item,active){
+    item.bypass=!active;
+    const cell=cellsById.get(item.id);
+    cell.setAttribute('data-active',String(active));
+    cell.switch.setAttribute('aria-pressed',String(active));
+    emit();
+  }
+  function refreshLoop(){
+    const cell=cellsById.get('looper');
+    if(!cell)return;
+    const labels={empty:'Ready',recording:'Recording',playing:'Playing',overdub:'Overdubbing',stopped:'Stopped'};
+    const actions={empty:'Record loop',recording:'Play loop',playing:'Overdub loop',overdub:'Finish overdub',stopped:'Play loop'};
+    cell.loopStatus.textContent=loop.seconds>0?`${labels[loop.state]} · ${loop.seconds.toFixed(2)} s`:labels[loop.state];
+    cell.setAttribute('data-transport',loop.state);
+    cell.switch.setAttribute('aria-label',actions[loop.state]);
+    cell.switch.title=actions[loop.state];
+    cell.switch.removeAttribute('aria-pressed');
+    cell.stopLoop.disabled=!['recording','playing','overdub'].includes(loop.state);
+    cell.clearLoop.disabled=loop.state==='empty';
+  }
+  function transport(action){
+    const item=snapshot.pedals.find(pedal=>pedal.id==='looper');
+    if(action==='toggle'&&item.bypass)setActive(item,true);
+    void context.resume().catch(()=>{});
+    chain.port.postMessage({type:'loop',action});
+  }
+  function refreshTuner(){
+    const cell=cellsById.get('tuner');
+    if(!cell)return;
+    const on=cell.dataset.active==='true';
+    cell.tunerScreen.dataset.live=String(on);
+    cell.tunerNeedle.style.setProperty('--cents',0);
+    if(on){
+      pitchInput.getFloatTimeDomainData(pitchSamples);
+      const hz=detectPitch(pitchSamples);
+      if(hz){
+        const {note,cents}=tuningNote(hz);
+        cell.tunerNote.textContent=note;
+        cell.tunerStatus.textContent=`${cents>0?'+':''}${cents} ¢ · Muted`;
+        cell.tunerNeedle.style.setProperty('--cents',cents);
+        cell.tunerScreen.dataset.inTune=String(Math.abs(cents)<=3);
+        return;
+      }
+    }
+    cell.tunerNote.textContent='—';
+    cell.tunerStatus.textContent=on?'Play one string · Muted':'Bypass';
+    cell.tunerScreen.dataset.inTune='false';
   }
   function stomp(item) {
     if(choose(item.id,-1))return;
-    item.bypass=!item.bypass;
-    const card=cellsById.get(item.id);
-    card.setAttribute('data-active',String(!item.bypass));
-    card.switch.setAttribute('aria-pressed',String(!item.bypass));
-    emit();
-    void context.resume().then(()=>footClick(context,destination)).catch(()=>{});
+    if(item.id==='looper'){transport('toggle');return;}
+    setActive(item,item.bypass);
+    const muted=snapshot.pedals.some(pedal=>pedal.id==='tuner'&&!pedal.bypass);
+    if(item.id==='tuner')refreshTuner();
+    void context.resume().then(()=>{
+      if(item.id!=='tuner'&&!muted)footClick(context,destination);
+    }).catch(()=>{});
+  }
+  function rocker(item){
+    const holder=node('label',{class:'expression-rocker'});
+    const range=node('input',{type:'range',min:'0',max:'1000',step:'1','aria-label':'Spectrum Melt Expression'});
+    const tread=node('span',{class:'expression-tread','aria-hidden':'true'});
+    holder.append(tread,range);
+    function refresh(){
+      const position=item.controls[0];
+      range.value=String(Math.round(position*1000));
+      range.setAttribute('aria-valuetext',`${Math.round(position*100)}% toe`);
+      tread.style.setProperty('--tilt',`${(position-.5)*38}deg`);
+    }
+    range.addEventListener('pointerdown',event=>{if(choose(item.id,0))event.preventDefault();});
+    range.addEventListener('keydown',event=>{
+      if(['Enter',' '].includes(event.key)&&choose(item.id,0))event.preventDefault();
+    });
+    range.addEventListener('input',()=>{
+      if(!learning)setValue(item,0,Number(range.value)/1000);
+      else refresh();
+    });
+    refresh();
+    return {holder,refresh};
   }
   function dial(item,spec,index){
     const holder=node('div',{class:'dial'}), button=node('button',{class:'knob',type:'button',role:'slider',tabindex:'0',
@@ -142,7 +228,23 @@ export async function mountPedalboard({ host, context, input, destination=contex
       const cell=node('article',{class:`pedal ${spec.family}`,'data-id':item.id,'data-active':String(!item.bypass),'aria-label':spec.name});
       const plate=node('div',{class:'enclosure'}), crown=node('header',{class:'face-label'});
       crown.append(node('span',{class:'pedal-series'},'Atelier'),node('h3',{class:'pedal-name'},spec.name),node('span',{class:'pedal-type'},effectLabels[spec.id]));
-      const grips=node('div',{class:'knobs'});cell.knobs=spec.controls.map((_,i)=>dial(item,spec,i));grips.append(...cell.knobs.map(knob=>knob.holder));
+      const grips=node('div',{class:'knobs'});
+      cell.knobs=spec.controls.map((_,i)=>item.id==='wah'&&i===0?rocker(item):dial(item,spec,i));
+      grips.append(...cell.knobs.slice(item.id==='wah'?1:0).map(knob=>knob.holder));
+      if(item.id==='tuner'){
+        cell.tunerScreen=node('div',{class:'tuner-screen'});
+        cell.tunerNote=node('output',{class:'tuner-note','aria-label':'Detected note'},'—');
+        cell.tunerNeedle=node('span',{class:'tuner-needle','aria-hidden':'true'});
+        cell.tunerStatus=node('span',{class:'tuner-status'},'Bypass');
+        const scale=node('span',{class:'tuner-scale','aria-hidden':'true'});
+        scale.append(cell.tunerNeedle);
+        cell.tunerScreen.append(cell.tunerNote,scale,cell.tunerStatus);
+        grips.append(cell.tunerScreen);
+      }
+      if(item.id==='looper'){
+        cell.loopStatus=node('output',{class:'looper-status','aria-live':'polite'},'Ready');
+        grips.append(cell.loopStatus);
+      }
       const portrait=portraitArt.has(spec.id);
       const art=node('div',{class:portrait?'face-art':'face-art square-art','aria-hidden':'true'});
       const image=new URL(`./art/${spec.id}.webp`,import.meta.url).href;
@@ -150,26 +252,38 @@ export async function mountPedalboard({ host, context, input, destination=contex
       art.append(node('img',{src:image,alt:'',decoding:'async'}));
       const led=node('i',{class:'lamp','aria-hidden':'true'});
       const foot=node('button',{class:'stomp',type:'button','aria-label':`Bypass ${spec.name}`,'aria-pressed':String(!item.bypass)});
+      if(item.id==='tuner')foot.setAttribute('aria-label','Mute and tune');
       if(spec.family==='black') foot.append(node('span',{'aria-hidden':'true'},'☠'));
       foot.addEventListener('click',()=>stomp(item));cell.switch=foot;
       const heel=node('div',{class:'heel'});heel.append(node('span',{},'I/O'),led,foot,node('span',{},'9V'));
+      if(item.id==='looper'){
+        cell.stopLoop=node('button',{class:'loop-action',type:'button','aria-label':'Stop loop'},'Stop');
+        cell.clearLoop=node('button',{class:'loop-action',type:'button','aria-label':'Clear loop'},'Clear');
+        cell.stopLoop.addEventListener('click',()=>transport('stop'));
+        cell.clearLoop.addEventListener('click',()=>transport('clear'));
+        heel.firstElementChild.replaceWith(cell.stopLoop);
+        heel.lastElementChild.replaceWith(cell.clearLoop);
+      }
       for(const name of ['tl','tr','bl','br'])plate.append(node('i',{class:`screw ${name}`,'aria-hidden':'true'}));
       const order=node('div',{class:'order'});
       const dragger=node('button',{type:'button',draggable:'true','aria-label':`Drag ${spec.name}`},'⠿');
       dragger.addEventListener('dragstart',event=>{drag=item.id;event.dataTransfer.setData('text/plain',item.id);});
       dragger.addEventListener('dragend',()=>{drag=null;});
-      for(const [direction,label] of [[-1,'←'],[1,'→']]){
+      for(const [direction,label] of item.id==='tuner'?[]:[[-1,'←'],[1,'→']]){
         const button=node('button',{type:'button','aria-label':`Move ${spec.name} ${direction<0?'earlier':'later'}`},label);
-        if(!snapshot.pedals[index+direction])button.disabled=true;
+        if(!snapshot.pedals[index+direction]||snapshot.pedals[index+direction].id==='tuner')button.disabled=true;
         button.addEventListener('click',()=>move(item.id,snapshot.pedals[index+direction]?.id));
         order.append(button);
       }
-      order.insertBefore(dragger,order.children[1]);
+      if(item.id!=='tuner')order.insertBefore(dragger,order.children[1]);
       plate.append(crown,grips,art,heel);cell.append(plate,order);
+      if(item.id==='wah')plate.append(cell.knobs[0].holder);
       cell.addEventListener('dragover',event=>event.preventDefault());
       cell.addEventListener('drop',event=>{event.preventDefault();move(drag,item.id);drag=null;});
       cells.append(cell);cellsById.set(item.id,cell);
     }
+    refreshLoop();
+    refreshTuner();
     requestAnimationFrame(redrawCables);
   }
   const observer=new ResizeObserver(redrawCables);observer.observe(tray);
@@ -210,8 +324,14 @@ export async function mountPedalboard({ host, context, input, destination=contex
     catch(error){status.textContent=error.message;}finally{file.value='';}
   });
   draw();
+  const tunerTimer=setInterval(refreshTuner,100);
   return { board, chain, getState:()=>structuredClone(snapshot),
     setState(value){snapshot=readPreset(value,dsp.normalizePedalState);emit();draw();},
-    destroy(){observer.disconnect();input.disconnect(chain);chain.disconnect();board.remove();if(midi)for(const input of midi.inputs.values())input.onmidimessage=null;},
+    setExpression(value){
+      if(!Number.isFinite(value))throw new TypeError('Expression needs a finite number.');
+      setValue(snapshot.pedals.find(pedal=>pedal.id==='wah'),0,value);
+    },
+    setWahEnabled(enabled){setActive(snapshot.pedals.find(pedal=>pedal.id==='wah'),Boolean(enabled));},
+    destroy(){clearInterval(tunerTimer);observer.disconnect();input.disconnect(pitchInput);input.disconnect(chain);chain.disconnect();chain.port.onmessage=null;board.remove();if(midi)for(const input of midi.inputs.values())input.onmidimessage=null;},
   };
 }

@@ -70,7 +70,11 @@ async function start(){
   const inputMeter=monitorPeak(input,'input-peak'),chainMeter=monitorPeak(chainBus,'chain-peak');
   meter=setInterval(()=>{const now=performance.now();inputMeter(now);chainMeter(now);},60);
   try{
-    await mountPedalboard({host:el('host'),context,input,destination:chainBus});
+    const board=await mountPedalboard({host:el('host'),context,input,destination:chainBus});
+    window.atelierPedalboard=Object.freeze({
+      setExpression:board.setExpression,
+      setWahEnabled:board.setWahEnabled,
+    });
     say('Board ready.');
   }catch(error){
     clearInterval(meter);await context.close();context=null;
