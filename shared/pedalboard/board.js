@@ -1,7 +1,7 @@
 import { createBrowserChain, getPedalDsp, footClick } from './audio.js';
 import { format, readPreset, formatControl } from './preset.js';
 
-const styles=new URL('./pedalboard.css',import.meta.url);
+const styles=['pedalboard.css','faceplates.css'].map(file=>new URL(file,import.meta.url));
 const node = (tag, props={}, label) => {
   const item=document.createElement(tag);
   for(const [name,value] of Object.entries(props)){if(name==='class')item.className=value;else item.setAttribute(name,value);}
@@ -11,13 +11,22 @@ const node = (tag, props={}, label) => {
 const clamp = value => Math.min(1,Math.max(0,value));
 const ns = 'http://www.w3.org/2000/svg';
 function installStyle(){
-  if(![...document.styleSheets].some(sheet=>sheet.href===styles.href)&&!document.querySelector(`link[href="${styles.href}"]`))
-    document.head.append(node('link',{rel:'stylesheet',href:styles.href}));
+  for(const stylesheet of styles){
+    if(!document.querySelector(`link[href="${stylesheet.href}"]`))
+      document.head.append(node('link',{rel:'stylesheet',href:stylesheet.href}));
+  }
 }
-const finish = {
-  steel:['BOOST CIRCUIT','DRIVE / TONE'],wood:['WALNUT SERIES','VINTAGE FUZZ'],tape:['FLUTTER UNIT','MAGNETIC ECHO'],
-  orange:['ORBIT SERIES','FOUR STAGE PHASER'],liquid:['PRISM LAB','STEREO MOVEMENT'],rainbow:['SPECTRUM SERIES','EXPRESSION SWEEP'],
-  prism:['OPAL SERIES','UPPER HARMONIC'],black:['GRAVE SERIES','HIGH GAIN'],plate:['RIVET SERIES','NOISE CONTROL'],chrome:['DIVIDER SERIES','SUB OCTAVE'],
+const effectLabels = {
+  eleven: 'Overdrive',
+  walnut: 'Fuzz',
+  tape: 'Tape Delay',
+  phaser: 'Phaser',
+  chorus: 'Chorus',
+  wah: 'Wah',
+  octafuzz: 'Octave Fuzz',
+  metal: 'Metal Distortion',
+  gate: 'Noise Gate',
+  doom: 'Octave Down',
 };
 export async function mountPedalboard({ host, context, input, destination=context.destination, initial, onChange=()=>{} }) {
   installStyle();
@@ -122,11 +131,10 @@ export async function mountPedalboard({ host, context, input, destination=contex
       const spec=specById.get(item.id);
       const cell=node('article',{class:`pedal ${spec.family}`,'data-id':item.id,'data-active':String(!item.bypass),'aria-label':spec.name});
       const plate=node('div',{class:'enclosure'}), crown=node('header',{class:'face-label'});
-      const [line,title]=finish[spec.family];
-      crown.append(node('span',{class:'pedal-series'},line),node('h3',{class:'pedal-name'},spec.name),node('span',{class:'pedal-type'},title));
+      crown.append(node('span',{class:'pedal-series'},'Atelier'),node('h3',{class:'pedal-name'},spec.name),node('span',{class:'pedal-type'},effectLabels[spec.id]));
       const grips=node('div',{class:'knobs'});cell.knobs=spec.controls.map((_,i)=>dial(item,spec,i));grips.append(...cell.knobs.map(knob=>knob.holder));
       const art=node('div',{class:'face-art','aria-hidden':'true'});
-      art.append(node('i',{class:'ornament part-a'}),node('i',{class:'ornament part-b'}));
+      art.append(node('img',{src:new URL(`./art/${spec.id}.webp`,import.meta.url).href,alt:'',decoding:'async'}));
       const led=node('i',{class:'lamp','aria-hidden':'true'});
       const foot=node('button',{class:'stomp',type:'button','aria-label':`Bypass ${spec.name}`,'aria-pressed':String(!item.bypass)});
       if(spec.family==='black') foot.append(node('span',{'aria-hidden':'true'},'☠'));

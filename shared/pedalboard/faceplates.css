@@ -1,0 +1,273 @@
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("./fonts/barlowcondensed.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Cinzel;
+  src: url("./fonts/cinzel.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: Shrikhand;
+  src: url("./fonts/shrikhand.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: UnifrakturMaguntia;
+  src: url("./fonts/unifrakturmaguntia.ttf") format("truetype");
+  font-display: swap;
+}
+
+.pedal-tray {
+  background: repeating-linear-gradient(0deg, #fff1 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at 43% 0%, #3d342d, #181617 65%, #111013);
+  border: 1px solid #625343;
+  box-shadow: inset 0 0 0 4px #1b1514, inset 0 8px 18px #000a, 0 24px 50px #0009;
+}
+.pedal-cells { gap: 31px 25px; }
+.pedal {
+  --case: #612d2a;
+  --heel: #281c1d;
+  --ink: #fff1cd;
+  --trim: #d09559;
+  --label: var(--ink);
+  --led: #ffc85a;
+  --round: 13px 13px 11px 11px;
+  --shape: inset(0 round var(--round));
+  --title: Cinzel, Georgia, serif;
+  --art-position: center;
+}
+.enclosure {
+  display: grid;
+  grid-template-rows: 108px 78px 152px 68px;
+  min-height: 0;
+  align-content: start;
+  overflow: visible;
+  padding: 11px 12px 10px;
+  border: 0;
+  border-radius: var(--round);
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 2px #000d) drop-shadow(1px 12px 7px #000b);
+}
+.enclosure::before, .enclosure::after {
+  content: "";
+  position: absolute;
+  clip-path: var(--shape);
+  pointer-events: none;
+  z-index: -1;
+}
+.enclosure::before {
+  inset: 5px 0 -9px;
+  background: repeating-linear-gradient(0deg, #0003 0 1px, #fff2 1px 2px, transparent 2px 5px),
+    linear-gradient(90deg, #110e11, color-mix(in srgb, var(--trim), #1e1618 40%) 58%, #161318 95%);
+}
+.enclosure::after {
+  inset: 0 0 0;
+  opacity: 1;
+  border-radius: var(--round);
+  border: 1px solid var(--trim);
+  background: radial-gradient(ellipse at 21% 0%, #fff4, transparent 44%),
+    linear-gradient(110deg, #0005, transparent 29% 66%, #0008),
+    linear-gradient(0deg, var(--heel), var(--case) 35% 86%, var(--heel));
+  box-shadow: inset 0 2px 2px #fff8, inset 4px 0 6px #fff2,
+    inset -5px -5px 9px #0009, inset 0 0 0 3px #05040765;
+}
+.face-label {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 3px;
+}
+.pedal-series {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--ink);
+  font: 800 11px/1 Cinzel, Georgia, serif;
+  letter-spacing: .2em;
+  margin: 0;
+  opacity: 1;
+}
+.pedal-series::before, .pedal-series::after {
+  content: "";
+  border: 1px solid currentColor;
+  width: 4px;
+  height: 4px;
+  transform: rotate(45deg);
+  opacity: .82;
+}
+.pedal-name {
+  color: var(--ink);
+  font: 400 clamp(20px, 2.3vw, 34px)/.91 var(--title);
+  letter-spacing: -.045em;
+  max-width: 100%;
+  margin: 1px 0 0;
+  text-shadow: 0 2px #0009;
+}
+.pedal-type {
+  font: 700 12px/1 "Barlow Condensed", system-ui, sans-serif;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  border-block: 1px solid color-mix(in srgb, var(--trim), transparent 25%);
+  padding: 3px 8px;
+  margin: 1px 0 0;
+  opacity: 1;
+}
+.knobs {
+  align-items: center;
+  gap: 2px;
+}
+.dial-label {
+  font: 700 10px/1 "Barlow Condensed", system-ui, sans-serif;
+  letter-spacing: .055em;
+}
+.knob {
+  width: 39px;
+  height: 39px;
+  background: radial-gradient(circle at 33% 25%, #85827c, #3a3536 43%, #212025 76%);
+  border: 1px solid #060507;
+  box-shadow: 0 2px 0 2px #120e14, 1px 5px 0 2px #100d136b, 1px 8px 5px #000a,
+    inset -3px -4px 6px #000c, inset 1px 2px #c7b9a8ae;
+}
+.knob-pointer { top: 3px; height: 11px; background: var(--ink); }
+.dial-value { background: #171419; color: var(--ink); border-color: #ffffff28; }
+.face-art {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  margin: 2px 0;
+  border-radius: var(--art-radius, 7px);
+  overflow: hidden;
+  background: var(--heel);
+  box-shadow: 0 0 0 1px #110d12, 0 0 0 2px #fff3, 0 3px 7px #0009;
+}
+.face-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--art-position);
+}
+.face-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(146deg, #fff3, transparent 40%, #0002 86%);
+  box-shadow: inset 0 1px 1px #fff5, inset 0 -3px 6px #0006;
+  pointer-events: none;
+}
+.heel {
+  grid-template-rows: 17px 44px;
+  align-content: center;
+}
+.heel > span { color: var(--ink); opacity: .8; }
+.stomp {
+  box-shadow: 0 0 0 3px #0009, 0 1px 1px 3px #b9a99a8c, 0 7px 8px #000f;
+}
+.screw { width: 7px; height: 7px; }
+.screw::after { top: 3px; }
+.screw.tl, .screw.bl { left: 9px; }
+.screw.tr, .screw.br { right: 9px; }
+.screw.bl, .screw.br { bottom: 9px; }
+.order { margin-top: 18px; }
+
+.steel { --case: #842d31; --heel: #29131a; --trim: #c88b4c; --title: "Barlow Condensed", sans-serif; }
+.steel .pedal-name { font-weight: 700; text-transform: uppercase; }
+.steel .dial:first-child .knob { border-radius: 43% 43% 47% 47%; }
+
+.wood {
+  --case: #405426; --heel: #192619; --trim: #9b8150; --ink: #f4f2ba;
+  --title: Shrikhand, Georgia, serif; --round: 28px 28px 18px 18px;
+  --art-radius: 21px 21px 10px 10px;
+}
+.wood .enclosure::after {
+  background: repeating-linear-gradient(90deg, #e1a76b1c 0 1px, transparent 1px 6px),
+    linear-gradient(90deg, #4b2f20 0 5%, transparent 7% 93%, #503120 95%),
+    linear-gradient(135deg, #5d703a, var(--case) 42%, var(--heel));
+}
+.wood .pedal-name, .rainbow .pedal-name { font-size: clamp(20px, 2.15vw, 31px); }
+
+.tape {
+  --case: #8d4829; --heel: #302021; --trim: #d78949; --title: "Barlow Condensed", sans-serif;
+  --shape: polygon(8% 0, 92% 0, 100% 9%, 100% 91%, 94% 100%, 6% 100%, 0 91%, 0 9%);
+}
+.tape .pedal-name { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+.tape .face-art { border: 3px ridge #c08352; border-radius: 5px; }
+
+.orange {
+  --case: #783647; --heel: #2d1828; --trim: #cc8154; --title: Shrikhand, Georgia, serif;
+  --round: 46% 46% 16% 16% / 12% 12% 8% 8%;
+  --art-radius: 40% 40% 16% 16% / 18% 18% 12% 12%;
+}
+.orange .screw.tl, .orange .screw.tr { top: 26px; }
+
+.liquid {
+  --case: #174a55; --heel: #171c35; --trim: #609eac; --ink: #d2f7f3;
+  --title: Shrikhand, Georgia, serif; --round: 18px 39px 17px 32px;
+  --art-radius: 20% 8% 19% 8%;
+}
+
+.rainbow {
+  --case: #523878; --heel: #241b3e; --trim: #ba8b8d; --title: Shrikhand, Georgia, serif;
+  --shape: polygon(14% 0, 86% 0, 100% 16%, 100% 80%, 90% 100%, 10% 100%, 0 80%, 0 16%);
+}
+.rainbow .screw.tl, .rainbow .screw.tr, .rainbow .screw.bl, .rainbow .screw.br { top: 35px; bottom: auto; }
+.rainbow .screw.bl, .rainbow .screw.br { bottom: 37px; top: auto; }
+.rainbow .face-art { border-radius: 22px 22px 8px 8px; }
+.rainbow .stomp {
+  width: 70%;
+  border-radius: 9px;
+  background: repeating-linear-gradient(0deg, #46404b 0 3px, #211d27 4px 7px);
+  border-color: #635864;
+}
+
+.prism {
+  --case: #704465; --heel: #2c1b35; --trim: #be8eaf; --ink: #ffe7e8;
+  --shape: polygon(0 0, 86% 0, 100% 9%, 100% 100%, 14% 100%, 0 91%);
+}
+.prism .face-art { --art-radius: 5px 21px 5px 21px; }
+
+.black {
+  --case: #50262a; --heel: #21171a; --trim: #968581; --ink: #fff0e1;
+  --title: UnifrakturMaguntia, Georgia, serif;
+  --shape: polygon(12% 0, 88% 0, 100% 10%, 100% 88%, 84% 100%, 16% 100%, 0 88%, 0 10%);
+}
+.black .pedal-name, .chrome .pedal-name { font-size: clamp(24px, 2.75vw, 40px); }
+.black .face-art { --art-radius: 19% 19% 15% 15% / 20% 20% 13% 13%; }
+.black .screw.tl, .black .screw.tr { top: 26px; }
+
+.plate {
+  --case: #4a5341; --heel: #232a20; --trim: #929582; --ink: #f4f1c8;
+  --title: "Barlow Condensed", sans-serif; --round: 5px;
+}
+.plate .pedal-name { font-weight: 700; text-transform: uppercase; }
+.plate .face-art { border: 3px ridge #747466; --art-radius: 3px; }
+
+.chrome {
+  --case: #364362; --heel: #1a2034; --trim: #abb6ce; --ink: #ebf5ff;
+  --title: UnifrakturMaguntia, Georgia, serif;
+  --art-position: center 18%;
+  --shape: polygon(16% 0, 84% 0, 100% 12%, 96% 92%, 88% 100%, 12% 100%, 4% 92%, 0 12%);
+}
+.chrome .face-art { --art-radius: 18px 18px 9px 9px; }
+.chrome .screw.tl, .chrome .screw.tr { top: 30px; }
+
+@media (max-width: 560px) {
+  .pedal-cells { gap: 26px 16px; }
+  .enclosure { grid-template-rows: 92px 63px 110px 57px; padding: 7px 8px; }
+  .pedal-name, .wood .pedal-name, .rainbow .pedal-name,
+  .black .pedal-name, .chrome .pedal-name { font-size: 23px; }
+  .pedal-series { font-size: 9px; }
+  .pedal-type { font-size: 10px; padding-inline: 4px; letter-spacing: .07em; }
+  .knob { width: 31px; height: 31px; }
+  .dial-label { font-size: 9px; letter-spacing: 0; }
+  .heel { grid-template-rows: 13px 39px; }
+  .stomp { height: 38px; width: 38px; }
+}

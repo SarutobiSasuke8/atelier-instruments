@@ -22,6 +22,8 @@ const types = {
   ".mid": "audio/midi",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".webp": "image/webp",
+  ".ttf": "font/ttf",
   ".txt": "text/plain; charset=utf-8",
   ".md": "text/plain; charset=utf-8",
   ".zip": "application/zip",

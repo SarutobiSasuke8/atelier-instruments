@@ -19,6 +19,8 @@ const preset = board.getState();
 board.setState(preset);
 ```
 
-The mount connects the given source to the chain and destination. When replacing an existing dry route, disconnect that route only after mounting succeeds. Call `board.destroy()` to detach the chain. Effects, parameter smoothing and bypass are in the private DSP package. The live module uses an AudioWorklet. The octave-down follows a single note most clearly. Art consists of original CSS and vector patch cables.
+The mount connects the given source to the chain and destination. When replacing an existing dry route, disconnect that route only after mounting succeeds. Call `board.destroy()` to detach the chain. Effects, parameter smoothing and bypass are in the private DSP package. The live module uses an AudioWorklet. The octave-down follows a single note most clearly.
+
+The pedalboard uses original generated screen-print artwork and CSS enclosures. Barlow Condensed, Cinzel, Shrikhand and UnifrakturMaguntia are bundled locally from Google Fonts. Their SIL Open Font Licenses and credits are in [the font directory](../../shared/pedalboard/fonts).
 
 This app is awaiting art approval. The review folder contains a full board capture and a close-up of every pedal.
