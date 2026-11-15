@@ -1,0 +1,13 @@
+{
+  "name": "Tunnel Pass",
+  "kind": "whoosh",
+  "lengthMode": "seconds",
+  "seconds": 1.35,
+  "bars": 1,
+  "tempo": 120,
+  "intensity": 0.68,
+  "pitch": 48,
+  "darkness": 0.28,
+  "size": 0.7,
+  "seed": 11
+}

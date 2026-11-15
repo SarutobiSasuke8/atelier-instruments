@@ -1,0 +1,12 @@
+{
+  "name": "Close Hum",
+  "vowelX": 0.18,
+  "vowelY": 0.24,
+  "choirSize": 4,
+  "breathiness": 0.08,
+  "vibrato": 0.18,
+  "vibratoRate": 4.6,
+  "reverb": 0.16,
+  "sweep": false,
+  "sweepRate": 0.06
+}

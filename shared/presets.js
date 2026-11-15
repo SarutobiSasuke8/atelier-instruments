@@ -38,6 +38,32 @@ export function serializePreset(preset) {
   return JSON.stringify(parsed, null, 2);
 }
 
+/**
+ * Parse a preset document without forcing one instrument's fields.
+ * parsePreset stays shaped for the creature desk.
+ * @param {string} text
+ */
+export function parseLoosePreset(text) {
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error("Preset is not valid JSON");
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new Error("Preset must be a JSON object");
+  }
+  if (data.performance != null && !Array.isArray(data.performance)) {
+    throw new Error("performance must be an array");
+  }
+  return data;
+}
+
+export function serializeLoosePreset(preset) {
+  const data = parseLoosePreset(JSON.stringify(preset ?? {}));
+  return JSON.stringify(data, null, 2);
+}
+
 export function presetFilename(name) {
   const slug = String(name || "preset")
     .toLowerCase()
@@ -88,6 +114,37 @@ export function storePresets(key, presets) {
   if (!bin) return;
   const clean = presets.map((entry) => JSON.parse(serializePreset(entry)));
   bin.setItem(key, JSON.stringify(clean));
+}
+
+/** Arbitrary JSON documents. Does not run them through the scalar preset schema. */
+export function loadLibrary(key) {
+  const bin = storage();
+  if (!bin) return [];
+  try {
+    const data = JSON.parse(bin.getItem(key) || "[]");
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveLibrary(key, items) {
+  const bin = storage();
+  if (!bin) return;
+  bin.setItem(key, JSON.stringify(Array.isArray(items) ? items : []));
+}
+
+export function downloadDocument(data, filename) {
+  if (typeof document === "undefined") return;
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename.endsWith(".json") ? filename : `${filename}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
 
 /** JSON object that is not run through an instrument-specific schema. */

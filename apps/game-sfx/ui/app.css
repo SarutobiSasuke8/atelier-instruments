@@ -1,0 +1,209 @@
+/* Game Sound Effects Maker layout. Tokens live in the shared kit. */
+
+.bench {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 8px;
+}
+
+.cat-list {
+  display: grid;
+  gap: 8px;
+}
+
+.cat-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.cat-btn {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cat-btn small {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+.cat-btn[aria-pressed="true"] {
+  border-color: var(--amber);
+  color: #fff6e4;
+}
+
+.cat-btn[aria-pressed="true"] small {
+  color: var(--amber);
+}
+
+.scope-wrap {
+  background: var(--groove);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px #2a241c, inset 0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+canvas#scope {
+  width: 100%;
+  height: 168px;
+  display: block;
+  background: #07110c;
+  border-radius: 6px;
+}
+
+.scope-meta,
+.slider-top,
+.transport,
+.hint-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.scope-meta {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-dim);
+}
+
+.audition {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.audition input {
+  accent-color: var(--amber);
+  width: 16px;
+  height: 16px;
+}
+
+.editor {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.sliders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+}
+
+.slider-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+}
+
+.key.accent {
+  background: linear-gradient(#ffe0a8, #d08920 46%, #6a4510);
+  color: #2a1c08;
+  border-color: #8a5a16;
+}
+
+.key[aria-pressed="true"] {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.key:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.transport {
+  align-items: flex-end;
+}
+
+.transport.bank {
+  margin-top: 16px;
+}
+
+.transport .field {
+  flex: 1 1 160px;
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--ink-dim);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.hint-row {
+  margin: 14px 0 0;
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+.hint-row span {
+  font-family: var(--mono);
+  letter-spacing: 0.03em;
+}
+
+.hint-row a {
+  color: var(--amber);
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hint-row a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 840px) {
+  .bench {
+    grid-template-columns: 1fr;
+  }
+
+  .editor {
+    order: -1;
+  }
+
+  .sliders {
+    grid-template-columns: 1fr;
+  }
+
+  canvas#scope {
+    height: 140px;
+  }
+}

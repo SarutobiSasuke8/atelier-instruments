@@ -1,0 +1,485 @@
+{
+  "name": "Warehouse Floor",
+  "params": {
+    "waveform": "saw",
+    "cutoff": 0.36,
+    "resonance": 0.78,
+    "envMod": 0.84,
+    "decay": 0.34,
+    "accent": 0.88,
+    "drive": 0.32,
+    "tempo": 128,
+    "swing": 0.08
+  },
+  "key": 9,
+  "scale": "minor",
+  "chain": [
+    "A"
+  ],
+  "patterns": {
+    "A": {
+      "steps": [
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 7,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        }
+      ]
+    },
+    "B": {
+      "steps": [
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 7,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        }
+      ]
+    },
+    "C": {
+      "steps": [
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 7,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        }
+      ]
+    },
+    "D": {
+      "steps": [
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 2,
+          "octave": 1,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 7,
+          "octave": 0,
+          "accent": false,
+          "slide": true
+        },
+        {
+          "gate": true,
+          "note": 9,
+          "octave": 0,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 0,
+          "octave": 1,
+          "accent": true,
+          "slide": false
+        },
+        {
+          "gate": false,
+          "note": 0,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        },
+        {
+          "gate": true,
+          "note": 4,
+          "octave": 1,
+          "accent": false,
+          "slide": false
+        }
+      ]
+    }
+  }
+}

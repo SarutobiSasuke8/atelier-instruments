@@ -1,0 +1,12 @@
+{
+  "name": "Night Procession",
+  "vowelX": 0.32,
+  "vowelY": 0.5,
+  "choirSize": 8,
+  "breathiness": 0.34,
+  "vibrato": 0.28,
+  "vibratoRate": 4.4,
+  "reverb": 0.82,
+  "sweep": true,
+  "sweepRate": 0.05
+}
