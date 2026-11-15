@@ -1,0 +1,13 @@
+{
+  "name": "Eight Bar Climb",
+  "kind": "riser",
+  "lengthMode": "bars",
+  "seconds": 8,
+  "bars": 8,
+  "tempo": 120,
+  "intensity": 0.8,
+  "pitch": 38,
+  "darkness": 0.24,
+  "size": 0.74,
+  "seed": 21
+}

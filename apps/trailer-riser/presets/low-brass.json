@@ -1,0 +1,13 @@
+{
+  "name": "Low Brass",
+  "kind": "brass",
+  "lengthMode": "seconds",
+  "seconds": 2.8,
+  "bars": 2,
+  "tempo": 90,
+  "intensity": 0.82,
+  "pitch": 31,
+  "darkness": 0.48,
+  "size": 0.72,
+  "seed": 5
+}

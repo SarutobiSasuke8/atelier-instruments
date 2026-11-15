@@ -1,0 +1,13 @@
+{
+  "name": "Far Thunder",
+  "kind": "impact",
+  "lengthMode": "seconds",
+  "seconds": 3.2,
+  "bars": 2,
+  "tempo": 72,
+  "intensity": 0.58,
+  "pitch": 28,
+  "darkness": 0.78,
+  "size": 0.92,
+  "seed": 15
+}

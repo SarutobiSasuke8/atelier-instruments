@@ -1,0 +1,12 @@
+{
+  "name": "Glass Vowels",
+  "vowelX": 0.84,
+  "vowelY": 0.2,
+  "choirSize": 6,
+  "breathiness": 0.14,
+  "vibrato": 0.55,
+  "vibratoRate": 5.6,
+  "reverb": 0.48,
+  "sweep": true,
+  "sweepRate": 0.1
+}
