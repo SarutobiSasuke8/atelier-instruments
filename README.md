@@ -1,8 +1,8 @@
 # Atelier Instruments
 
-A private workshop of browser instruments. Plain HTML, CSS and ES modules, the Web Audio API for playback, and no libraries or build step. Synthesis runs as ordinary JavaScript so an agent, a test, or a batch export can render audio without a browser.
+A workshop of browser instruments for making sounds, playing parts and exporting audio. The apps use HTML, CSS, JavaScript and the Web Audio API. Their engines can also render audio outside the browser.
 
-Everything here is original and released under the MIT license.
+The repository is licensed under MIT.
 
 ## Run
 
@@ -11,12 +11,23 @@ npm test
 npm run serve
 ```
 
-`npm test` runs `node:test` for every `apps/<name>/test/*.test.js`. `npm run serve` starts a static server at the repo root (port 8080, or `PORT`).
+`npm test` runs the instrument tests with Node.js 18 or newer. `npm run serve` starts the static server on port 8080, or the port set in `PORT`. Open http://localhost:8080 and pick an instrument. Use localhost or HTTPS for microphone and Web MIDI permission prompts.
 
-Open the launcher, then an instrument.
+## Instruments
 
-- [Trailer Riser & Impact](apps/trailer-riser/) — risers, whooshes, brass hits, sub drops, reverses, and impacts. `render()` in `engine.js` returns stereo PCM with no DOM.
-- [Vowel Choir Pad](apps/vowel-choir-pad/) — drag a dot across ooh, oh, ah, eh, and ee. Chords from the computer keyboard or Web MIDI. Choir size, breath, vibrato, reverb, and a sweep that glides between vowels.
+- Acid Bass Box ([open app](apps/acid-bass/index.html), [controls and MIDI map](apps/acid-bass/README.md))
+- Ambience ([open app](apps/ambience/index.html), [controls and MIDI map](apps/ambience/README.md))
+- Arpeggiator Lab ([open app](apps/arp-lab/index.html), [controls and MIDI map](apps/arp-lab/README.md))
+- Chord Pad Player ([open app](apps/chord-pads/index.html), [controls and MIDI map](apps/chord-pads/README.md))
+- Creature Sound Generator ([open app](apps/creature-sound-generator/index.html), [controls and MIDI map](apps/creature-sound-generator/README.md))
+- Game Sound Effects Maker ([open app](apps/game-sfx/index.html), [controls and MIDI map](apps/game-sfx/README.md))
+- Pump Sweep ([open app](apps/pump-sweep/index.html), [controls and MIDI map](apps/pump-sweep/README.md))
+- Robot Voice Vocoder ([open app](apps/robot-voice-vocoder/index.html), [controls and MIDI map](apps/robot-voice-vocoder/README.md))
+- Tape Glitch ([open app](apps/tape-glitch/index.html), [controls and MIDI map](apps/tape-glitch/README.md))
+- Trailer Riser & Impact ([open app](apps/trailer-riser/index.html), [controls and MIDI map](apps/trailer-riser/README.md))
+- Vowel Choir Pad ([open app](apps/vowel-choir-pad/index.html), [controls and MIDI map](apps/vowel-choir-pad/README.md))
+
+See [Contributing](CONTRIBUTING.md) for changes to an instrument or the launcher.
 
 ## Layout
 
@@ -111,7 +122,7 @@ Pads answer to the pointer, the computer keys `1–4` `Q–R` `A–F` `Z–V`, a
 - Sliders: size (tiny to huge), mood (happy, angry, scared, sleepy), species (beast, bird, insect, robot, slime), roughness.
 - Performance pads: idle, attack, hurt, death, talk. Each press is a new variation.
 - Keys `Q W E R T` or `1 2 3 4 5`. Space retriggers the last gesture.
-- Web MIDI notes C3–G3 and C4–G4 play the five gestures. CC20 size, CC21 mood, CC22 species, CC23 roughness, CC1 grit, CC7 level.
+- Web MIDI notes 48–52 or 60–64 play the five gestures. CC 20–23 control size, mood, species and roughness. CC 1 also controls roughness and CC 7 sets level.
 - Export one WAV, or a zip of 10 fresh variations.
 - `engine.js` exports `renderCreature(params, seed)`.
 
