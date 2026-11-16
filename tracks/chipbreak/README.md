@@ -1,6 +1,6 @@
 # Chipbreak tune pack
 
-Eight original tunes that mix chiptune arps, chopped breakbeats, tape damage and heavy distortion, one per sub-style. Every sound is synthesised by [atelier-dsp](https://github.com/SarutobiSasuke8/atelier-dsp) and the engines in `apps/`. There are no samples and no third-party audio. The break patterns, melodies and chord loops are our own. Nothing here is named after, or copies, a real artist, label or track. MIT.
+Eight original tunes that mix chiptune arps, chopped breakbeats, tape damage and heavy distortion, one per sub-style. Every sound is synthesised by [atelier-dsp](https://github.com/SarutobiSasuke8/atelier-dsp) and the engines in `apps/`. The atelier-dsp repository is not public yet, so you need access to it to re-render these tracks. The apps in this repository do not depend on it. There are no samples and no third-party audio. The break patterns, melodies and chord loops are our own. Nothing here is named after, or copies, a real artist, label or track. MIT.
 
 Nobody has listened to these yet. Every figure below was measured from the audio, and the notes under each track say so.
 
