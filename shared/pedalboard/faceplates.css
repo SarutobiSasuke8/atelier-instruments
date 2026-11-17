@@ -1,0 +1,445 @@
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("./fonts/barlowcondensed.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Cinzel;
+  src: url("./fonts/cinzel.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: Shrikhand;
+  src: url("./fonts/shrikhand.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: UnifrakturMaguntia;
+  src: url("./fonts/unifrakturmaguntia.ttf") format("truetype");
+  font-display: swap;
+}
+
+.pedal-tray {
+  background: repeating-linear-gradient(0deg, #fff1 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at 43% 0%, #3d342d, #181617 65%, #111013);
+  border: 1px solid #625343;
+  box-shadow: inset 0 0 0 4px #1b1514, inset 0 8px 18px #000a, 0 24px 50px #0009;
+}
+.pedal-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 31px 25px; }
+.pedal {
+  --case: #612d2a;
+  --heel: #281c1d;
+  --ink: #fff1cd;
+  --trim: #d09559;
+  --label: var(--ink);
+  --led: #ffc85a;
+  --round: 13px 13px 11px 11px;
+  --shape: inset(0 round var(--round));
+  --title: Cinzel, Georgia, serif;
+  --art-position: center;
+  --art-fit: cover;
+}
+.enclosure {
+  display: grid;
+  grid-template-rows: 108px 78px 152px 68px;
+  min-height: 0;
+  align-content: start;
+  overflow: visible;
+  padding: 11px 12px 10px;
+  border: 0;
+  border-radius: var(--round);
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 2px #000d) drop-shadow(1px 12px 7px #000b);
+}
+.enclosure::before, .enclosure::after {
+  content: "";
+  position: absolute;
+  clip-path: var(--shape);
+  pointer-events: none;
+  z-index: -1;
+}
+.enclosure::before {
+  inset: 5px 0 -9px;
+  background: repeating-linear-gradient(0deg, #0003 0 1px, #fff2 1px 2px, transparent 2px 5px),
+    linear-gradient(90deg, #110e11, color-mix(in srgb, var(--trim), #1e1618 40%) 58%, #161318 95%);
+}
+.enclosure::after {
+  inset: 0 0 0;
+  opacity: 1;
+  border-radius: var(--round);
+  border: 1px solid var(--trim);
+  background: radial-gradient(ellipse at 21% 0%, #fff4, transparent 44%),
+    linear-gradient(110deg, #0005, transparent 29% 66%, #0008),
+    linear-gradient(0deg, var(--heel), var(--case) 35% 86%, var(--heel));
+  box-shadow: inset 0 2px 2px #fff8, inset 4px 0 6px #fff2,
+    inset -5px -5px 9px #0009, inset 0 0 0 3px #05040765;
+}
+.face-label {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 3px;
+  text-shadow: 0 1px 3px #000, 0 2px 7px #000;
+}
+.pedal-series {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--ink);
+  font: 800 11px/1 Cinzel, Georgia, serif;
+  letter-spacing: .2em;
+  margin: 0;
+  opacity: 1;
+}
+.pedal-series::before, .pedal-series::after {
+  content: "";
+  border: 1px solid currentColor;
+  width: 4px;
+  height: 4px;
+  transform: rotate(45deg);
+  opacity: .82;
+}
+.pedal-name {
+  color: var(--ink);
+  font: 400 clamp(20px, 2.3vw, 34px)/.91 var(--title);
+  letter-spacing: -.045em;
+  max-width: 100%;
+  margin: 1px 0 0;
+  text-shadow: 0 2px #0009;
+}
+.pedal-type {
+  font: 700 12px/1 "Barlow Condensed", system-ui, sans-serif;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  border-block: 1px solid color-mix(in srgb, var(--trim), transparent 25%);
+  padding: 3px 8px;
+  margin: 1px 0 0;
+  opacity: 1;
+}
+.knobs {
+  align-items: center;
+  gap: 2px;
+}
+.dial-label {
+  font: 700 10px/1 "Barlow Condensed", system-ui, sans-serif;
+  letter-spacing: .055em;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: #141016b8;
+  text-shadow: 0 1px 2px #000;
+}
+.knob {
+  width: 39px;
+  height: 39px;
+  background: radial-gradient(circle at 33% 25%, #85827c, #3a3536 43%, #212025 76%);
+  border: 1px solid #060507;
+  box-shadow: 0 2px 0 2px #120e14, 1px 5px 0 2px #100d136b, 1px 8px 5px #000a,
+    inset -3px -4px 6px #000c, inset 1px 2px #c7b9a8ae;
+}
+.knob-pointer { top: 3px; height: 11px; background: var(--ink); }
+.dial-value { background: #171419; color: var(--ink); border-color: #ffffff28; }
+.face-art {
+  position: absolute;
+  inset: 3px;
+  z-index: 0;
+  clip-path: var(--shape);
+  overflow: hidden;
+  pointer-events: none;
+}
+.face-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--art-fit);
+  object-position: var(--art-position);
+}
+.square-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--art-image) center / cover no-repeat;
+  filter: brightness(.68);
+}
+.square-art img {
+  position: absolute;
+  inset: 57% 0 auto;
+  height: auto;
+  transform: translateY(-50%);
+  mask-image: linear-gradient(transparent, #000 23% 75%, transparent);
+}
+.face-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #0005, transparent 10% 91%, #0006),
+    linear-gradient(180deg, #151018ae 0%, #151018d9 14%, #151018a8 30%,
+      #15101818 47%, transparent 70%, #100d12aa 100%);
+  box-shadow: inset 0 1px 3px #fff6, inset 0 -4px 7px #0008;
+  pointer-events: none;
+}
+.heel {
+  grid-row: 4;
+  grid-template-rows: 17px 44px;
+  align-content: center;
+}
+.heel > span { color: var(--ink); opacity: .95; text-shadow: 0 1px 3px #000, 0 1px 5px #000; }
+.stomp {
+  box-shadow: 0 0 0 3px #0009, 0 1px 1px 3px #b9a99a8c, 0 7px 8px #000f;
+}
+.screw { width: 7px; height: 7px; }
+.screw::after { top: 3px; }
+.screw.tl, .screw.bl { left: 9px; }
+.screw.tr, .screw.br { right: 9px; }
+.screw.bl, .screw.br { bottom: 9px; }
+.order { margin-top: 18px; }
+
+.steel { --case: #842d31; --heel: #29131a; --trim: #c88b4c; --title: "Barlow Condensed", sans-serif; }
+.steel .pedal-name { font-weight: 700; text-transform: uppercase; }
+.steel .dial:first-child .knob { border-radius: 43% 43% 47% 47%; }
+
+.wood {
+  --case: #405426; --heel: #192619; --trim: #9b8150; --ink: #f4f2ba;
+  --title: Shrikhand, Georgia, serif; --round: 28px 28px 18px 18px;
+}
+.wood .enclosure::after {
+  background: repeating-linear-gradient(90deg, #e1a76b1c 0 1px, transparent 1px 6px),
+    linear-gradient(90deg, #4b2f20 0 5%, transparent 7% 93%, #503120 95%),
+    linear-gradient(135deg, #5d703a, var(--case) 42%, var(--heel));
+}
+.wood .pedal-name, .rainbow .pedal-name { font-size: clamp(20px, 2.15vw, 31px); }
+
+.tape {
+  --case: #8d4829; --heel: #302021; --trim: #d78949; --title: "Barlow Condensed", sans-serif;
+  --shape: polygon(8% 0, 92% 0, 100% 9%, 100% 91%, 94% 100%, 6% 100%, 0 91%, 0 9%);
+}
+.tape .pedal-name { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+
+.orange {
+  --case: #783647; --heel: #2d1828; --trim: #cc8154; --title: Shrikhand, Georgia, serif;
+  --round: 46% 46% 16% 16% / 12% 12% 8% 8%;
+}
+
+.liquid {
+  --case: #174a55; --heel: #171c35; --trim: #609eac; --ink: #d2f7f3;
+  --title: Shrikhand, Georgia, serif; --round: 18px 39px 17px 32px;
+}
+
+.rainbow {
+  --case: #523878; --heel: #241b3e; --trim: #ba8b8d; --title: Shrikhand, Georgia, serif;
+  --shape: polygon(14% 0, 86% 0, 100% 16%, 100% 80%, 90% 100%, 10% 100%, 0 80%, 0 16%);
+}
+
+.prism {
+  --case: #704465; --heel: #2c1b35; --trim: #be8eaf; --ink: #ffe7e8;
+  --shape: polygon(0 0, 86% 0, 100% 9%, 100% 100%, 14% 100%, 0 91%);
+}
+
+.black {
+  --case: #50262a; --heel: #21171a; --trim: #968581; --ink: #fff0e1;
+  --title: UnifrakturMaguntia, Georgia, serif;
+  --shape: polygon(12% 0, 88% 0, 100% 10%, 100% 88%, 84% 100%, 16% 100%, 0 88%, 0 10%);
+}
+.black .pedal-name, .chrome .pedal-name { font-size: clamp(24px, 2.75vw, 40px); }
+
+.plate {
+  --case: #4a5341; --heel: #232a20; --trim: #929582; --ink: #f4f1c8;
+  --title: "Barlow Condensed", sans-serif; --round: 5px;
+}
+.plate .pedal-name { font-weight: 700; text-transform: uppercase; }
+
+.chrome {
+  --case: #364362; --heel: #1a2034; --trim: #abb6ce; --ink: #ebf5ff;
+  --title: UnifrakturMaguntia, Georgia, serif;
+  --shape: polygon(16% 0, 84% 0, 100% 12%, 96% 92%, 88% 100%, 12% 100%, 4% 92%, 0 12%);
+}
+
+.spring {
+  --case: #1b655d; --heel: #143830; --trim: #dbad58; --ink: #fff3c8;
+  --led: #7cf8d4; --round: 49% 49% 13% 13% / 16% 16% 7% 7%;
+  --art-fit: cover;
+}
+
+.tremolo {
+  --case: #773358; --heel: #2f1636; --trim: #c07859; --ink: #ffdfce;
+  --led: #fa7fc2; --title: Shrikhand, Georgia, serif; --art-fit: cover;
+  --shape: polygon(4% 8%, 25% 0, 75% 0, 96% 8%, 100% 41%, 89% 94%, 76% 100%, 24% 100%, 11% 94%, 0 41%);
+}
+
+.compressor {
+  --case: #394b61; --heel: #2c2e35; --trim: #d99449; --ink: #fff0d1;
+  --led: #ffa05e; --title: "Barlow Condensed", sans-serif; --art-fit: cover;
+  --shape: polygon(0 0, 89% 0, 100% 7%, 100% 88%, 90% 88%, 90% 100%, 10% 100%, 10% 88%, 0 88%);
+}
+.compressor .pedal-name { font-weight: 700; text-transform: uppercase; }
+
+.flanger {
+  --case: #332e62; --heel: #201b38; --trim: #aba870; --led: #e5f755;
+  --title: Shrikhand, Georgia, serif;
+  --shape: polygon(21% 0, 79% 0, 92% 13%, 100% 51%, 92% 79%, 77% 100%, 23% 100%, 8% 79%, 0 51%, 8% 13%);
+}
+
+.distortion {
+  --case: #8f3830; --heel: #321e1b; --trim: #d88a57; --led: #ffb04b;
+  --title: "Barlow Condensed", sans-serif;
+  --shape: polygon(7% 0, 93% 0, 100% 7%, 100% 94%, 95% 100%, 5% 100%, 0 94%, 0 7%);
+}
+.distortion .pedal-name, .graphic-eq .pedal-name { font-weight: 700; text-transform: uppercase; }
+
+.graphic-eq {
+  --case: #285565; --heel: #192c39; --trim: #cfa36e; --led: #8df0e0;
+  --title: "Barlow Condensed", sans-serif;
+  --round: 13px 13px 35px 35px;
+}
+.graphic-eq .enclosure { grid-template-rows: 108px 146px 84px 68px; }
+.graphic-eq .knobs { align-content: center; row-gap: 9px; }
+.graphic-eq .knob { width: 34px; height: 34px; }
+
+.looper {
+  --case: #662631; --heel: #331b29; --trim: #c98e57; --led: #ffb05f;
+  --shape: polygon(10% 0, 90% 0, 100% 11%, 100% 84%, 87% 84%, 87% 100%, 13% 100%, 13% 84%, 0 84%, 0 11%);
+}
+.tuner {
+  --case: #215557; --heel: #15282a; --trim: #b49a60; --led: #83efb5;
+  --round: 38% 38% 18px 18px / 10% 10% 18px 18px;
+}
+.tuner .knobs { grid-template-columns: 1fr; }
+.tuner-screen, .looper-status {
+  border: 1px solid #c8b48880;
+  border-radius: 7px;
+  background: #111816e8;
+  box-shadow: inset 0 2px 5px #000d, 0 2px 5px #000d;
+  color: #e7dfb5;
+}
+.tuner-screen { display: grid; justify-items: center; gap: 3px; margin: 0 12px; padding: 5px; }
+.tuner-note { font: 700 22px/1 "Barlow Condensed", sans-serif; }
+.tuner-status, .looper-status { font: 700 12px/1.15 "Barlow Condensed", sans-serif; }
+.tuner-screen[data-in-tune=true] { color: #a8ffd1; border-color: #a8ffd187; }
+.tuner-scale {
+  position: relative;
+  width: 78%;
+  height: 7px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #846235bb, #243830 44% 56%, #846235bb);
+}
+.tuner-needle {
+  position: absolute;
+  left: calc((var(--cents, 0) + 50) * 1%);
+  width: 3px;
+  height: 9px;
+  border-radius: 3px;
+  background: currentColor;
+}
+.looper .knobs { grid-template-columns: minmax(44px, 1fr) minmax(0, 2fr); }
+.looper-status { padding: 7px 4px; margin-right: 5px; }
+.looper .heel { padding-inline: 16%; }
+.loop-action {
+  grid-row: 2;
+  border: 1px solid #a986609c;
+  border-radius: 5px;
+  padding: 5px 4px;
+  color: #fee5bf;
+  background: linear-gradient(#533128, #251d1d);
+  font: 700 12px/1 "Barlow Condensed", sans-serif;
+  cursor: pointer;
+  align-self: center;
+}
+.loop-action:first-child { grid-column: 1; }
+.loop-action:last-child { grid-column: 3; }
+.loop-action:disabled { opacity: .6; cursor: default; }
+.looper:not([data-transport=recording]):not([data-transport=overdub]):not([data-transport=playing]) .lamp {
+  background: #38251f;
+  box-shadow: 0 0 0 2px #4b3d31;
+}
+.looper[data-transport=recording] { --led: #ff5c53; }
+.looper[data-transport=playing] { --led: #a1e583; }
+
+.rainbow .knobs { grid-template-columns: repeat(2, 1fr); }
+.rainbow .stomp {
+  width: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 38%, #e8dfc0 3%, #a8a492 40%, #4e524d 49% 60%, #b8b8a9 65% 72%, #353934 75% 90%);
+}
+.expression-rocker {
+  grid-column: 1;
+  grid-row: 3;
+  position: relative;
+  z-index: 3;
+  width: clamp(47px, 32%, 88px);
+  margin: 8px auto 3px;
+  border: 2px solid #8f8072;
+  border-radius: 15px 15px 12px 12px;
+  background: linear-gradient(100deg, #202029, #110e13 55%, #423945);
+  box-shadow: 0 5px 12px #000d, inset 0 0 8px #000;
+  perspective: 290px;
+}
+.expression-tread {
+  position: absolute;
+  inset: 6px 5px;
+  border: 1px solid #a69b89;
+  border-radius: 11px 11px 9px 9px;
+  background:
+    linear-gradient(90deg, #121015a6, transparent 20% 80%, #121015a6),
+    repeating-linear-gradient(0deg, #302b33 0 5px, #80736e 6px 7px, #201d24 8px 11px);
+  box-shadow: 0 7px 2px #100f13, 0 9px 8px #000e;
+  transform: rotateX(var(--tilt, 0deg));
+  pointer-events: none;
+}
+.expression-rocker input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  opacity: 0;
+  cursor: ns-resize;
+  touch-action: none;
+}
+.expression-rocker:focus-within { outline: 2px solid #ffd7a8; outline-offset: 4px; }
+
+.pedal .screw.tl { top: var(--top-y, 14px); left: var(--top-left, 14px); }
+.pedal .screw.tr { top: var(--top-y, 14px); right: var(--top-right, var(--top-left, 14px)); left: auto; }
+.pedal .screw.bl { top: auto; bottom: var(--foot-y, 14px); left: var(--foot-left, 14px); }
+.pedal .screw.br { top: auto; bottom: var(--foot-y, 14px); right: var(--foot-right, var(--foot-left, 14px)); }
+.wood { --top-y: 21px; }
+.tape { --top-y: 24px; --top-left: 21px; --foot-left: 21px; }
+.orange, .spring, .tuner { --top-y: 44px; --top-left: 23px; --foot-left: 22px; }
+.liquid { --top-y: 23px; --top-left: 19px; --top-right: 27px; --foot-left: 26px; --foot-right: 19px; }
+.rainbow { --top-y: 43px; --foot-y: 35px; --top-left: 27px; --foot-left: 35px; }
+.prism { --top-y: 24px; --top-right: 26px; --foot-y: 28px; --foot-left: 27px; }
+.black, .chrome { --top-y: 35px; --foot-y: 34px; --top-left: 24px; --foot-left: 33px; }
+.tremolo { --top-y: 39px; --top-left: 34px; --foot-y: 20px; --foot-left: 26%; }
+.compressor, .looper { --top-y: 23px; --top-right: 26px; --foot-left: 19%; }
+.looper { --top-left: 26px; }
+.flanger { --top-left: 26%; --foot-left: 26%; --top-y: 18px; --foot-y: 18px; }
+.distortion { --top-y: 24px; --top-left: 21px; }
+.graphic-eq { --foot-left: 26px; --foot-y: 18px; }
+
+@media (max-width: 790px) { .pedal-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+@media (max-width: 560px) {
+  .pedal-cells { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
+  .enclosure { grid-template-rows: 92px 63px 110px 57px; padding: 7px 8px; }
+  .pedal-name, .wood .pedal-name, .rainbow .pedal-name,
+  .black .pedal-name, .chrome .pedal-name { font-size: 23px; }
+  .pedal-series { font-size: 9px; }
+  .pedal-type { font-size: 10px; padding-inline: 4px; letter-spacing: .07em; }
+  .knob { width: 31px; height: 31px; }
+  .dial-label { font-size: 9px; letter-spacing: 0; }
+  .heel { grid-template-rows: 13px 39px; }
+  .stomp { height: 38px; width: 38px; }
+  .graphic-eq .enclosure { grid-template-rows: 92px 119px 54px 57px; }
+  .graphic-eq .knob { width: 27px; height: 27px; }
+  .graphic-eq .dial-value { font-size: 7px; padding-inline: 1px; }
+  .rainbow .stomp { width: 38px; }
+  .tuner-screen { margin-inline: 3px; }
+  .looper .heel { padding-inline: 4%; }
+  .loop-action { font-size: 11px; }
+}

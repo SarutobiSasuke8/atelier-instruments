@@ -26,6 +26,7 @@
         </div>
         <div class="transport-buttons">
           <button class="key key-play" id="play" type="button">Play</button>
+          <button class="key" id="acid-pedals" type="button">Pedals</button>
           <button class="key" id="stop" type="button">Stop</button>
         </div>
       </div>
@@ -112,6 +113,10 @@
     </section>
     <p class="status" id="status" role="status"></p>
   </main>
+  <dialog id="acid-pedal-dialog" style="width:min(96vw,1320px);max-height:90vh;background:#231b14;color:#f5e4c8;border:1px solid #6b5844;border-radius:8px">
+    <form method="dialog"><button type="submit">Close pedalboard</button></form>
+    <div id="acid-pedal-host"></div>
+  </dialog>
   <script type="module" src="ui/main.js"></script>
 </body>
 </html>

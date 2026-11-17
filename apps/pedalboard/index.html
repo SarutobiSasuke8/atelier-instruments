@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atelier Pedalboard</title><link rel="stylesheet" href="../../shared/pedalboard/pedalboard.css"><link rel="stylesheet" href="../../shared/pedalboard/faceplates.css"><link rel="stylesheet" href="./workbench.css"></head>
+<body><main>
+<header class="workbench-head"><div><a href="../../">← Instrument workshop</a><h1>Atelier Pedalboard</h1></div><output id="signal" aria-live="polite"></output></header>
+<section class="signal-strip" aria-label="Audio input">
+<label>Input <select id="device"><option value="">Default input</option></select></label>
+<button id="refresh">Refresh</button><button id="live" aria-pressed="false">Enable live input</button><button id="demo">Play test phrase</button>
+<label>Trim <input id="trim" type="range" min="-24" max="12" value="0" aria-label="Input trim in decibels"><output id="trim-level" for="trim">0 dB</output></label>
+<div class="meter-group"><span>Input</span><div class="signal-meter" id="input-peak" role="meter" aria-label="Input peak" aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-60"><span></span></div></div>
+<div class="meter-group"><span>Chain</span><div class="signal-meter" id="chain-peak" role="meter" aria-label="Pedal chain peak" aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-60"><span id="peak"></span></div></div>
+<label>Output <input id="master" type="range" min="0" max="100" value="52"></label>
+</section>
+<div id="host"></div>
+</main><script type="module" src="./main.js"></script></body></html>

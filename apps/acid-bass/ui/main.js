@@ -788,3 +788,20 @@ function clone(value) {
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
+
+
+let optionalPedals;
+document.getElementById('acid-pedals').addEventListener('click', async () => {
+  const dialog = document.getElementById('acid-pedal-dialog');
+  const host = document.getElementById('acid-pedal-host');
+  if (!dialog.open) dialog.showModal();
+  if (optionalPedals) return;
+  try {
+    const audio = await ensureAudio();
+    const { mountPedalboard } = await import('../../../shared/pedalboard/board.js');
+    optionalPedals = await mountPedalboard({ host, context: audio.ctx, input: audio.gain });
+    audio.gain.disconnect(audio.ctx.destination);
+  } catch (error) {
+    host.textContent = error.message;
+  }
+});
