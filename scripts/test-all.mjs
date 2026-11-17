@@ -31,6 +31,14 @@ if (existsSync(tracksDir)) {
   }
 }
 
+// Agent API tests (agent/test/*.test.js).
+const agentTests = path.join(root, "agent", "test");
+if (existsSync(agentTests)) {
+  for (const entry of readdirSync(agentTests)) {
+    if (entry.endsWith(".test.js")) files.push(path.join(agentTests, entry));
+  }
+}
+
 if (files.length === 0) {
   console.log("No app tests found.");
   process.exit(0);

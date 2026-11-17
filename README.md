@@ -29,14 +29,28 @@ npm run serve
 
 See [Contributing](CONTRIBUTING.md) for changes to an instrument or the launcher.
 
+## Agents and the LMMS MCP
+
+Every instrument is also available without a browser through one API and a CLI, with strict parameter checks, 48 kHz output and measured levels. See [agent/README.md](agent/README.md).
+
+```bash
+node cli.mjs list
+node cli.mjs render trailer-riser --params '{"lengthMode":"bars","bars":4,"tempo":128}' --out riser.wav
+```
+
+The LMMS MCP loads the same API when `LMMS_ATELIER_INSTRUMENTS` points at this checkout, so an agent composing in LMMS can render or process with any instrument here.
+
 ## Layout
 
 ```
 index.html          launcher linking to every app in apps/
-shared/             wav export, presets, keyboard + Web MIDI, hardware CSS
+cli.mjs             command line over agent/
+agent/              one agent API over every engine
+shared/             wav export and decode, resampling, param specs, presets, keyboard + Web MIDI, hardware CSS
 apps/<name>/
   index.html
   engine.js         no DOM; exports a render function that returns PCM
+  agent.js          descriptor: strict params, presets and an adapter to engine.js
   ui/
   presets/
   test/

@@ -1,12 +1,20 @@
 {
   "name": "atelier-instruments",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Browser instruments built with the Web Audio API. No libraries and no build step.",
+  "description": "Browser instruments built with the Web Audio API, with one agent API and CLI over every engine. No libraries and no build step.",
+  "exports": {
+    "./agent": "./agent/index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "atelier": "./cli.mjs"
+  },
   "scripts": {
     "test": "node scripts/test-all.mjs",
-    "serve": "node server.mjs"
+    "serve": "node server.mjs",
+    "agent": "node cli.mjs"
   },
   "license": "MIT",
   "engines": {
