@@ -1,5 +1,9 @@
 # Atelier Instruments
 
+[![Test](https://github.com/SarutobiSasuke8/atelier-instruments/actions/workflows/test.yml/badge.svg)](https://github.com/SarutobiSasuke8/atelier-instruments/actions/workflows/test.yml)
+
+Pages URL once enabled: https://sarutobisasuke8.github.io/atelier-instruments/
+
 A workshop of browser instruments for making sounds, playing parts and exporting audio. The apps use HTML, CSS, JavaScript and the Web Audio API. Their engines can also render audio outside the browser.
 
 The repository is licensed under MIT.
